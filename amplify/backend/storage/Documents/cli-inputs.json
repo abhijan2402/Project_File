@@ -1,0 +1,14 @@
+{
+  "resourceName": "Documents",
+  "policyUUID": "f52fdb1d",
+  "bucketName": "documents-storage",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

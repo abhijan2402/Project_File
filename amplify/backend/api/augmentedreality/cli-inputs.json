@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "augmentedreality",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\Users\\Lenovo\\awsnative\\amplify\\backend\\api\\augmentedreality\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 7
+    }
+  }
+}
