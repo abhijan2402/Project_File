@@ -60,7 +60,7 @@ const SignUp=({navigation})=>{
         </TouchableOpacity>
         <TouchableOpacity style={[signupcss.btncontainer,{
           position:'absolute',bottom:0,alignSelf:'center'
-        }]} onPress={signUpNavigate} >
+        }]} onPress={()=>navigation.navigate("SignIn")} >
           <Text style={signupcss.btnTxt} >Login</Text>
         </TouchableOpacity>
       </View>

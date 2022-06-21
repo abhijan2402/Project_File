@@ -1,20 +1,19 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import 'react-native-gesture-handler';
 import Home from './Home';
-import AddFile from './AddFile';
-import Lambda from './Lambda';
+import Lambda from '../Screens//Lambda';
+import CreateGroup from '../Screens/CreateGroup';
 const Drawer=createDrawerNavigator();
-const Main=()=>{
+const DrawerNavigator=()=>{
     return(
         // <NavigationContainer>
-            <Drawer.Navigator>
+            <Drawer.Navigator screenOptions={{headerShown:false}}>
                 <Drawer.Screen name="Home" component={Home} />
-                <Drawer.Screen name="addFile" component={AddFile} />
+                <Drawer.Screen name="New Group" component={CreateGroup} />
                 <Drawer.Screen name="lambda" component={Lambda} />
             </Drawer.Navigator>
         // </NavigationContainer>
     )
 }
-export default Main;
+export default DrawerNavigator;

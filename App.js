@@ -12,10 +12,11 @@ import SignUp from './src/Screens/SignUp';
 import ConfirmSignIn from './src/Screens/ConfirmSignUp';
 import ForgotPassword from './src/Screens/ForgotPasword';
 import NewPassword from './src/Screens/NewPassword';
-import Main from './src/Screens/Main'
+import DrawerNavigator from './src/Navigators/Drawer'
 import { Auth, Hub } from 'aws-amplify';
 import 'react-native-gesture-handler';
 import Style from './src/Styles/Style';
+import Authentication from './src/Navigators/AuthStack';
 const Stack=createNativeStackNavigator();
 const App=()=>{
   const [user,setUser]=useState(undefined);
@@ -54,15 +55,11 @@ const App=()=>{
       <Stack.Navigator screenOptions={{headerShown:false}} >
         { user ? (
           <>
-            <Stack.Screen name="Main" component={Main} />
+            <Stack.Screen name="MainApp" component={DrawerNavigator} />
           </>
         ):
         (<>
-          <Stack.Screen name="SignIn" component={SignIn} />
-          <Stack.Screen name="SignUp" component={SignUp} />
-          <Stack.Screen name="confirmEmail" component={ConfirmSignIn} />
-          <Stack.Screen name="forgetpassword" component={ForgotPassword} />
-          <Stack.Screen name="newPassword" component={NewPassword} />
+            <Stack.Screen name="Authentication" component={Authentication} />
         </>)
       }
      
