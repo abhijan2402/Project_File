@@ -24,7 +24,7 @@ const GroupChatUI=({route,navigation})=>{
   const renderItem = ({ item }) => (
     <View style={FileStyle.fileContainer}>
       <Text style={FileStyle.title}>{item.filename}</Text>
-      <TouchableOpacity style={FileStyle.btnBody}>
+      <TouchableOpacity style={FileStyle.btnBody} onPress={()=>console.log(item.filename)} >
         <Text style={FileStyle.btnTxt} >Open</Text>
       </TouchableOpacity>
     </View>

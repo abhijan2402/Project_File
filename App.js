@@ -61,7 +61,7 @@ const App=()=>{
         (<>
             <Stack.Screen name="Authentication" component={Authentication} />
         </>)
-      }
+        }
      
       </Stack.Navigator>
     </NavigationContainer>

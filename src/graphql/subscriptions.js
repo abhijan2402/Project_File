@@ -12,12 +12,13 @@ export const onCreateFilesByGroupId = /* GraphQL */ `
       userUserFileId
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser {
-    onCreateUser {
+  subscription OnCreateUser($owner: String) {
+    onCreateUser(owner: $owner) {
       email
       name
       password
@@ -29,18 +30,20 @@ export const onCreateUser = /* GraphQL */ `
         GroupImageUrl
         createdAt
         updatedAt
+        owner
       }
       userFile {
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser {
-    onUpdateUser {
+  subscription OnUpdateUser($owner: String) {
+    onUpdateUser(owner: $owner) {
       email
       name
       password
@@ -52,18 +55,20 @@ export const onUpdateUser = /* GraphQL */ `
         GroupImageUrl
         createdAt
         updatedAt
+        owner
       }
       userFile {
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser {
-    onDeleteUser {
+  subscription OnDeleteUser($owner: String) {
+    onDeleteUser(owner: $owner) {
       email
       name
       password
@@ -75,12 +80,89 @@ export const onDeleteUser = /* GraphQL */ `
         GroupImageUrl
         createdAt
         updatedAt
+        owner
       }
       userFile {
         nextToken
       }
       createdAt
       updatedAt
+      owner
+    }
+  }
+`;
+export const onCreateGroup = /* GraphQL */ `
+  subscription OnCreateGroup($owner: String) {
+    onCreateGroup(owner: $owner) {
+      id
+      GroupName
+      GroupDescription
+      GroupImageUrl
+      users {
+        email
+        name
+        password
+        phoneNumber
+        createdAt
+        updatedAt
+        owner
+      }
+      files {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onUpdateGroup = /* GraphQL */ `
+  subscription OnUpdateGroup($owner: String) {
+    onUpdateGroup(owner: $owner) {
+      id
+      GroupName
+      GroupDescription
+      GroupImageUrl
+      users {
+        email
+        name
+        password
+        phoneNumber
+        createdAt
+        updatedAt
+        owner
+      }
+      files {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onDeleteGroup = /* GraphQL */ `
+  subscription OnDeleteGroup($owner: String) {
+    onDeleteGroup(owner: $owner) {
+      id
+      GroupName
+      GroupDescription
+      GroupImageUrl
+      users {
+        email
+        name
+        password
+        phoneNumber
+        createdAt
+        updatedAt
+        owner
+      }
+      files {
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
     }
   }
 `;
@@ -117,78 +199,9 @@ export const onDeleteUserGroup = /* GraphQL */ `
     }
   }
 `;
-export const onCreateGroup = /* GraphQL */ `
-  subscription OnCreateGroup {
-    onCreateGroup {
-      id
-      GroupName
-      GroupDescription
-      GroupImageUrl
-      users {
-        email
-        name
-        password
-        phoneNumber
-        createdAt
-        updatedAt
-      }
-      files {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateGroup = /* GraphQL */ `
-  subscription OnUpdateGroup {
-    onUpdateGroup {
-      id
-      GroupName
-      GroupDescription
-      GroupImageUrl
-      users {
-        email
-        name
-        password
-        phoneNumber
-        createdAt
-        updatedAt
-      }
-      files {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteGroup = /* GraphQL */ `
-  subscription OnDeleteGroup {
-    onDeleteGroup {
-      id
-      GroupName
-      GroupDescription
-      GroupImageUrl
-      users {
-        email
-        name
-        password
-        phoneNumber
-        createdAt
-        updatedAt
-      }
-      files {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
 export const onCreateFiles = /* GraphQL */ `
-  subscription OnCreateFiles {
-    onCreateFiles {
+  subscription OnCreateFiles($owner: String) {
+    onCreateFiles(owner: $owner) {
       id
       filename
       fileDescription
@@ -197,12 +210,13 @@ export const onCreateFiles = /* GraphQL */ `
       userUserFileId
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onUpdateFiles = /* GraphQL */ `
-  subscription OnUpdateFiles {
-    onUpdateFiles {
+  subscription OnUpdateFiles($owner: String) {
+    onUpdateFiles(owner: $owner) {
       id
       filename
       fileDescription
@@ -211,12 +225,13 @@ export const onUpdateFiles = /* GraphQL */ `
       userUserFileId
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onDeleteFiles = /* GraphQL */ `
-  subscription OnDeleteFiles {
-    onDeleteFiles {
+  subscription OnDeleteFiles($owner: String) {
+    onDeleteFiles(owner: $owner) {
       id
       filename
       fileDescription
@@ -225,6 +240,7 @@ export const onDeleteFiles = /* GraphQL */ `
       userUserFileId
       createdAt
       updatedAt
+      owner
     }
   }
 `;

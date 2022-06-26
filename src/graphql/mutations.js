@@ -18,12 +18,14 @@ export const createUser = /* GraphQL */ `
         GroupImageUrl
         createdAt
         updatedAt
+        owner
       }
       userFile {
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -44,12 +46,14 @@ export const updateUser = /* GraphQL */ `
         GroupImageUrl
         createdAt
         updatedAt
+        owner
       }
       userFile {
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -70,12 +74,14 @@ export const deleteUser = /* GraphQL */ `
         GroupImageUrl
         createdAt
         updatedAt
+        owner
       }
       userFile {
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -138,12 +144,14 @@ export const createGroup = /* GraphQL */ `
         phoneNumber
         createdAt
         updatedAt
+        owner
       }
       files {
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -164,12 +172,14 @@ export const updateGroup = /* GraphQL */ `
         phoneNumber
         createdAt
         updatedAt
+        owner
       }
       files {
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -190,12 +200,14 @@ export const deleteGroup = /* GraphQL */ `
         phoneNumber
         createdAt
         updatedAt
+        owner
       }
       files {
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -213,6 +225,7 @@ export const createFiles = /* GraphQL */ `
       userUserFileId
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -230,6 +243,7 @@ export const updateFiles = /* GraphQL */ `
       userUserFileId
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -247,6 +261,7 @@ export const deleteFiles = /* GraphQL */ `
       userUserFileId
       createdAt
       updatedAt
+      owner
     }
   }
 `;

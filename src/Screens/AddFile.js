@@ -32,9 +32,9 @@ const UploadFile=({navigation,route})=>{
     }
     const setFileData=async()=>{
         const response=await onUpload(fileData,fileName,fileDesc,groupName);
-        if(response){
-            navigation.navigate("GroupList",{groupName:groupName,groupImage:grpimage});
-        }
+        // if(response){
+        //     navigation.navigate("GroupList",{groupName:groupName,groupImage:grpimage});
+        // }
     }
     return(
         <>

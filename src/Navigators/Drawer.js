@@ -8,7 +8,7 @@ const Drawer=createDrawerNavigator();
 const DrawerNavigator=()=>{
     return(
         // <NavigationContainer>
-            <Drawer.Navigator screenOptions={{headerShown:false}}>
+            <Drawer.Navigator screenOptions={{headerShown:true}}>
                 <Drawer.Screen name="Home" component={Home} />
                 <Drawer.Screen name="New Group" component={CreateGroup} />
                 <Drawer.Screen name="lambda" component={Lambda} />

@@ -10,7 +10,7 @@ import {
   Dimensions,
   Image
 } from 'react-native';
-import { API, Auth, Storage   } from 'aws-amplify';
+import { API, Auth , Storage } from 'aws-amplify';
 import 'react-native-gesture-handler';
 import * as queries from '../graphql/queries';
 import Style from '../Styles/Style'
@@ -26,7 +26,7 @@ const Groups=({navigation})=>{
         <Image 
             style={GroupList.image}
             source={{uri:item.GroupImageUrl}}
-          />
+        />
         <Text style={GroupList.grpName}>{item.GroupName}</Text>
       </TouchableOpacity>
     </View>

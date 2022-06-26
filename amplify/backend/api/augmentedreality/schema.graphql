@@ -1,9 +1,9 @@
 # This "input" configures a global authorization rule to enable public access to
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
 
-type User @model {
+
+type User @model @auth(rules:[{allow:owner}]) {
   email:String! @primaryKey
   name: String! 
   password:String!
@@ -12,14 +12,17 @@ type User @model {
   userFile: [Files] @hasMany
 }
 
-type UserGroup @model{
+type UserGroup @model @auth(rules:[{allow:public,operations: [read]}]){
   id:ID!
   userID: String! @index(name: "byUserName", queryField: "groupByUserName")
   groupID: ID!
 }
 
 
-type Group @model {
+type Group @model @auth(rules:[
+  { allow: private, operations: [read]},
+  { allow: owner }
+]){
   id: ID!
   GroupName: String! @index(name: "byGroupName", queryField: "usersByGroupName")
   GroupDescription: String!
@@ -28,7 +31,10 @@ type Group @model {
   files: [Files] @hasMany
 }
 
-type Files @model {
+type Files @model @auth(rules:[
+  { allow: public, operations: [read]},
+  { allow: owner }
+]) {
   id: ID!
   filename: String!
   fileDescription:String!
