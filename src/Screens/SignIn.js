@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   View,
@@ -7,57 +7,91 @@ import {
   Alert,
   ActivityIndicator
 } from 'react-native';
-import signinStyle from '../Styles/signincss';
-import Style from '../Styles/Style'
+// import signinStyle from '../signinStyle/signincss';
+// import Style from '../signinStyle/Style';
+import signinStyle from '../Styles/signincss'
 import { Auth } from 'aws-amplify';
 import onSighIn from '../Server/Signin';
-const SignIn=({navigation})=>{
-  const [mail,setMail]=useState(null);
-  const [pass,setPass]=useState(null);
-  const [loading,setLoading]=useState(false);
-  const [error,setError]=useState(false);
-  const validateInputs=()=>{
+const SignIn = ({ navigation }) => {
+  const [mail, setMail] = useState(null);
+  const [pass, setPass] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const validateInputs = () => {
     try {
-      if(mail==null || pass==null){
+      if (mail == null || pass == null) {
         throw "Empty Fileds"
       }
-      onSighIn(mail,pass,loading,setLoading)
+      onSighIn(mail, pass, loading, setLoading)
     } catch (error) {
       setError(true)
-      Alert.alert(error,"fill all fields")
+      Alert.alert(error, "fill all fields")
     }
   }
   return (
-    <View style={signinStyle.signInContanier} >
-        <View style={signinStyle.texts}>
-          <Text style={[signinStyle.header,{textAlign:'left'}]}>Welcome To File Share</Text>
-          <Text style={signinStyle.subText}>Sign in and connected with us</Text>
-        </View>
-        <View style={signinStyle.textFields}>
-          <TextInput placeholder='Email' 
-            placeholderTextColor={error?"red":"black"}
-            keyboardType='email-address'
-            style={error?Style.errorInput:signinStyle.input}
-            onChangeText={(mail)=>setMail(mail)}
-            onFocus={()=>setError(false)}
-          />
-          <TextInput placeholder='Password' 
-            keyboardType='visible-password' 
-            placeholderTextColor={error?"red":"black"}
-            style={error?Style.errorInput:signinStyle.input} 
-            onChangeText={(pass)=>setPass(pass)}
-          />
-          <Text style={signinStyle.forgetpass} onPress={()=>navigation.navigate('forgetpassword')}>
-            Forget Password
-          </Text>
-          <TouchableOpacity style={[signinStyle.btncontainer,{backgroundColor:"white"}]} onPress={validateInputs} >
-            <Text style={signinStyle.btnTxt} >{loading? <ActivityIndicator size={30} color="blue"/>:"Login"}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={signinStyle.btncontainer} onPress={()=>navigation.navigate("SignUp")} >
-            <Text style={signinStyle.btnTxt} >Sign Up</Text>
-          </TouchableOpacity>
-  
-        </View>
+    // <View style={signinStyle.signInContanier} >
+    //     <View style={signinStyle.texts}>
+    //       <Text style={[signinStyle.header,{textAlign:'left'}]}>Welcome To File Share</Text>
+    //       <Text style={signinStyle.subText}>Sign in and connected with us</Text>
+    //     </View>
+    //     <View style={signinStyle.textFields}>
+    //       <TextInput placeholder='Email' 
+    //         placeholderTextColor={error?"red":"black"}
+    //         keyboardType='email-address'
+    //         style={error?Style.errorInput:signinStyle.input}
+    //         onChangeText={(mail)=>setMail(mail)}
+    //         onFocus={()=>setError(false)}
+    //       />
+    //       <TextInput placeholder='Password' 
+    //         keyboardType='visible-password' 
+    //         placeholderTextColor={error?"red":"black"}
+    //         style={error?Style.errorInput:signinStyle.input} 
+    //         onChangeText={(pass)=>setPass(pass)}
+    //       />
+    //       <Text style={signinStyle.forgetpass} onPress={()=>navigation.navigate('forgetpassword')}>
+    //         Forget Password
+    //       </Text>
+    //       <TouchableOpacity style={[signinStyle.btncontainer,{backgroundColor:"white"}]} onPress={validateInputs} >
+    //         <Text style={signinStyle.btnTxt} >{loading? <ActivityIndicator size={30} color="blue"/>:"Login"}</Text>
+    //       </TouchableOpacity>
+    //       <TouchableOpacity style={signinStyle.btncontainer} onPress={()=>navigation.navigate("SignUp")} >
+    //         <Text style={signinStyle.btnTxt} >Sign Up</Text>
+    //       </TouchableOpacity>
+
+    //     </View>
+    // </View>
+    <View style={signinStyle.dinc}>
+      <View style={signinStyle.txt7}>
+        <Text style={signinStyle.txt8}>Welcome Back</Text>
+      </View>
+      <View style={signinStyle.whole}>
+        <Text style={signinStyle.txt1}>SignIn</Text>
+
+        <TextInput style={signinStyle.form} placeholder='Email'
+          placeholderTextColor={error ? "red" : "black"}
+          keyboardType='email-address'
+          // style={error?Style.errorInput:signinStyle.input}
+          onChangeText={(mail) => setMail(mail)}
+          onFocus={() => setError(false)} />
+        <TextInput style={signinStyle.form} placeholder='Password'
+          keyboardType='visible-password'
+          placeholderTextColor={error ? "red" : "black"}
+          secureTextEntry={true}
+          // style={error?Style.errorInput:signinStyle.input} 
+          onChangeText={(pass) => setPass(pass)} />
+        <TouchableOpacity><Text style={signinStyle.btn} onPress={validateInputs} >{loading ? <ActivityIndicator size={30} color="blue" /> : "Login"}</Text></TouchableOpacity>
+
+      </View>
+      <View>
+        <Text style={signinStyle.forgot} onPress={() => navigation.navigate('forgetpassword')}>Forgot Password?</Text>
+      </View>
+
+      <View>
+        <Text style={signinStyle.sign}>
+          Don't have a account ? <Text style={signinStyle.signUp} onPress={() => navigation.navigate("SignUp")} >SignUp</Text>
+        </Text>
+      </View>
+      {/* </ImageBackground> */}
     </View>
   );
 };
