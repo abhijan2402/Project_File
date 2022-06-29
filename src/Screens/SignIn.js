@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   TextInput,
   Alert,
-  ActivityIndicator
+  ActivityIndicator,
+  ImageBackground
 } from 'react-native';
 // import signinStyle from '../signinStyle/signincss';
 // import Style from '../signinStyle/Style';
@@ -29,37 +30,10 @@ const SignIn = ({ navigation }) => {
     }
   }
   return (
-    // <View style={signinStyle.signInContanier} >
-    //     <View style={signinStyle.texts}>
-    //       <Text style={[signinStyle.header,{textAlign:'left'}]}>Welcome To File Share</Text>
-    //       <Text style={signinStyle.subText}>Sign in and connected with us</Text>
-    //     </View>
-    //     <View style={signinStyle.textFields}>
-    //       <TextInput placeholder='Email' 
-    //         placeholderTextColor={error?"red":"black"}
-    //         keyboardType='email-address'
-    //         style={error?Style.errorInput:signinStyle.input}
-    //         onChangeText={(mail)=>setMail(mail)}
-    //         onFocus={()=>setError(false)}
-    //       />
-    //       <TextInput placeholder='Password' 
-    //         keyboardType='visible-password' 
-    //         placeholderTextColor={error?"red":"black"}
-    //         style={error?Style.errorInput:signinStyle.input} 
-    //         onChangeText={(pass)=>setPass(pass)}
-    //       />
-    //       <Text style={signinStyle.forgetpass} onPress={()=>navigation.navigate('forgetpassword')}>
-    //         Forget Password
-    //       </Text>
-    //       <TouchableOpacity style={[signinStyle.btncontainer,{backgroundColor:"white"}]} onPress={validateInputs} >
-    //         <Text style={signinStyle.btnTxt} >{loading? <ActivityIndicator size={30} color="blue"/>:"Login"}</Text>
-    //       </TouchableOpacity>
-    //       <TouchableOpacity style={signinStyle.btncontainer} onPress={()=>navigation.navigate("SignUp")} >
-    //         <Text style={signinStyle.btnTxt} >Sign Up</Text>
-    //       </TouchableOpacity>
-
-    //     </View>
-    // </View>
+    <ImageBackground  style={signinStyle.signInContanier}
+        source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU"}} 
+        resizeMode="cover"
+      >
     <View style={signinStyle.dinc}>
       <View style={signinStyle.txt7}>
         <Text style={signinStyle.txt8}>Welcome Back</Text>
@@ -77,9 +51,12 @@ const SignIn = ({ navigation }) => {
           keyboardType='visible-password'
           placeholderTextColor={error ? "red" : "black"}
           secureTextEntry={true}
-          // style={error?Style.errorInput:signinStyle.input} 
           onChangeText={(pass) => setPass(pass)} />
-        <TouchableOpacity><Text style={signinStyle.btn} onPress={validateInputs} >{loading ? <ActivityIndicator size={30} color="blue" /> : "Login"}</Text></TouchableOpacity>
+        <TouchableOpacity onPress={validateInputs} style={signinStyle.btn}>
+          <Text  style={signinStyle.btnTxt} >
+            { loading ? <ActivityIndicator size={30} color="blue" /> : "Login"}
+          </Text>
+        </TouchableOpacity>
 
       </View>
       <View>
@@ -91,8 +68,8 @@ const SignIn = ({ navigation }) => {
           Don't have a account ? <Text style={signinStyle.signUp} onPress={() => navigation.navigate("SignUp")} >SignUp</Text>
         </Text>
       </View>
-      {/* </ImageBackground> */}
     </View>
+    </ImageBackground>
   );
 };
 

@@ -4,7 +4,8 @@ import {
   View,
   TouchableOpacity,
   TextInput,
-  Alert
+  Alert,
+  ImageBackground
 } from 'react-native';
 import { Auth } from 'aws-amplify';
 // import signupcss from '../signupcss/signupcss'
@@ -26,47 +27,11 @@ const SignUp = ({ navigation }) => {
     }
   }
   return (
-    // <View style={signupcss.signupcontainer} >
-    //   <View style={signupcss.texts}>
-    //     <Text style={signupcss.header}>Welcome To File Share</Text>
-    //     <Text style={signupcss.subText}>Sign Up and connected with us</Text>
-    //   </View>
-    //   <View style={signupcss.textFields}>
-    //     <TextInput placeholder='Name' 
-    //       placeholderTextColor={"black"}
-    //       keyboardType='default'
-    //       style={signupcss.input}
-    //       onChangeText={(name)=>setUserName(name)}
-    //     />
-    //     <TextInput placeholder='Email' 
-    //       placeholderTextColor={"black"}
-    //       keyboardType='email-address'
-    //       style={signupcss.input}
-    //       onChangeText={(mail)=>setMail(mail)}
-    //     />
-    //     <TextInput placeholder='Password' 
-    //       keyboardType='visible-password' 
-    //       placeholderTextColor={"black"}
-    //       style={signupcss.input} 
-    //       onChangeText={(pass)=>setPass(pass)}
-    //     />
-    //     <TextInput placeholder='Number' 
-    //       keyboardType='phone-pad' 
-    //       placeholderTextColor={"black"}
-    //       style={signupcss.input} 
-    //       onChangeText={(number)=>setNumber(number)}
-    //     />
-    //     <TouchableOpacity style={[signupcss.btncontainer,{backgroundColor:'white'}]} onPress={signUpNavigate} >
-    //       <Text style={signupcss.btnTxt} >Sign Up</Text>
-    //     </TouchableOpacity>
-    //     <TouchableOpacity style={[signupcss.btncontainer,{
-    //       position:'absolute',bottom:0,alignSelf:'center'
-    //     }]} onPress={()=>navigation.navigate("SignIn")} >
-    //       <Text style={signupcss.btnTxt} >Login</Text>
-    //     </TouchableOpacity>
-    //   </View>
-    // </View>
     <>
+    <ImageBackground  style={signupcss.signupcontainer}
+        source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU"}} 
+        resizeMode="cover"
+      >
       <View style={signupcss.txt}>
         <Text style={signupcss.txt1}>Create Account</Text>
       </View>
@@ -93,8 +58,8 @@ const SignUp = ({ navigation }) => {
           placeholderTextColor={"black"}
           // style={signupcss.input} 
           onChangeText={(pass) => setPass(pass)} />
-        <TouchableOpacity onPress={signUpNavigate}>
-          <Text style={signupcss.btn} >Create Account</Text>
+        <TouchableOpacity onPress={signUpNavigate} style={signupcss.btn} >
+          <Text style={signupcss.btnTxt} >Create Account</Text>
         </TouchableOpacity>
 
       </View>
@@ -103,6 +68,7 @@ const SignUp = ({ navigation }) => {
           Already have a account ? <Text style={signupcss.signUp} onPress={() => navigation.navigate("SignIn")} >Log In</Text>
         </Text>
       </View>
+      </ImageBackground>
     </>
   );
 };

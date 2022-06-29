@@ -4,7 +4,9 @@ import {
   View,
   TouchableOpacity,
   TextInput,
-  Alert
+  Alert,
+  ImageBackground,
+  ActivityIndicator
 } from 'react-native';
 import Style from '../Styles/Style';
 import newpasscss from '../Styles/newpasscss';
@@ -13,19 +15,30 @@ const NewPassword=({route,navigation})=>{
     const { username }=route.params;
     const [code,setCode]=useState(null);
     const [newPass,setNewPass]=useState(null);
+    const [loading,setLoading]=useState(false)
     const forgetPass=async()=>{
         try {
+          if(code==null || newPass==null)
+            throw {message:"Please enter all code or password"}
+          setLoading(true)
           await Auth.forgotPasswordSubmit(username,code,newPass);
           Alert.alert("Successfully Password changes");
+          setLoading(false)
           navigation.navigate("SignIn")  
         } catch (error) {
             Alert.alert("Oops",error.message)
         }
     }
   return (
-    <View style={newpasscss.newpasscontainer} >
+    <ImageBackground  style={newpasscss.newpasscontainer}
+        source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU"}} 
+        resizeMode="cover"
+      >
       <View style={newpasscss.texts}>
-        <Text style={newpasscss.header}>Enter New Password</Text>
+        <Text style={newpasscss.header}>New Credentials</Text>
+        <Text style={newpasscss.subText}>
+          Confirm your email and enter new password
+        </Text>
       </View>
       <View>
         <TextInput placeholder='Email' 
@@ -34,7 +47,7 @@ const NewPassword=({route,navigation})=>{
           style={Style.input}
           value={username}
         />
-        <TextInput placeholder='Code...' 
+        <TextInput placeholder='Confirmation Code' 
           placeholderTextColor={"black"}
           keyboardType='numeric'
           style={Style.input}
@@ -46,11 +59,13 @@ const NewPassword=({route,navigation})=>{
           style={Style.input}
           onChangeText={(newPass)=>setNewPass(newPass)}
         />
-        <TouchableOpacity style={Style.btncontainer} onPress={forgetPass} >
-          <Text style={Style.btnTxt} >Continue</Text>
+        <TouchableOpacity style={newpasscss.btncontainer} onPress={forgetPass} >
+          <Text style={newpasscss.btnTxt} >
+            {loading?<ActivityIndicator size={20} color="blue"/>:"Continue"}
+          </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ImageBackground >
   );
 };
 

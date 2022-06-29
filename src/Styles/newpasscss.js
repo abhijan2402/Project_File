@@ -4,14 +4,15 @@ const windowHeight = Dimensions.get('window').height;
 const newpasscss=StyleSheet.create({
     newpasscontainer:{
       flex:1,
-      justifyContent:'center',
+      // justifyContent:'center',
       alignItems: 'center',
-      backgroundColor:"white"
+      justifyContent:'space-evenly'
+      // backgroundColor:"red"
     },
     btncontainer:{
       alignItems: 'center',
       justifyContent:'center',
-      backgroundColor:"#24B0FF",
+      backgroundColor:"orange",
       width:windowWidth-20,
       height:50,
       borderRadius:5,
@@ -39,7 +40,7 @@ const newpasscss=StyleSheet.create({
     header:{
       color:"black",
       fontWeight:"bold",
-      fontSize:20,
+      fontSize:30,
       fontFamily:"Alias",
       fontStyle:"italic",
       width:'100%',
@@ -55,13 +56,12 @@ const newpasscss=StyleSheet.create({
       fontSize:18
     },
     texts:{
-        // marginTop:10,
-        // marginLeft:10,
         padding:10,
-        marginLeft:20,
-        // backgroundColor:'cyan',
-        // height:windowHeight/3,
+        marginHorizontal:20,
         width:windowWidth,
+        // backgroundColor:"red",
+        height:windowHeight/4,
+        justifyContent:"center"
       },
     forgetpass:{
       color:"black",

@@ -5,7 +5,7 @@ const signinStyle = StyleSheet.create({
   signInContanier: {
     flex: 1,
     // alignItems:'center',
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
     // justifyContent:'space-between',
     // paddingVertical:100
     width: '100%'
@@ -82,18 +82,16 @@ const signinStyle = StyleSheet.create({
   txt7: {
     borderWidth: 1,
     backgroundColor: 'orange',
-    height: 230,
+    height: windowHeight/3.5,
     borderBottomLeftRadius: 190,
     borderBottomRightRadius: 190,
-
-
   },
   txt8: {
     fontSize: 30,
     textAlign: 'center',
     fontWeight: '900',
     marginTop: 80,
-    // color: 'black'
+    color: 'black'
   },
   backgroundImage: {
     flex: 1,
@@ -126,29 +124,40 @@ const signinStyle = StyleSheet.create({
     margin: 20,
     borderRadius: 7,
     shadowColor: 'black',
+    backgroundColor:"white"
   },
   btn: {
     borderWidth: 2,
-    margin: 20,
     padding: 5,
     borderRadius: 4,
     textAlign: 'center',
-    fontSize: 17,
     backgroundColor: 'darkorange',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: windowWidth - 40,
+    height: 50,
+    borderColor: "black",
+    elevation: 10,
+    shadowColor: 'black',
+    shadowOpacity: 1.5,
+    alignSelf:'center',
+    marginVertical: 10,
   },
   forgot: {
     textAlign: 'center',
     color: 'black',
     fontSize: 20,
+    fontWeight:"bold"
   },
   sign: {
     textAlign: 'center',
-    marginTop: 50,
+    marginTop:windowHeight/10,
     fontSize: 20,
     color: 'black',
+    fontWeight:"bold"
   },
   signUp: {
-    color: 'darkorange',
+    color: '#FFFFFF',
     fontWeight: '800',
   },
 })
