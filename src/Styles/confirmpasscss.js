@@ -6,7 +6,7 @@ const confirmpasscss=StyleSheet.create({
       flex:1,
       justifyContent:'center',
       alignItems: 'center',
-      backgroundColor:"#E6E6E6"
+      // backgroundColor:"#E6E6E6"
     },
     header:{
       color:"black",

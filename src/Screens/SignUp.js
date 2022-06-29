@@ -18,10 +18,10 @@ const SignUp = ({ navigation }) => {
   const [phone_number, setNumber] = useState(null);
   const signUpNavigate = async () => {
     try {
-      const response = await onSignUp(email, name, password, phone_number);
-      if (response === 'signedUp') {
+      const response = await onSignUp(email, name, password,phone_number);
+      // if (response === 'signedUp') {
         navigation.navigate("confirmEmail", { username: email })
-      }
+      // }
     } catch (error) {
       console.log(error.message)
     }
@@ -31,43 +31,42 @@ const SignUp = ({ navigation }) => {
     <ImageBackground  style={signupcss.signupcontainer}
         source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU"}} 
         resizeMode="cover"
-      >
-      <View style={signupcss.txt}>
-        <Text style={signupcss.txt1}>Create Account</Text>
-      </View>
-      <View style={signupcss.whole}>
-        <Text style={signupcss.txt2}>SignUp</Text>
+    >
+        <View style={signupcss.txt}>
+          <Text style={signupcss.txt1}>Create Account</Text>
+        </View>
+        <View style={signupcss.whole}>
+          <Text style={signupcss.txt2}>SignUp</Text>
 
-        <TextInput style={signupcss.form} placeholder='Name'
-          placeholderTextColor={"black"}
-          keyboardType='default'
-          // style={signupcss.input}
-          onChangeText={(name) => setUserName(name)} />
-        <TextInput style={signupcss.form} placeholder='Email'
-          placeholderTextColor={"black"}
-          keyboardType='email-address'
-          // style={signupcss.input}
-          onChangeText={(mail) => setMail(mail)} />
-        <TextInput style={signupcss.form} placeholder='Number'
-          keyboardType='phone-pad'
-          placeholderTextColor={"black"}
-          // style={signupcss.input} 
-          onChangeText={(number) => setNumber(number)} />
-        <TextInput style={signupcss.form} placeholder='Password'
-          keyboardType='visible-password'
-          placeholderTextColor={"black"}
-          // style={signupcss.input} 
-          onChangeText={(pass) => setPass(pass)} />
-        <TouchableOpacity onPress={signUpNavigate} style={signupcss.btn} >
-          <Text style={signupcss.btnTxt} >Create Account</Text>
-        </TouchableOpacity>
-
-      </View>
-      <View>
-        <Text style={signupcss.sign}>
-          Already have a account ? <Text style={signupcss.signUp} onPress={() => navigation.navigate("SignIn")} >Log In</Text>
-        </Text>
-      </View>
+          <TextInput style={signupcss.form} placeholder='Name'
+            placeholderTextColor={"black"}
+            keyboardType='default'
+            // style={signupcss.input}
+            onChangeText={(name) => setUserName(name)} />
+          <TextInput style={signupcss.form} placeholder='Email'
+            placeholderTextColor={"black"}
+            keyboardType='email-address'
+            // style={signupcss.input}
+            onChangeText={(mail) => setMail(mail)} />
+          <TextInput style={signupcss.form} placeholder='Number'
+            keyboardType='phone-pad'
+            placeholderTextColor={"black"}
+            // style={signupcss.input} 
+            onChangeText={(number) => setNumber(number)} />
+          <TextInput style={signupcss.form} placeholder='Password'
+            keyboardType='visible-password'
+            placeholderTextColor={"black"}
+            // style={signupcss.input} 
+            onChangeText={(pass) => setPass(pass)} />
+          <TouchableOpacity onPress={signUpNavigate} style={signupcss.btn} >
+            <Text style={signupcss.btnTxt} >Create Account</Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <Text style={signupcss.sign}>
+            Already have a account ? <Text style={signupcss.signUp} onPress={() => navigation.navigate("SignIn")} >Log In</Text>
+          </Text>
+        </View>
       </ImageBackground>
     </>
   );

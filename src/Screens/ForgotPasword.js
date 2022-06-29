@@ -4,7 +4,8 @@ import {
   View,
   TouchableOpacity,
   TextInput,
-  Alert
+  Alert,
+  ImageBackground
 } from 'react-native';
 import { Auth } from 'aws-amplify';
 import forgotpasscss from '../Styles/forgotpasscss';
@@ -20,25 +21,30 @@ const ForgotPassword=({navigation})=>{
         }
     }
   return (
-    <View style={forgotpasscss.forgetpasscontainer} >
-      <View style={forgotpasscss.texts}>
-        <Text style={Style.header}>Forgot Password</Text>
-        <Text style={Style.subText}>
-          Entert you Email and a code has been send to your mail..
-        </Text>
+    <ImageBackground  style={forgotpasscss.forgetpasscontainer}
+        source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU"}} 
+        resizeMode="cover"
+    >
+      <View style={forgotpasscss.forgetpasscontainer} >
+        <View style={forgotpasscss.texts}>
+          <Text style={Style.header}>Forgot Password</Text>
+          <Text style={Style.subText}>
+            Enter you Email and a code has been send to your mail..
+          </Text>
+        </View>
+        <View style={forgotpasscss.textFields}>
+          <TextInput placeholder='Email' 
+            placeholderTextColor={"black"}
+            keyboardType='email-address'
+            style={Style.input}
+            onChangeText={(mail)=>setMail(mail)}
+          />
+          <TouchableOpacity style={Style.btncontainer} onPress={forgetPass} >
+            <Text style={Style.btnTxt} >Continue</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={forgotpasscss.textFields}>
-        <TextInput placeholder='Email' 
-          placeholderTextColor={"black"}
-          keyboardType='email-address'
-          style={Style.input}
-          onChangeText={(mail)=>setMail(mail)}
-        />
-        <TouchableOpacity style={Style.btncontainer} onPress={forgetPass} >
-          <Text style={Style.btnTxt} >Continue</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </ImageBackground>
   );
 };
 

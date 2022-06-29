@@ -9,9 +9,9 @@ import 'react-native-gesture-handler';
 const Stack=createNativeStackNavigator();
 const Authentication=()=>{
   return (
-      <Stack.Navigator screenOptions={{headerShown:false}} >
+      <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName="SignIn" >
         <>
-          <Stack.Screen name="SignIn" component={SignIn} />
+          <Stack.Screen name="SignIn" component={SignIn}  />
           <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="confirmEmail" component={ConfirmSignIn} />
           <Stack.Screen name="forgetpassword" component={ForgotPassword} />

@@ -34,41 +34,39 @@ const SignIn = ({ navigation }) => {
         source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU"}} 
         resizeMode="cover"
       >
-    <View style={signinStyle.dinc}>
-      <View style={signinStyle.txt7}>
-        <Text style={signinStyle.txt8}>Welcome Back</Text>
-      </View>
-      <View style={signinStyle.whole}>
-        <Text style={signinStyle.txt1}>SignIn</Text>
+      <View >
+        <View style={signinStyle.txt7}>
+          <Text style={signinStyle.txt8}>Welcome Back</Text>
+        </View>
+        <View style={signinStyle.whole}>
+          <Text style={signinStyle.txt1}>SignIn</Text>
 
-        <TextInput style={signinStyle.form} placeholder='Email'
-          placeholderTextColor={error ? "red" : "black"}
-          keyboardType='email-address'
-          // style={error?Style.errorInput:signinStyle.input}
-          onChangeText={(mail) => setMail(mail)}
-          onFocus={() => setError(false)} />
-        <TextInput style={signinStyle.form} placeholder='Password'
-          keyboardType='visible-password'
-          placeholderTextColor={error ? "red" : "black"}
-          secureTextEntry={true}
-          onChangeText={(pass) => setPass(pass)} />
-        <TouchableOpacity onPress={validateInputs} style={signinStyle.btn}>
-          <Text  style={signinStyle.btnTxt} >
-            { loading ? <ActivityIndicator size={30} color="blue" /> : "Login"}
-          </Text>
-        </TouchableOpacity>
-
+          <TextInput style={signinStyle.form} placeholder='Email'
+            placeholderTextColor={error ? "red" : "black"}
+            keyboardType='email-address'
+            // style={error?Style.errorInput:signinStyle.input}
+            onChangeText={(mail) => setMail(mail)}
+            onFocus={() => setError(false)} />
+          <TextInput style={signinStyle.form} placeholder='Password'
+            keyboardType='visible-password'
+            placeholderTextColor={error ? "red" : "black"}
+            secureTextEntry={true}
+            onChangeText={(pass) => setPass(pass)} />
+          <TouchableOpacity onPress={validateInputs} style={signinStyle.btn}>
+            <Text  style={signinStyle.btnTxt} >
+              { loading ? <ActivityIndicator size={30} color="blue" /> : "Login"}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <Text style={signinStyle.forgot} onPress={() => navigation.navigate('forgetpassword')}>Forgot Password?</Text>
+        </View>
       </View>
-      <View>
-        <Text style={signinStyle.forgot} onPress={() => navigation.navigate('forgetpassword')}>Forgot Password?</Text>
-      </View>
-
       <View>
         <Text style={signinStyle.sign}>
           Don't have a account ? <Text style={signinStyle.signUp} onPress={() => navigation.navigate("SignUp")} >SignUp</Text>
         </Text>
       </View>
-    </View>
     </ImageBackground>
   );
 };
