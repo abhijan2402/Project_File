@@ -5,7 +5,7 @@ const signinStyle = StyleSheet.create({
   signInContanier: {
     flex: 1,
     width: '100%',
-    justifyContent:"space-between"
+    justifyContent: "space-between"
   },
   btnTxt: {
     fontWeight: "bold",
@@ -14,7 +14,7 @@ const signinStyle = StyleSheet.create({
   txt7: {
     borderWidth: 1,
     backgroundColor: 'orange',
-    height: windowHeight/3.5,
+    height: windowHeight / 3.5,
     borderBottomLeftRadius: 190,
     borderBottomRightRadius: 190,
   },
@@ -56,8 +56,8 @@ const signinStyle = StyleSheet.create({
     margin: 20,
     borderRadius: 7,
     shadowColor: 'black',
-    backgroundColor:"white",
-    color:"black"
+    backgroundColor: "white",
+    color: "black"
   },
   btn: {
     borderWidth: 2,
@@ -73,26 +73,27 @@ const signinStyle = StyleSheet.create({
     elevation: 10,
     shadowColor: 'black',
     shadowOpacity: 1.5,
-    alignSelf:'center',
+    alignSelf: 'center',
     marginVertical: 10,
   },
   forgot: {
     textAlign: 'center',
     color: 'black',
     fontSize: 20,
-    fontWeight:"bold"
+    fontWeight: "bold"
   },
   sign: {
     textAlign: 'center',
     // marginTop:windowHeight/10,
     fontSize: 20,
     color: 'black',
-    fontWeight:"bold",
-    marginBottom:20
+    fontWeight: "bold",
+    marginBottom: 20
   },
   signUp: {
     color: '#FFFFFF',
     fontWeight: '800',
+    // color: 'darkorange'
   },
 })
 export default signinStyle

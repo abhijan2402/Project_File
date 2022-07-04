@@ -4,7 +4,7 @@ const windowHeight = Dimensions.get('window').height;
 const signupcss = StyleSheet.create({
   signupcontainer: {
     flex: 1,
-    justifyContent:"space-between"
+    justifyContent: "space-between"
   },
   btnTxt: {
     fontWeight: "bold",
@@ -23,7 +23,7 @@ const signupcss = StyleSheet.create({
   txt: {
     borderWidth: 1,
     backgroundColor: 'orange',
-    height: windowHeight/3.5,
+    height: windowHeight / 3.5,
     borderBottomLeftRadius: 1,
     borderBottomRightRadius: 250,
     // borderWidth:2
@@ -34,7 +34,7 @@ const signupcss = StyleSheet.create({
     fontWeight: '900',
     marginTop: 80,
     color: 'black',
-    fontWeight:"bold"
+    fontWeight: "bold"
   },
   txt2: {
     fontSize: 30,
@@ -55,8 +55,8 @@ const signupcss = StyleSheet.create({
     marginBottom: 6,
     borderRadius: 7,
     shadowColor: 'black',
-    backgroundColor:"white",
-    color:"black"
+    backgroundColor: "white",
+    color: "black"
   },
   btn: {
     borderWidth: 2,
@@ -77,15 +77,15 @@ const signupcss = StyleSheet.create({
     elevation: 10,
     shadowColor: "black",
     shadowOpacity: 2,
-    marginVertical:10,
-    alignSelf:"center"
+    marginVertical: 10,
+    alignSelf: "center"
   },
   sign: {
     textAlign: 'center',
-    marginTop: windowHeight/10,
+    marginTop: windowHeight / 10,
     fontSize: 20,
     color: 'black',
-    marginBottom:20
+    marginBottom: 20
   },
   signUp: {
     color: '#FFFFFF',

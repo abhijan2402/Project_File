@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   View,
@@ -10,53 +10,53 @@ import {
 import Style from '../Styles/Style';
 import confirmpasscss from '../Styles/confirmpasscss';
 import { Auth } from 'aws-amplify';
-const ConfirmSignIn=({route,navigation})=>{
-  const { username } = route.params;
-  const [code,setCode]=useState(null);
-  const confirmEmail=async()=>{
+const ConfirmSignIn = ({ route, navigation }) => {
+  // const { username } = route.params;
+  const [code, setCode] = useState(null);
+  const confirmEmail = async () => {
     try {
-      console.log(username,code)
-      const response=await Auth.confirmSignUp(username,code)
+      console.log(username, code)
+      // const response=await Auth.confirmSignUp(username,code)
       console.log(response)
       navigation.navigate('SignIn')
     } catch (error) {
-      Alert.alert("Oops",error.message)
+      Alert.alert("Oops", error.message)
     }
-}
-  const resendConfirmationCode=async()=>{
+  }
+  const resendConfirmationCode = async () => {
     try {
-      await Auth.resendSignUp(username);
+      // await Auth.resendSignUp(username);
       Alert.alert("Confirmation code send to email");
     } catch (error) {
-      Alert.alert("Oops",error.message)
+      Alert.alert("Oops", error.message)
     }
   }
   return (
-    <ImageBackground  style={confirmpasscss.confirmpasscontainer}
-        source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU"}} 
-        resizeMode="cover"
+    <ImageBackground style={confirmpasscss.confirmpasscontainer}
+      source={{ uri: "https://i.pinimg.com/736x/ab/69/b7/ab69b7841c52b26bf257ba93a3fc14a2.jpg" }}
+      resizeMode="cover"
     >
       <View style={confirmpasscss.confirmpasscontainer} >
         <View style={confirmpasscss.texts}>
-            <Text style={[confirmpasscss.header,{textAlign:'left'}]}>
-              Confirm you Email
-            </Text>
-          </View>
+          <Text style={[confirmpasscss.header, { textAlign: 'center' }]}>
+            Confirm you Email
+          </Text>
+        </View>
         <View style={confirmpasscss.textFields}>
-          <TextInput placeholder='Email' 
-            value={username}
+          <TextInput placeholder='Email'
+            // value={username}
             placeholderTextColor={"black"}
             keyboardType='email-address'
             style={Style.input}
           />
-          <TextInput placeholder='Code...' 
-            keyboardType='numeric' 
+          <TextInput placeholder='Code...'
+            keyboardType='numeric'
             placeholderTextColor={"black"}
-            style={Style.input} 
-            onChangeText={(code)=>setCode(code)}
+            style={Style.input}
+            onChangeText={(code) => setCode(code)}
           />
-          <TouchableOpacity style={[Style.btncontainer,{
-            backgroundColor:'white'
+          <TouchableOpacity style={[Style.btncontainer, {
+            backgroundColor: 'white'
           }]}>
             <Text style={Style.btnTxt} onPress={confirmEmail} >Confirm Email</Text>
           </TouchableOpacity>

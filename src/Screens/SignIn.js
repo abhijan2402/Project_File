@@ -30,10 +30,10 @@ const SignIn = ({ navigation }) => {
     }
   }
   return (
-    <ImageBackground  style={signinStyle.signInContanier}
-        source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU"}} 
-        resizeMode="cover"
-      >
+    <ImageBackground style={signinStyle.signInContanier}
+      source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU" }}
+      resizeMode="cover"
+    >
       <View >
         <View style={signinStyle.txt7}>
           <Text style={signinStyle.txt8}>Welcome Back</Text>
@@ -53,8 +53,8 @@ const SignIn = ({ navigation }) => {
             secureTextEntry={true}
             onChangeText={(pass) => setPass(pass)} />
           <TouchableOpacity onPress={validateInputs} style={signinStyle.btn}>
-            <Text  style={signinStyle.btnTxt} >
-              { loading ? <ActivityIndicator size={30} color="blue" /> : "Login"}
+            <Text style={signinStyle.btnTxt} >
+              {loading ? <ActivityIndicator size={30} color="blue" /> : "Login"}
             </Text>
           </TouchableOpacity>
         </View>
