@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, View, ImageBackground, Dimensions, StyleSheet } from 'react-native'
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer'
 import { API, Auth } from 'aws-amplify';
 import { color } from 'react-native-reanimated'
 const windowHeight = Dimensions.get('window').height
 const CustomDrawer = (props) => {
+    const [user,setUser]=useState(null);
+    useEffect(()=>{
+        fetchUser();
+    },[])
+    const fetchUser=async()=>{
+        try {
+            const authedUser=await Auth.currentAuthenticatedUser();
+            setUser(authedUser.attributes.name)
+        } catch (error) {
+            console.log(error);
+        }
+    }
     const logOut = async () => {
         try {
             await Auth.signOut();
@@ -13,18 +25,14 @@ const CustomDrawer = (props) => {
         }
     }
     return (
-
-
         <View style={{ flex: 1 }}>
             <ImageBackground style={{ height: windowHeight }}
                 source={{ uri: "https://i.pinimg.com/736x/ab/69/b7/ab69b7841c52b26bf257ba93a3fc14a2.jpg" }}
                 resizeMode="cover"
             >
                 <View style={styles.baseText}>
-                    <Text style={styles.txt}>Hi Abhishek,</Text>
+                    <Text style={styles.txt}>Hi {user},</Text>
                 </View>
-
-
                 <DrawerContentScrollView {...props}>
                     <DrawerItemList {...props} />
                 </DrawerContentScrollView>
@@ -34,8 +42,6 @@ const CustomDrawer = (props) => {
                 </View>
             </ImageBackground>
         </View>
-
-
     )
 }
 const styles = StyleSheet.create({
@@ -52,7 +58,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'left',
         marginHorizontal: 15,
-
+        color:"black"
     },
     last: {
         padding: 25,
@@ -62,7 +68,8 @@ const styles = StyleSheet.create({
     },
     lastTxt: {
         fontSize: 17,
-        fontWeight: '800'
+        fontWeight: '800',
+        color:"black"
     }
 
 });

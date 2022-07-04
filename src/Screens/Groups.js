@@ -33,7 +33,7 @@ const Groups=({navigation})=>{
   );
   
   useEffect(()=>{
-    fetchUserGroups();
+    // fetchUserGroups();
   },[groupList])
   const fetchUserGroups=async()=>{
     try {
