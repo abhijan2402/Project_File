@@ -4,25 +4,61 @@ const windowHeight = Dimensions.get('window').height;
 const GroupList=StyleSheet.create({
     groupContaier:{
         backgroundColor:"white",
-        width:windowWidth,
-        height:60,
-        flexDirection:"row",
-        alignItems:"center",
-        elevation:10
+        width:windowWidth/2.3,
+        height:windowWidth/2.3,
+        elevation:5,
+        margin: 10,
+        borderRadius:10,
+        shadowOffset:{
+            width:-10,
+            height:-10,
+        },
+        shadowOpacity:1,
+        shadowRadius:10,
+        shadowColor:"#1d1d1d",
+        borderWidth:2,
+        borderColor:"#A8A9A8"
+
     },
     grpName:{
-        color:"black",
+        color:"#2e2e2e",
         fontWeight:"bold",
         fontFamily:"Alias",
-        fontSize:20,
-        marginLeft:10
+        fontSize:25,
+        textAlign:"right",
+        paddingHorizontal:10,
+        width:"100%",
     },
     image:{
-        height:40,
-        width:40,
-        borderRadius:40/2,
-        overflow:'hidden',
-        marginLeft:10
+        height:50,
+        width:50,
+        borderRadius:50/2,
+        marginLeft:15,
+        marginTop:15,
+    },
+    cardHeader:{
+        width:"100%",
+        height:'70%',
+        backgroundColor:"white",
+        borderTopRightRadius:10,
+        borderTopLeftRadius:10
+    },
+    cardFooter:{
+        width:'100%',
+        height:'30%',
+        backgroundColor:"#D9D9D9",
+        borderBottomRightRadius:10,
+        borderBottomLeftRadius:10,
+        borderTopWidth:1,
+        borderColor:"#A8A9A8"
+    },
+    footerTxt:{
+        color:"black",
+        fontSize:15,
+        padding:5
+    },
+    container:{
+        alignItems:"center",
     }
 })
 export default GroupList;

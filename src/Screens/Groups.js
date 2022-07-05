@@ -8,26 +8,48 @@ import {
   FlatList,
   Alert,
   Dimensions,
-  Image
+  Image,
+  ImageBackground
 } from 'react-native';
 import { API, Auth , Storage } from 'aws-amplify';
 import 'react-native-gesture-handler';
 import * as queries from '../graphql/queries';
 import Style from '../Styles/Style'
+import LinearGradient from 'react-native-linear-gradient';
 import GroupList from '../Styles/GroupList';
+const data=[
+  {GroupName:"Group 1",grpDescription:"hello"},
+  {GroupName:"Group 2",grpDescription:"hello"},
+  {GroupName:"Group 3",grpDescription:"hello"},
+  {GroupName:"Group 4",grpDescription:"hello"},
+  {GroupName:"Group 5",grpDescription:"hello"},
+  {GroupName:"Group 6",grpDescription:"hello"},
+  {GroupName:"Group 7",grpDescription:"hello"},
+  {GroupName:"Group 8",grpDescription:"hello"},
+  {GroupName:"Group 9",grpDescription:"hello"},
+  {GroupName:"Group 10",grpDescription:"hello"},
+  {GroupName:"Group 11",grpDescription:"hello"},
+  {GroupName:"Group 12",grpDescription:"hello"},
+  {GroupName:"Group 13",grpDescription:"hello"},
+]
 const Groups=({navigation})=>{
   const [groupList,setGroupList]=useState([]);
   const renderItem = ({ item }) => (
-    <View >
+    <View style={GroupList.card} >
       <TouchableOpacity 
        onPress={()=>navigation.navigate("Groupchat",{groupName:item.GroupName,groupImage:item.GroupImageUrl})}
         style={GroupList.groupContaier} 
       >
-        <Image 
-            style={GroupList.image}
-            source={{uri:item.GroupImageUrl}}
-        />
-        <Text style={GroupList.grpName}>{item.GroupName}</Text>
+        <View style={GroupList.cardHeader}>
+          <Image 
+              style={GroupList.image}
+              source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7imXJMeK9b42t8JBjKxYP2zJd8MVrbVNEAg&usqp=CAU"}} 
+          />
+          <Text style={GroupList.grpName}>{item.GroupName}</Text>
+        </View>
+        <LinearGradient colors={['#BAF3FF', '#F0FCFF', '#BAF3FF']} style={GroupList.cardFooter}>
+          <Text style={GroupList.footerTxt}>Description....</Text>
+        </LinearGradient >
       </TouchableOpacity>
     </View>
   );
@@ -58,12 +80,19 @@ const Groups=({navigation})=>{
     }
   }
   return (
-    <View style={Style.container}>
+    <View>
+     <ImageBackground
+       style={GroupList.container}
+       source={require('../Assets/background.png')} 
+       resizeMode="cover"
+     >
       <FlatList
-          data={groupList}
-          renderItem={renderItem}
-          keyExtractor={item => item.GroupName}
-      />
+              data={data}
+              renderItem={renderItem}
+              keyExtractor={item => item.GroupName}
+              numColumns={2}
+        />
+     </ImageBackground>
     </View>
   );
 };

@@ -35,7 +35,7 @@ const GroupChatUI=({route,navigation})=>{
     // console.log(groupImage,groupName)
     setGroupTitle(groupName)
     setGroupPic(groupImage)
-    subscribeFile();
+    // subscribeFile();
     return()=>{
       setList([]);
       setGroupTitle(null)

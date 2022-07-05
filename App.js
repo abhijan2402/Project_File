@@ -3,7 +3,8 @@ import {
   Alert,
   View,
   ActivityIndicator,
-  Text
+  Text,
+  Image
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -45,8 +46,11 @@ const App=()=>{
   },[])
   if(user===undefined){
     return (
-      <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-        <ActivityIndicator size={30} color="blue"/>
+      <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:"white"}}>
+        <Image
+            source={{uri:"https://images-platform.99static.com/oimUg2rGs8WSurVrpMG7MMpAyjs=/0x0:960x960/500x500/top/smart/99designs-contests-attachments/92/92793/attachment_92793967"}}
+            style={{height:200,width:200}}
+        />
       </View>
     )
   }
