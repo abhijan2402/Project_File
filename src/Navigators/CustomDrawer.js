@@ -3,15 +3,16 @@ import { Text, View, ImageBackground, Dimensions, StyleSheet } from 'react-nativ
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer'
 import { API, Auth } from 'aws-amplify';
 import { color } from 'react-native-reanimated'
+import LinearGradient from 'react-native-linear-gradient';
 const windowHeight = Dimensions.get('window').height
 const CustomDrawer = (props) => {
-    const [user,setUser]=useState(null);
-    useEffect(()=>{
+    const [user, setUser] = useState(null);
+    useEffect(() => {
         fetchUser();
-    },[])
-    const fetchUser=async()=>{
+    }, [])
+    const fetchUser = async () => {
         try {
-            const authedUser=await Auth.currentAuthenticatedUser();
+            const authedUser = await Auth.currentAuthenticatedUser();
             setUser(authedUser.attributes.name)
         } catch (error) {
             console.log(error);
@@ -26,10 +27,8 @@ const CustomDrawer = (props) => {
     }
     return (
         <View style={{ flex: 1 }}>
-            <ImageBackground style={{ height: windowHeight }}
-                source={{ uri: "https://i.pinimg.com/736x/ab/69/b7/ab69b7841c52b26bf257ba93a3fc14a2.jpg" }}
-                resizeMode="cover"
-            >
+            <LinearGradient colors={['#F5B707', '#F0FCFF', '#D38E4F']} style={styles.linear}>
+
                 <View style={styles.baseText}>
                     <Text style={styles.txt}>Hi {user},</Text>
                 </View>
@@ -40,36 +39,44 @@ const CustomDrawer = (props) => {
                 <View style={styles.last}>
                     <Text style={styles.lastTxt} onPress={() => logOut()}>SignOut</Text>
                 </View>
-            </ImageBackground>
+            </LinearGradient>
         </View>
     )
 }
 const styles = StyleSheet.create({
+    linear: {
+        height: windowHeight
+    },
 
     baseText: {
         fontFamily: "Cochin",
-        height: windowHeight / 20,
+        height: windowHeight / 15,
         borderBottomWidth: 2,
-        justifyContent: 'flex-end',
+        justifyContent: 'space-evenly',
         marginBottom: 20,
-        // backgroundColor: 'orange'
+        backgroundColor: 'lightorange'
     },
     txt: {
         fontSize: 20,
         textAlign: 'left',
         marginHorizontal: 15,
-        color:"black"
+        color: "black",
+        justifyContent: 'center'
     },
     last: {
         padding: 25,
         borderTopWidth: 2,
         borderTopColor: 'black',
-        color: 'white'
+        color: 'white',
+        justifyContent: 'space-between',
+        marginBottom: 10
     },
     lastTxt: {
-        fontSize: 17,
+        fontSize: 20,
         fontWeight: '800',
-        color:"black"
+        color: "black",
+        justifyContent: 'space-between'
+        // marginVertical: 10,
     }
 
 });
