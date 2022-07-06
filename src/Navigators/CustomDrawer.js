@@ -27,19 +27,19 @@ const CustomDrawer = (props) => {
     }
     return (
         <View style={{ flex: 1 }}>
-            <LinearGradient colors={['#F5B707', '#F0FCFF', '#D38E4F']} style={styles.linear}>
+            {/* <LinearGradient colors={['#9debc8', '#9fbfb1', '#71a88f']} style={styles.linear}> */}
 
-                <View style={styles.baseText}>
-                    <Text style={styles.txt}>Hi {user},</Text>
-                </View>
-                <DrawerContentScrollView {...props}>
-                    <DrawerItemList {...props} />
-                </DrawerContentScrollView>
+            <View style={styles.baseText}>
+                <Text style={styles.txt}>Hi {user},</Text>
+            </View>
+            <DrawerContentScrollView {...props}>
+                <DrawerItemList {...props} />
+            </DrawerContentScrollView>
 
-                <View style={styles.last}>
-                    <Text style={styles.lastTxt} onPress={() => logOut()}>SignOut</Text>
-                </View>
-            </LinearGradient>
+            <View style={styles.last}>
+                <Text style={styles.lastTxt} onPress={() => logOut()}>SignOut</Text>
+            </View>
+            {/* </LinearGradient> */}
         </View>
     )
 }
@@ -54,22 +54,25 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         justifyContent: 'space-evenly',
         marginBottom: 20,
-        backgroundColor: 'lightorange'
+        backgroundColor: '#2382e8'
     },
     txt: {
         fontSize: 20,
         textAlign: 'left',
         marginHorizontal: 15,
         color: "black",
-        justifyContent: 'center'
+        justifyContent: 'center',
+
     },
     last: {
-        padding: 25,
+        padding: 13,
+        marginHorizontal: 10,
         borderTopWidth: 2,
         borderTopColor: 'black',
         color: 'white',
         justifyContent: 'space-between',
-        marginBottom: 10
+        marginBottom: 4,
+        // backgroundColor: '#2382e8'
     },
     lastTxt: {
         fontSize: 20,
