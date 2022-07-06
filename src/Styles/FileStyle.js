@@ -2,6 +2,9 @@ import { StyleSheet ,Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const FileStyle=StyleSheet.create({
+  container:{
+    flex:1 
+  },
     fileContainer:{
       flex:1,
       flexDirection:'row-reverse',
@@ -55,7 +58,8 @@ const FileStyle=StyleSheet.create({
         alignItems:"center",
         flexDirection: 'row',
         justifyContent:"space-between",
-        backgroundColor:"#D0D0D0"
+        borderBottomColor:"#898E8F",
+        borderBottomWidth:2
     },
     titleView:{
       flexDirection: 'row',
@@ -65,15 +69,14 @@ const FileStyle=StyleSheet.create({
       color:"black",
       fontSize:25,
       fontFamily:"Alias",
-      marginLeft:10
+      marginLeft:10,
+      fontWeight:"bold"
     },
     subText:{
       color:"black",
       padding:4
-      // backgroundColor:"cyan",
     },
     image:{
-      // backgroundColor:"grey",
       height:60,
       width:60,
       borderRadius:60/2,
@@ -81,12 +84,23 @@ const FileStyle=StyleSheet.create({
       overflow:'hidden'
     },
     iconPic:{
-      height:30,
-      width:30,
+      height:40,
+      width:40,
     },
     Icon:{
       flexDirection:"row",
       alignItems:"center"
+    },
+    searchInput:{
+      width:'75%',
+      height:50,
+      backgroundColor:"white",
+      color:"black",
+      fontWeight:"bold",
+      fontSize:15,
+      borderRadius:5,
+      borderWidth:2,
+      borderColor:"black"
     }
 })
 export default FileStyle;
