@@ -35,8 +35,8 @@ const Invite = () => {
           <Text style={styles.txt1}>Invite</Text>
         </View>
 
-        <TextInput style={styles.form} placeholder='Email' />
-        <TextInput style={styles.form} placeholder='GroupName' />
+        <TextInput style={styles.form} placeholder='Enter e-mail' />
+        <TextInput style={styles.form} placeholder='Enter Group Name' />
         <TouchableOpacity style={styles.btn}>
           <Text style={styles.btnTxt} >
             Invite
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   form: {
     borderWidth: 1,
     marginHorizontal: 20,
-    marginVertical: 15,
+    marginVertical: 10,
     // margin: 20,
     borderRadius: 7,
     shadowColor: 'black',
@@ -88,9 +88,9 @@ const styles = StyleSheet.create({
     width: windowWidth - 40,
     height: 50,
     borderColor: "black",
-    elevation: 10,
-    shadowColor: 'black',
-    shadowOpacity: 1.5,
+    elevation: 30,
+    shadowColor: 'orange',
+    shadowOpacity: 2,
     alignSelf: 'center',
     marginVertical: 15,
     marginHorizontal: 30,
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   },
   image1: {
     width: windowWidth,
-    height: 250,
+    height: 180,
     marginHorizontal: 5,
   },
 })
