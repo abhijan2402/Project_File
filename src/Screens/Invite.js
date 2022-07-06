@@ -24,7 +24,7 @@ const Invite = () => {
 
       {/* <LinearGradient colors={['#f57b07', '#F0FCFF', '#755334']} style={styles.linear}> */}
       <View style={styles.whole}>
-        <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+        <View style={styles.combo}>
 
 
           <Image
@@ -32,7 +32,7 @@ const Invite = () => {
             source={require('../Assets/invitation.png')}
 
           />
-          <Text style={styles.txt1}>Invite</Text>
+          <Text style={styles.txt1}>Invite your friends</Text>
         </View>
 
         <TextInput style={styles.form} placeholder='Enter e-mail' />
@@ -61,11 +61,19 @@ const styles = StyleSheet.create({
 
     height: windowHeight,
   },
+  combo: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 5
+
+  },
   txt1: {
     textAlign: 'center',
-    fontSize: 30,
-    fontWeight: '800',
-    color: 'black'
+    fontSize: 25,
+    fontWeight: '700',
+    color: 'black',
+    fontFamily: 'serif'
   },
   form: {
     borderWidth: 1,
@@ -97,12 +105,13 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 35,
-    height: 35,
+    height: 30,
     marginHorizontal: 5,
   },
   btnTxt: {
     color: 'black',
-    // fontWeight: '800'
+    fontWeight: '700',
+    fontFamily: 'serif'
   },
   image1: {
     width: windowWidth,
