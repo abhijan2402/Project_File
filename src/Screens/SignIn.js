@@ -31,12 +31,12 @@ const SignIn = ({ navigation }) => {
   }
   return (
     <ImageBackground style={signinStyle.signInContanier}
-      source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU" }}
+      source={require('../Assets/bk.png')}
       resizeMode="cover"
     >
       <View >
         <View style={signinStyle.txt7}>
-          <Text style={signinStyle.txt8}>Welcome Back</Text>
+          <Text style={signinStyle.txt8}></Text>
         </View>
         <View style={signinStyle.whole}>
           <Text style={signinStyle.txt1}>SignIn</Text>

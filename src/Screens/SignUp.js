@@ -29,11 +29,11 @@ const SignUp = ({ navigation }) => {
   return (
     <>
     <ImageBackground  style={signupcss.signupcontainer}
-        source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU"}} 
+        source={require('../Assets/bk.png')} 
         resizeMode="cover"
     >
         <View style={signupcss.txt}>
-          <Text style={signupcss.txt1}>Create Account</Text>
+          <Text style={signupcss.txt1}></Text>
         </View>
         <View style={signupcss.whole}>
           <Text style={signupcss.txt2}>SignUp</Text>

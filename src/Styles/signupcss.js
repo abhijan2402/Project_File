@@ -21,15 +21,15 @@ const signupcss = StyleSheet.create({
     borderRadius: 5,
   },
   txt: {
-    borderWidth: 1,
-    backgroundColor: 'orange',
-    height: windowHeight / 3.5,
-    borderBottomLeftRadius: 1,
-    borderBottomRightRadius: 250,
+    // borderWidth: 1,
+    // backgroundColor: 'orange',
+    // height: windowHeight / 3.5,
+    // borderBottomLeftRadius: 1,
+    // borderBottomRightRadius: 250,
     // borderWidth:2
   },
   txt1: {
-    fontSize: 30,
+    fontSize: 40,
     textAlign: 'center',
     fontWeight: '900',
     marginTop: 80,

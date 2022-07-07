@@ -31,7 +31,7 @@ const NewPassword=({route,navigation})=>{
     }
   return (
     <ImageBackground  style={newpasscss.newpasscontainer}
-        source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP9nIKoB9xa1bDA5LSttQpyT5m8HWHxLbUMw&usqp=CAU"}} 
+        source={require('../Assets/bk.png')} 
         resizeMode="cover"
       >
       <View style={newpasscss.texts}>

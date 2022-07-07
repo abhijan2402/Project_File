@@ -91,7 +91,7 @@ const GroupChatUI=({route,navigation})=>{
             placeholder={"Search..."}
             placeholderTextColor={"black"}
           />:
-          <View style={FileStyle.titleView}>
+          clicked?null:<View style={FileStyle.titleView}>
             <Image 
               style={FileStyle.image}
               source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7imXJMeK9b42t8JBjKxYP2zJd8MVrbVNEAg&usqp=CAU"}}

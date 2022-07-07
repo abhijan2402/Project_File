@@ -12,14 +12,16 @@ const signinStyle = StyleSheet.create({
     color: "black"
   },
   txt7: {
-    borderWidth: 1,
-    backgroundColor: 'orange',
+    // borderWidth: 1,
+    // backgroundColor: 'orange',
     height: windowHeight / 3.5,
-    borderBottomLeftRadius: 190,
-    borderBottomRightRadius: 190,
+    // borderBottomLeftRadius: 190,
+    // borderBottomRightRadius: 190,
+    width:windowWidth,
+    textAlign:'left'
   },
   txt8: {
-    fontSize: 30,
+    fontSize:40,
     textAlign: 'center',
     fontWeight: '900',
     marginTop: 80,
@@ -40,7 +42,7 @@ const signinStyle = StyleSheet.create({
   },
   txt1: {
     textAlign: 'left',
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: '900',
     color: 'black',
     marginLeft: 20,

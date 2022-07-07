@@ -65,45 +65,29 @@ const forgotpasscss=StyleSheet.create({
     },
     container: {
       flex: 1,
-      position:'relative'
-    },
-    bigcircle:{
-      width:Dimensions.get('window').height * 0.7,
-      height:Dimensions.get('window').height * 0.7,
-      backgroundColor:'orange',
-      borderRadius:1000,
-      position:'absolute',
-      right:Dimensions.get('window').width * 0.25,
-      top:-50,
-    },
-    smallcircle:{
-      width:Dimensions.get('window').height * 0.4,
-      height:Dimensions.get('window').height * 0.4,
-      backgroundColor:'orange',
-      borderRadius:1000,
-      position:'absolute',
-      bottom:Dimensions.get('window').width * -0.2,
-      right:Dimensions.get('window').width * -0.3,
+      position:'relative',
+      alignItems:"center",
+      justifyContent:"center"
     },
     centerizedview:{
       width:'100%',
       top:'15%',
     },
     authbox:{
-      width:'90%',
+      width:windowWidth-20,
       backgroundColor:'#fafafa',
-      borderRadius:20,
+      borderRadius:10,
       alignSelf:'center',
       paddingHorizontal:14,
-      paddingBottom:30,
+      padding:30,
       shadowColor:'#fff',
       shadowOffset:{
-        width:0,
+        width:2,
         height:2,
       },
-      shadowOpacity:0.25,
+      shadowOpacity:1,
       shadowRadius:3.84,
-      elevation:5,
+      elevation:10,
     },
     logobox:{
       width:100,
@@ -164,6 +148,12 @@ const forgotpasscss=StyleSheet.create({
       textAlign:'center',
       fontSize:20,
       fontWeight:'bold',
+    },
+    Contanier:{
+      width:'100%',
+      height:"100%",
+      alignItems:"center",
+      justifyContent:"center"
     }
 })
 export default forgotpasscss;

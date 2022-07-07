@@ -33,7 +33,7 @@ const ConfirmSignIn = ({ route, navigation }) => {
   }
   return (
     <ImageBackground style={confirmpasscss.confirmpasscontainer}
-      source={{ uri: "https://i.pinimg.com/736x/ab/69/b7/ab69b7841c52b26bf257ba93a3fc14a2.jpg" }}
+      source={require('../Assets/bk.png')}
       resizeMode="cover"
     >
       <View style={confirmpasscss.confirmpasscontainer} >
