@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Text, View, ImageBackground, Dimensions, StyleSheet } from 'react-native'
+import { Text, View, ImageBackground, Dimensions, StyleSheet, Image } from 'react-native'
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer'
 import { API, Auth } from 'aws-amplify';
 import { color } from 'react-native-reanimated'
@@ -27,11 +27,11 @@ const CustomDrawer = (props) => {
     }
     return (
         <View style={{ flex: 1 }}>
-            {/* <LinearGradient colors={['#9debc8', '#9fbfb1', '#71a88f']} style={styles.linear}> */}
-
-            <View style={styles.baseText}>
-                <Text style={styles.txt}>Hi {user},</Text>
-            </View>
+            <ImageBackground source={require('../Assets/test3.jpg')} style={styles.baseText}>
+                <Image style={styles.image1}
+                    source={require('../Assets/man.png')}></Image>
+                <Text style={styles.txt}>Hello {user}</Text>
+            </ImageBackground>
             <DrawerContentScrollView {...props}>
                 <DrawerItemList {...props} />
             </DrawerContentScrollView>
@@ -39,7 +39,6 @@ const CustomDrawer = (props) => {
             <View style={styles.last}>
                 <Text style={styles.lastTxt} onPress={() => logOut()}>SignOut</Text>
             </View>
-            {/* </LinearGradient> */}
         </View>
     )
 }
@@ -50,17 +49,17 @@ const styles = StyleSheet.create({
 
     baseText: {
         fontFamily: "Cochin",
-        height: windowHeight / 15,
-        borderBottomWidth: 2,
+        height: windowHeight / 5,
+        borderBottomWidth: 3,
         justifyContent: 'space-evenly',
         marginBottom: 20,
-        backgroundColor: '#2382e8'
+        backgroundColor: '#ccc9c2'
     },
     txt: {
         fontSize: 20,
         textAlign: 'left',
         marginHorizontal: 15,
-        color: "black",
+        color: "white",
         justifyContent: 'center',
 
     },
@@ -80,6 +79,11 @@ const styles = StyleSheet.create({
         color: "black",
         justifyContent: 'space-between'
         // marginVertical: 10,
+    },
+    image1: {
+        width: 70,
+        height: 70,
+        marginHorizontal: 23
     }
 
 });
