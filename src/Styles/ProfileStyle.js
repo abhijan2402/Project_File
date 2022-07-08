@@ -78,7 +78,7 @@ const ProfileStyle = StyleSheet.create({
     customButton: {
         height: 50,
         width: windowWidth - 20,
-        // alignItems: "center",
+        alignItems: "center",
         justifyContent: "center",
         marginTop: 10,
         borderWidth: 2,
@@ -113,7 +113,7 @@ const ProfileStyle = StyleSheet.create({
         color: "black"
     },
     modalStyle: {
-        // height: 2 * (windowHeight / 3),
+        height: 2 * (windowHeight / 3),
         borderTopRightRadius: 15,
         borderTopLeftRadius: 15,
         justifyContent: 'space-around',

@@ -16,29 +16,45 @@ import * as queries from '../graphql/queries';
 import * as subscriptions from '../graphql/subscriptions';
 import FileStyle from '../Styles/FileStyle';
 import LinearGradient from 'react-native-linear-gradient';
+import dummyChatData from '../Data';
 const GroupChatUI=({route,navigation})=>{
   const {groupName,groupImage} = route.params;
   const [list,setList]=useState([]);
   const [groupTitle,setGroupTitle]=useState(null);
   const [groupPic,setGroupPic]=useState(null);
-
+  const [message,setMessage]=useState(null)
   const [clicked,setClicked]=useState(false);
   const [search,setSearch]=useState(false);
+  const [user,setUser]=useState("chirag")
+  const [messageArray,setMessageArray]=useState(dummyChatData)
   const renderItem = ({ item }) => (
-    <View style={FileStyle.fileContainer}>
-      <Text style={FileStyle.title}>{item.filename}</Text>
-      <TouchableOpacity style={FileStyle.btnBody} onPress={()=>console.log(item.filename)} >
-        <Text style={FileStyle.btnTxt} >Open</Text>
-      </TouchableOpacity>
-    </View>
+    <>
+      <Text style={[FileStyle.time,{alignSelf:item.user===user?'flex-end':'flex-start',}]}>
+        {item.timeAt}
+      </Text>
+      <LinearGradient colors={['#4FCBF8', '#F0FCFF', '#4FCBF8']}
+        style={[
+          FileStyle.messageContainer,
+          {
+            alignSelf:item.user===user?'flex-end':'flex-start',
+            borderTopRightRadius:item.user===user?5:40,
+            borderBottomRightRadius:item.user===user?5:40,
+            borderTopLeftRadius:item.user===user?40:5,
+            borderBottomLeftRadius:item.user===user?40:5
+          }
+        ]}    
+      >
+        <Text style={FileStyle.title}>
+          {item.message}
+        </Text>
+      </LinearGradient >
+      
+    </>
   );
 
   useEffect(()=>{
-    getFiles();
-    // console.log(groupImage,groupName)
     setGroupTitle(groupName)
     setGroupPic(groupImage)
-    // subscribeFile();
     return()=>{
       setList([]);
       setGroupTitle(null)
@@ -63,23 +79,24 @@ const GroupChatUI=({route,navigation})=>{
       console.log(error);
     }
   }
-  const getFiles=async()=>{
+  const sendMessage=()=>{
     try {
-      const fileData=await API.graphql({
-        query:queries.listFiles
-      })
-      setList(fileData.data.listFiles.items)
-      // console.log(fileData.data.listFiles.items)
+      const date=new Date();
+      const currentTime=date.getHours()+":"+date.getMinutes();;
+      if(message==null)
+        throw "write message"
+      let messageObject={
+        id:Math.random()*1000,
+        message:message,
+        timeAt:currentTime,
+        user:"chirag"
+      }
+      
+      setMessageArray([...messageArray,messageObject])
+      console.log(date);
+      setMessage('')
     } catch (error) {
-      console.log(error)
-    }
-  }
-  const onDownload=async(filePath)=>{
-    try {
-      const filePath=await Storage.get(filePath,{ expires:60,level:'public' });
-      // console.log(filePath);
-    } catch (error) {
-      console.log(error);
+      console.warn(error);
     }
   }
   return (
@@ -90,6 +107,8 @@ const GroupChatUI=({route,navigation})=>{
             style={FileStyle.searchInput}
             placeholder={"Search..."}
             placeholderTextColor={"black"}
+            autoFocus={true}
+            autoCorrect={true}
           />:
           clicked?null:<View style={FileStyle.titleView}>
             <Image 
@@ -101,7 +120,7 @@ const GroupChatUI=({route,navigation})=>{
             </Text>
           </View>
         }
-        <View style={FileStyle.Icon}>
+        <View style={[FileStyle.Icon,clicked?{width:'100%'}:null]}>
          {clicked?
           <>
             <TouchableOpacity>
@@ -147,11 +166,26 @@ const GroupChatUI=({route,navigation})=>{
         }
         </View>
       </LinearGradient>
-      {/* <FlatList
-          data={list}
+      <FlatList
+          inverted
+          data={[...messageArray].reverse()}
           renderItem={renderItem}
           keyExtractor={item => item.id}
-      /> */}
+      />
+      <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#85FFDB', '#C2FFED', '#D0F9ED']} style={FileStyle.chatIPStyle}>
+        <TextInput
+            placeholder={"Message..."}
+            placeholderTextColor={"black"}
+            style={FileStyle.chatInput}
+            onChangeText={(message)=>setMessage(message)}
+        />
+       <TouchableOpacity onPress={()=>sendMessage()}>
+        <Image
+            style={FileStyle.sentIcon}
+            source={require('../Assets/send.png')}
+          />
+       </TouchableOpacity>
+      </LinearGradient>    
     </View>
   );
 };
