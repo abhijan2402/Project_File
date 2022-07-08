@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Alert,
   View,
@@ -18,55 +18,55 @@ import { Auth, Hub } from 'aws-amplify';
 import 'react-native-gesture-handler';
 import Style from './src/Styles/Style';
 import Authentication from './src/Navigators/AuthStack';
-const Stack=createNativeStackNavigator();
-const App=()=>{
-  const [user,setUser]=useState(undefined);
+const Stack = createNativeStackNavigator();
+const App = () => {
+  const [user, setUser] = useState(undefined);
 
-  const checkUser=async()=>{
+  const checkUser = async () => {
     try {
-      const response=await Auth.currentAuthenticatedUser({bypassCache:true});
+      const response = await Auth.currentAuthenticatedUser({ bypassCache: true });
       setUser(response)
     } catch (error) {
-       setUser(null)
+      setUser(null)
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     checkUser();
-  },[])
+  }, [])
 
-  useEffect(()=>{
-    const listner=(data)=>{
-      if(data.payload.event==='signIn' || data.payload.event==='signOut' ){
+  useEffect(() => {
+    const listner = (data) => {
+      if (data.payload.event === 'signIn' || data.payload.event === 'signOut') {
         checkUser();
       }
     }
-    Hub.listen('auth',listner);
-    return () => Hub.remove('auth',listner);
-  },[])
-  if(user===undefined){
+    Hub.listen('auth', listner);
+    return () => Hub.remove('auth', listner);
+  }, [])
+  if (user === undefined) {
     return (
-      <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:"white"}}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: "white" }}>
         <Image
-            source={{uri:"https://images-platform.99static.com/oimUg2rGs8WSurVrpMG7MMpAyjs=/0x0:960x960/500x500/top/smart/99designs-contests-attachments/92/92793/attachment_92793967"}}
-            style={{height:200,width:200}}
+          source={{ uri: "https://images-platform.99static.com/oimUg2rGs8WSurVrpMG7MMpAyjs=/0x0:960x960/500x500/top/smart/99designs-contests-attachments/92/92793/attachment_92793967" }}
+          style={{ height: 200, width: 200 }}
         />
       </View>
     )
   }
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown:false}} >
-        { user ? (
+      <Stack.Navigator screenOptions={{ headerShown: false }} >
+        {user ? (
           <>
             <Stack.Screen name="MainApp" component={DrawerNavigator} />
           </>
-        ):
-        (<>
+        ) :
+          (<>
             <Stack.Screen name="Authentication" component={Authentication} />
-        </>)
+          </>)
         }
-     
+
       </Stack.Navigator>
     </NavigationContainer>
   );

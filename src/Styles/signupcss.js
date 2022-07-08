@@ -26,7 +26,10 @@ const signupcss = StyleSheet.create({
     // height: windowHeight / 3.5,
     // borderBottomLeftRadius: 1,
     // borderBottomRightRadius: 250,
-    // borderWidth:2
+    // borderWidth: 2
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 30,
   },
   txt1: {
     fontSize: 40,
@@ -82,7 +85,7 @@ const signupcss = StyleSheet.create({
   },
   sign: {
     textAlign: 'center',
-    marginTop: windowHeight / 10,
+    marginTop: windowHeight / 30,
     fontSize: 20,
     color: 'black',
     marginBottom: 20
