@@ -5,12 +5,14 @@ import SignUp from '../Screens/SignUp';
 import ConfirmSignIn from '../Screens/ConfirmSignUp';
 import ForgotPassword from '../Screens/ForgotPasword';
 import NewPassword from '../Screens/NewPassword';
+import OnBoarding from '../Screens/OnBoardging';
 import 'react-native-gesture-handler';
 const Stack = createNativeStackNavigator();
 const Authentication = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="SignIn" >
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="onboarding" >
       <>
+        <Stack.Screen name="onboarding" component={OnBoarding}/>
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="confirmSignUp" component={ConfirmSignIn} />
