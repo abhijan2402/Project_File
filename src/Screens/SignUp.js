@@ -13,8 +13,7 @@ import {
 import { Auth } from 'aws-amplify';
 import ProfileStyle from '../Styles/ProfileStyle';
 import LinearGradient from 'react-native-linear-gradient';
-
-// import signupcss from '../signupcss/signupcss'
+import ValidatePassword from '../functions/validatePassword';
 import signupcss from '../Styles/signupcss'
 import onSignUp from '../Server/Signup';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -29,12 +28,15 @@ const SignUp = ({ navigation }) => {
   const [phone_number, setNumber] = useState(null);
   const signUpNavigate = async () => {
     try {
-      const response = await onSignUp(email, name, password, phone_number);
-      // if (response === 'signedUp') {
-      navigation.navigate("confirmEmail", { username: email })
-      // }
+      if (email == null || password == null || phone_number==null || name==null) 
+        throw "Empty Fileds"
+      const response=ValidatePassword(password);
+      if(!response)
+        throw "*Required Strond Password";
+      await onSignUp(email,name,password,phone_number);
+      navigation.navigate("confirmSignUp", { username: email })
     } catch (error) {
-      console.log(error.message)
+      console.log(error)
     }
   }
   const takePhotofromCamera = () => {

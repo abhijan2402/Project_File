@@ -39,7 +39,7 @@ const ForgotPassword = ({ navigation }) => {
                 keyboardType="email-address"
                 textContentType="emailAddress"
                 placeholder="example@gmail.com"
-                onChange={(mail) => setMail(mail)}
+                onChangeText={(mail) => setMail(mail)}
               />
             </View>
 

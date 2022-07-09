@@ -13,6 +13,7 @@ import {
 import signinStyle from '../Styles/signincss'
 import { Auth } from 'aws-amplify';
 import onSighIn from '../Server/Signin';
+import ValidatePassword from '../functions/validatePassword';
 const SignIn = ({ navigation }) => {
   const [mail, setMail] = useState(null);
   const [pass, setPass] = useState(null);
@@ -20,13 +21,15 @@ const SignIn = ({ navigation }) => {
   const [error, setError] = useState(false);
   const validateInputs = () => {
     try {
-      if (mail == null || pass == null) {
+      if (mail == null || pass == null) 
         throw "Empty Fileds"
-      }
+      const response=ValidatePassword(pass);
+      if(!response)
+        throw "*Required Strond Password";
       onSighIn(mail, pass, loading, setLoading)
     } catch (error) {
       setError(true)
-      Alert.alert(error, "fill all fields")
+      Alert.alert(error)
     }
   }
   return (
@@ -52,14 +55,16 @@ const SignIn = ({ navigation }) => {
             placeholderTextColor={error ? "red" : "black"}
             secureTextEntry={true}
             onChangeText={(pass) => setPass(pass)} />
-          <TouchableOpacity onPress={validateInputs} style={signinStyle.btn}>
-            <Text style={signinStyle.btnTxt} >
-              {loading ? <ActivityIndicator size={30} color="blue" /> : "Login"}
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <Text style={signinStyle.forgot} onPress={() => navigation.navigate('forgetpassword')}>Forgot Password?</Text>
+          <View style={{width:"100%",flexDirection:'row',justifyContent:"space-between",alignItems:"center",alignSelf:"center"}}>
+            <TouchableOpacity onPress={validateInputs} style={signinStyle.btn}>
+              <Text style={signinStyle.btnTxt} >
+                {loading ? <ActivityIndicator size={30} color="blue" /> : "Login"}
+              </Text>
+            </TouchableOpacity>
+            <View>
+            <Text style={signinStyle.forgot} onPress={() => navigation.navigate('forgetpassword')}>Forgot Password?</Text>
+          </View>
+          </View>
         </View>
       </View>
       <View>

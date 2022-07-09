@@ -13,7 +13,7 @@ const Authentication = () => {
       <>
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="confirmEmail" component={ConfirmSignIn} />
+        <Stack.Screen name="confirmSignUp" component={ConfirmSignIn} />
         <Stack.Screen name="forgetpassword" component={ForgotPassword} />
         <Stack.Screen name="newPassword" component={NewPassword} />
       </>

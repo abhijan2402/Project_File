@@ -9,21 +9,21 @@ const onSignUp=async(email,name,password,phone_number)=>{
         attributes: {
           email,
           name,
-          // phone_number
+          phone_number
         }
       });
-      // const userTableData=await API.graphql({
-      //   query:mutations.createUser,
-      //   variables:{
-      //     input:{
-      //       email:email,
-      //       name:name,
-      //       password:password,
-      //       phoneNumber:phone_number
-      //     }
-      //   }
-      // })
-      // return "signedUp";
+      const userTableData=await API.graphql({
+        query:mutations.createUser,
+        variables:{
+          input:{
+            email:email,
+            name:name,
+            password:password,
+            phoneNumber:phone_number
+          }
+        }
+      })
+      console.log("data")
     } catch (error) {
       Alert.alert("Oops",error)
     }

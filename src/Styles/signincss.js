@@ -9,7 +9,8 @@ const signinStyle = StyleSheet.create({
   },
   btnTxt: {
     fontWeight: "bold",
-    color: "black"
+    color: "black",
+    fontSize:18
   },
   txt7: {
     // borderWidth: 1,
@@ -64,25 +65,25 @@ const signinStyle = StyleSheet.create({
   btn: {
     borderWidth: 2,
     padding: 5,
-    borderRadius: 4,
+    borderTopRightRadius: windowWidth/5,
+    borderBottomRightRadius: windowWidth/5,
     textAlign: 'center',
-    backgroundColor: 'darkorange',
+    backgroundColor: '#FFDD35',
     alignItems: 'center',
     justifyContent: 'center',
-    width: windowWidth - 40,
+    width: windowWidth/2.5,
     height: 50,
     borderColor: "black",
-    elevation: 10,
-    shadowColor: 'black',
-    shadowOpacity: 1.5,
     alignSelf: 'center',
     marginVertical: 10,
+    alignSelf:"flex-start",
   },
   forgot: {
     textAlign: 'center',
     color: 'black',
     fontSize: 20,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    marginRight: 20,
   },
   sign: {
     textAlign: 'center',
@@ -93,7 +94,7 @@ const signinStyle = StyleSheet.create({
     marginBottom: 20
   },
   signUp: {
-    color: '#FFFFFF',
+    color: 'white',
     fontWeight: '800',
     // color: 'darkorange'
   },

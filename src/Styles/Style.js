@@ -24,8 +24,7 @@ const Style = StyleSheet.create({
     shadowOpacity: 2,
   },
   btnTxt: {
-    fontWeight: "bolder",
-
+    fontWeight: "bold",
     color: "black"
   },
   input: {

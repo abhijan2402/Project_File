@@ -9,7 +9,7 @@ const FileStyle=StyleSheet.create({
   messageContainer:{
     // backgroundColor:"#54D1FE",
     marginHorizontal:10,
-    padding:12,
+    padding:8,
     marginTop:6,
     marginBottom:5,
     borderColor:'#73D5F9',
@@ -36,7 +36,7 @@ const FileStyle=StyleSheet.create({
   },  
   title:{
     color:"black",
-    fontSize:20,
+    fontSize:15,
     fontFamily:"Alias",
     // marginLeft:10,
     fontWeight:"bold"

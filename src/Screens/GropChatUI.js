@@ -82,7 +82,7 @@ const GroupChatUI=({route,navigation})=>{
   const sendMessage=()=>{
     try {
       const date=new Date();
-      const currentTime=date.getHours()+":"+date.getMinutes();;
+      const currentTime=date.getHours()+":"+date.getMinutes();
       if(message==null)
         throw "write message"
       let messageObject={
@@ -94,7 +94,7 @@ const GroupChatUI=({route,navigation})=>{
       
       setMessageArray([...messageArray,messageObject])
       console.log(date);
-      setMessage('')
+      setMessage(null)
     } catch (error) {
       console.warn(error);
     }

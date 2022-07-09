@@ -11,12 +11,12 @@ import Style from '../Styles/Style';
 import confirmpasscss from '../Styles/confirmpasscss';
 import { Auth } from 'aws-amplify';
 const ConfirmSignIn = ({ route, navigation }) => {
-  // const { username } = route.params;
+  const { username } = route.params;
   const [code, setCode] = useState(null);
   const confirmEmail = async () => {
     try {
       console.log(username, code)
-      // const response=await Auth.confirmSignUp(username,code)
+      const response=await Auth.confirmSignUp(username,code)
       console.log(response)
       navigation.navigate('SignIn')
     } catch (error) {
@@ -25,7 +25,7 @@ const ConfirmSignIn = ({ route, navigation }) => {
   }
   const resendConfirmationCode = async () => {
     try {
-      // await Auth.resendSignUp(username);
+      await Auth.resendSignUp(username);
       Alert.alert("Confirmation code send to email");
     } catch (error) {
       Alert.alert("Oops", error.message)
@@ -44,7 +44,7 @@ const ConfirmSignIn = ({ route, navigation }) => {
         </View>
         <View style={confirmpasscss.textFields}>
           <TextInput placeholder='Email'
-            // value={username}
+            value={username}
             placeholderTextColor={"black"}
             keyboardType='email-address'
             style={Style.input}

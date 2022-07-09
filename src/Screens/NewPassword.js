@@ -11,6 +11,7 @@ import {
 import Style from '../Styles/Style';
 import newpasscss from '../Styles/newpasscss';
 import { Auth } from 'aws-amplify';
+import ValidatePassword from '../functions/validatePassword';
 const NewPassword=({route,navigation})=>{
     const { username }=route.params;
     const [code,setCode]=useState(null);
@@ -20,6 +21,9 @@ const NewPassword=({route,navigation})=>{
         try {
           if(code==null || newPass==null)
             throw {message:"Please enter all code or password"}
+          const response=ValidatePassword(newPass);
+          if(!response)
+            throw "*Required Strond Password";
           setLoading(true)
           await Auth.forgotPasswordSubmit(username,code,newPass);
           Alert.alert("Successfully Password changes");
