@@ -14,6 +14,7 @@ import { Auth } from 'aws-amplify';
 import ProfileStyle from '../Styles/ProfileStyle';
 import LinearGradient from 'react-native-linear-gradient';
 import ValidatePassword from '../functions/validatePassword';
+import ValidateMobile from '../functions/ValidateMobile';
 import signupcss from '../Styles/signupcss'
 import onSignUp from '../Server/Signup';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -28,12 +29,15 @@ const SignUp = ({ navigation }) => {
   const [phone_number, setNumber] = useState(null);
   const signUpNavigate = async () => {
     try {
-      if (email == null || password == null || phone_number==null || name==null) 
+      if (email == null || password == null || phone_number == null || name == null)
         throw "Empty Fileds"
-      const response=ValidatePassword(password);
-      if(!response)
+      const response = ValidatePassword(password);
+      const responseMobile = ValidateMobile(phone_number)
+      if (!response)
         throw "*Required Strond Password";
-      await onSignUp(email,name,password,phone_number);
+      if (!responseMobile)
+        throw "phone number is not invalid"
+      await onSignUp(email, name, password, phone_number);
       navigation.navigate("confirmSignUp", { username: email })
     } catch (error) {
       console.log(error)
