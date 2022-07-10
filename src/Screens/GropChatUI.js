@@ -102,14 +102,7 @@ const GroupChatUI=({route,navigation})=>{
   return (
     <View style={FileStyle.container}>
       <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#85FFDB', '#C2FFED', '#D0F9ED']} style={FileStyle.groupTitle}>
-        {search?
-          <TextInput
-            style={FileStyle.searchInput}
-            placeholder={"Search..."}
-            placeholderTextColor={"black"}
-            autoFocus={true}
-            autoCorrect={true}
-          />:
+        {
           clicked?null:<View style={FileStyle.titleView}>
             <Image 
               style={FileStyle.image}
@@ -123,12 +116,6 @@ const GroupChatUI=({route,navigation})=>{
         <View style={[FileStyle.Icon,clicked?{width:'100%'}:null]}>
          {clicked?
           <>
-            <TouchableOpacity>
-              <Image
-                style={[FileStyle.iconPic,{marginRight:10}]}
-                source={require('../Assets/chat.png')}
-              />
-            </TouchableOpacity>
             <TouchableOpacity onPress={()=>navigation.navigate("uploadFile",{groupName:groupName,grpimage:groupImage})}>
                 <Image
                   style={[FileStyle.iconPic,{marginRight:10}]}
@@ -142,28 +129,14 @@ const GroupChatUI=({route,navigation})=>{
                 />
             </TouchableOpacity>
           </>
-          :
-          <TouchableOpacity onPress={()=>setSearch(true)} >
-              <Image
-                style={[FileStyle.iconPic,{marginRight:10}]}
-                source={require('../Assets/searching.png')}
-              />
-          </TouchableOpacity>
+          :null
         }
-        {search?
-          <TouchableOpacity onPress={()=>setSearch(false)}>
+        <TouchableOpacity onPress={()=>setClicked(!clicked)}>
             <Image
               style={FileStyle.iconPic}
-              source={require('../Assets/arrows.png')}
+              source={clicked?require('../Assets/arrows.png'):require('../Assets/menu1.png')}
             />
-          </TouchableOpacity>:
-          <TouchableOpacity onPress={()=>setClicked(!clicked)}>
-              <Image
-                style={FileStyle.iconPic}
-                source={clicked?require('../Assets/arrows.png'):require('../Assets/menu1.png')}
-              />
-          </TouchableOpacity>
-        }
+        </TouchableOpacity>
         </View>
       </LinearGradient>
       <FlatList

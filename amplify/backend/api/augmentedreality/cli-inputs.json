@@ -3,19 +3,14 @@
   "serviceConfiguration": {
     "apiName": "augmentedreality",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "D:\\react native\\lambdanative\\amplify\\backend\\api\\augmentedreality\\schema.graphql",
+    "gqlSchemaPath": "D:\\react native\\ReactNAtiveApp\\amplify\\backend\\api\\augmentedreality\\schema.graphql",
     "defaultAuthType": {
-      "mode": "AMAZON_COGNITO_USER_POOLS",
-      "cognitoUserPoolId": "authaugmentedreality95a291e3"
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-07-10T11:36:42.806Z",
+      "keyDescription": "myapi"
     },
-    "conflictResolution": {},
-    "additionalAuthTypes": [
-      {
-        "mode": "API_KEY",
-        "expirationTime": 365,
-        "apiKeyExpirationDate": "2023-06-25T06:45:55.030Z",
-        "keyDescription": "login with ali"
-      }
-    ]
+    "additionalAuthTypes": [],
+    "conflictResolution": {}
   }
 }
