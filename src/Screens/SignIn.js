@@ -13,6 +13,7 @@ import {
 import signinStyle from '../Styles/signincss'
 import { Auth } from 'aws-amplify';
 import onSighIn from '../Server/Signin';
+import validateEmail from '../functions/validateEmail';
 import ValidatePassword from '../functions/validatePassword';
 const SignIn = ({ navigation }) => {
   const [mail, setMail] = useState(null);
@@ -23,9 +24,13 @@ const SignIn = ({ navigation }) => {
     try {
       if (mail == null || pass == null)
         throw "Empty Fileds"
+        const responseEmail=validateEmail(mail);
       const response = ValidatePassword(pass);
+      if(!responseEmail)
+      throw "invalid email";
       if (!response)
         throw "invalid password ";
+       
       onSighIn(mail, pass, loading, setLoading)
     } catch (error) {
       setError(true)

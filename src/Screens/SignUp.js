@@ -14,6 +14,7 @@ import { Auth } from 'aws-amplify';
 
 import ProfileStyle from '../Styles/ProfileStyle';
 import LinearGradient from 'react-native-linear-gradient';
+import validateEmail from '../functions/validateEmail';
 import ValidatePassword from '../functions/validatePassword';
 import ValidateMobile from '../functions/ValidateMobile';
 import signupcss from '../Styles/signupcss'
@@ -32,12 +33,16 @@ const SignUp = ({ navigation }) => {
     try {
       if (email == null || password == null || phone_number == null || name == null)
         throw "Empty Fileds"
+        const responseEmail = validateEmail(email);
       const response = ValidatePassword(password);
       const responseMobile = ValidateMobile(phone_number)
+      if (!responseEmail)
+      throw "*Invalid email"; 
       if (!response)
         throw "*Required Strond Password";
       if (!responseMobile)
-        throw "phone number is not invalid"
+        throw "phone number is not invalid";
+       
       await onSignUp(email, name, password, phone_number);
       navigation.navigate("confirmSignUp", { username: email })
     } catch (error) {
