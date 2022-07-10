@@ -30,7 +30,7 @@ const Groupinfo = () => {
         <ScrollView>
 
           <View style={styles.body}>
-            <LinearGradient colors={['#f48913', '#f6bb58', '#e39c27', '#ff8500']}>
+            <LinearGradient colors={['#48A9DF', '#58B5E9','#3B82AA', '#36859D']}>
               <View style={styles.header}>
 
                 <View>
@@ -45,7 +45,7 @@ const Groupinfo = () => {
               </View>
             </LinearGradient>
             <View style={{ marginTop: 15 }}>
-              <LinearGradient style={styles.gradient} colors={['#f48913', '#e39c27', '#ff8500']}>
+              <LinearGradient style={styles.gradient} colors={['#48A9DF', '#58B5E9','#3B82AA', '#36859D']}>
                 <View style={styles.logobox}>
                   <Image
                     source={{
@@ -137,7 +137,7 @@ const Groupinfo = () => {
               </LinearGradient>
             </View>
             <View style={styles.space}>
-              <LinearGradient style={styles.gradient} colors={['#f48913', '#e39c27', '#ff8500']}>
+              <LinearGradient style={styles.gradient} colors={['#48A9DF', '#58B5E9','#3B82AA', '#36859D']}>
                 <Text style={styles.parti}>4 Participants</Text>
                 <View style={styles.anupam}>
                   <View style={styles.box}>
@@ -196,10 +196,10 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     height: 100,
-    borderWidth: 4,
+     borderWidth: 4,
     //  backgroundColor:'lightblue',
     borderColor: 'transparent',
-    borderRadius: 10,
+    borderRadius: 2,
     shadowColor: 'blue',
     shadowRadius: 5
   },
@@ -231,10 +231,10 @@ const styles = StyleSheet.create({
       height: 1,
     },
   },
-  space: {
-    marginTop: 5,
+  // space: {
+  //   marginTop: 5,
 
-  },
+  // },
   image: {
     flex: 1,
     // justifyContent: "center"

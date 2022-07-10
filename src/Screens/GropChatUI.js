@@ -17,6 +17,7 @@ import * as subscriptions from '../graphql/subscriptions';
 import FileStyle from '../Styles/FileStyle';
 import LinearGradient from 'react-native-linear-gradient';
 import dummyChatData from '../Data';
+import Groupinfo from './groupinfo';
 const GroupChatUI=({route,navigation})=>{
   const {groupName,groupImage} = route.params;
   const [list,setList]=useState([]);
@@ -135,7 +136,7 @@ const GroupChatUI=({route,navigation})=>{
                   source={require('../Assets/add-button.png')}
                 />
             </TouchableOpacity>
-            <TouchableOpacity >
+            <TouchableOpacity onPress={()=>navigation.navigate("groupinfo")} >
                 <Image
                   style={[FileStyle.iconPic,{marginRight:10}]}
                   source={require('../Assets/settings.png')}
