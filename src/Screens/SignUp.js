@@ -11,6 +11,7 @@ import {
   Dimensions
 } from 'react-native';
 import { Auth } from 'aws-amplify';
+
 import ProfileStyle from '../Styles/ProfileStyle';
 import LinearGradient from 'react-native-linear-gradient';
 import ValidatePassword from '../functions/validatePassword';
@@ -77,7 +78,7 @@ const SignUp = ({ navigation }) => {
       >
         <View style={signupcss.txt} >
           <Image
-            // style={Invitestyles.image1}
+            // style={signupcss.image1}
 
             source={{ uri: image }}
             style={{ width: 150, height: 150, borderRadius: 100 }}
@@ -86,7 +87,17 @@ const SignUp = ({ navigation }) => {
           {/* <Text onPress={() => setModalVisible(true)}>setProfile</Text> */}
         </View>
         <View style={signupcss.whole}>
-          <Text style={signupcss.txt2}>SignUp</Text>
+          <View style={signupcss.combo}>
+            <Text style={signupcss.txt1}>Sign Up</Text>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
+
+              <Image
+                style={signupcss.image}
+                source={require('../Assets/user.png')}
+
+              />
+            </TouchableOpacity>
+          </View>
 
           <TextInput style={signupcss.form} placeholder='Name'
             placeholderTextColor={"black"}
@@ -108,12 +119,15 @@ const SignUp = ({ navigation }) => {
             placeholderTextColor={"black"}
             // style={signupcss.input} 
             onChangeText={(pass) => setPass(pass)} />
-          <TouchableOpacity onPress={() => setModalVisible(true)} style={signupcss.btn} >
-            <Text style={signupcss.btnTxt} >Set Profile Picture</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={signUpNavigate} style={signupcss.btn} >
-            <Text style={signupcss.btnTxt} >Create Account</Text>
-          </TouchableOpacity>
+          <View style={{ display: "flex", flexDirection: "row" }}>
+
+            <TouchableOpacity onPress={signUpNavigate} style={signupcss.btn} >
+              <Text style={signupcss.btnTxt} >Create account</Text>
+            </TouchableOpacity>
+            {/* <TouchableOpacity onPress={() => setModalVisible(true)} style={signupcss.btn1} >
+              <Text style={signupcss.btnTxt} >set profile</Text>
+            </TouchableOpacity> */}
+          </View>
         </View>
         <View>
           <Text style={signupcss.sign}>
@@ -123,10 +137,10 @@ const SignUp = ({ navigation }) => {
         <Modal visible={modalVisible} animationType='fade' transparent={true}>
           <View style={{ backgroundColor: '#000000aa', flex: 1, justifyContent: 'flex-end' }}>
             <LinearGradient
-              colors={['#FFFFFF', '#F7C4A4', '#FF7400']}
+              colors={['#FFFFFF', '#ffffff', '#ffffff']}
 
               style={{
-                height: 2 * (windowHeight / 5),
+                height: 2 * (windowHeight / 7),
                 borderTopRightRadius: 15,
                 borderTopLeftRadius: 15,
                 justifyContent: 'space-around',
@@ -135,33 +149,57 @@ const SignUp = ({ navigation }) => {
               <Text style={ProfileStyle.modalTxt}>
                 Set Profile Picture
               </Text>
-              <LinearGradient colors={['#FF7400', '#FC8521', '#FA943E']}
-                style={ProfileStyle.customButton}
+              <View style={{ display: "flex", flexDirection: "row" }}>
+                <LinearGradient colors={['#ffffff', '#ffffff', '#ffffff']}
+                  style={signupcss.customButton}
 
-              >
-                <TouchableOpacity onPress={takePhotofromCamera}
-                  style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
-                  <Text style={ProfileStyle.txt}>Camera</Text>
-                </TouchableOpacity>
-              </LinearGradient>
-              <LinearGradient colors={['#FF7400', '#FC8521', '#FA943E']}
-                style={ProfileStyle.customButton}
+                >
+                  <TouchableOpacity onPress={takePhotofromCamera}
+                    style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+                    {/* <Text style={ProfileStyle.txt}>Camera</Text> */}
+                    <Image
+                      style={signupcss.image}
+                      source={require('../Assets/camera.png')}
 
-              >
-                <TouchableOpacity onPress={takePhotofromGallery}
-                  style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
-                  <Text style={ProfileStyle.txt}>Select from gallery</Text>
-                </TouchableOpacity>
-              </LinearGradient>
-              <LinearGradient colors={['#FF7400', '#FC8521', '#FA943E']}
-                style={ProfileStyle.customButton}
+                    />
 
-              >
-                <TouchableOpacity onPress={() => setModalVisible(false)}
-                  style={{ width: "100%", height: "100%", justifyContent: "center", alignItems: "center" }}>
-                  <Text style={ProfileStyle.txt}>Cancel</Text>
-                </TouchableOpacity>
-              </LinearGradient>
+                  </TouchableOpacity>
+                </LinearGradient>
+                <LinearGradient colors={['#ffffff', '#ffffff', '#ffffff']}
+                  style={signupcss.customButton}
+
+                >
+                  <TouchableOpacity onPress={takePhotofromGallery}
+                    style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+                    {/* <Text style={ProfileStyle.txt}>Select from gallery</Text> */}
+                    <Image
+                      style={signupcss.image}
+                      source={require('../Assets/gallery.png')}
+
+                    />
+                  </TouchableOpacity>
+                </LinearGradient>
+                <LinearGradient colors={['#ffffff', '#ffffff', '#ffffff']}
+                  style={signupcss.customButton}
+
+                >
+                  <TouchableOpacity onPress={() => setModalVisible(false)}
+                    style={{ width: "100%", height: "100%", justifyContent: "center", alignItems: "center" }}>
+                    {/* <Text style={ProfileStyle.txt}>Cancel</Text> */}
+                    <Image
+                      style={signupcss.image}
+                      source={require('../Assets/x-button.png')}
+
+                    />
+                  </TouchableOpacity>
+                </LinearGradient>
+              </View>
+              <View style={{ display: "flex", flexDirection: "row", }}>
+                <Text style={{ justifyContent: 'space-evenly', marginTop: -40, marginHorizontal: 32, fontSize: 15, fontWeight: 'bold' }}>Camera</Text>
+                <Text style={{ justifyContent: 'space-evenly', marginTop: -40, marginHorizontal: 32, fontSize: 15, fontWeight: 'bold' }}>Gallery</Text>
+                <Text style={{ justifyContent: 'space-evenly', marginTop: -40, marginHorizontal: 32, fontSize: 15, fontWeight: 'bold' }}>Cancel</Text>
+
+              </View>
             </LinearGradient>
           </View>
         </Modal>

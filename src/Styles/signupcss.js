@@ -63,25 +63,53 @@ const signupcss = StyleSheet.create({
   },
   btn: {
     borderWidth: 2,
-    padding: 5,
-    borderRadius: 4,
+    padding: 15,
+    // borderRadius: 4,
+    textAlign: 'center',
+    fontSize: 20,
+    backgroundColor: 'orange',
+
+
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: windowWidth - 200,
+    height: 50,
+    // borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "black",
+    elevation: 10,
+    shadowColor: "black",
+    shadowOpacity: 2,
+    marginVertical: 20,
+    alignSelf: "center",
+    borderBottomRightRadius: 35,
+    borderTopRightRadius: 35,
+  },
+  btn1: {
+    borderWidth: 2,
+    padding: 10,
+    // borderRadius: 4,
     textAlign: 'center',
     fontSize: 17,
     backgroundColor: 'darkorange',
 
+
     alignItems: 'center',
     justifyContent: 'center',
-    width: windowWidth - 40,
+    // width: windowWidth - 40,
     height: 50,
-    borderRadius: 5,
-    borderWidth: 2,
+    // borderRadius: 5,
+    borderWidth: 1,
     marginVertical: 5,
     borderColor: "black",
     elevation: 10,
     shadowColor: "black",
     shadowOpacity: 2,
     marginVertical: 10,
-    alignSelf: "center"
+    alignSelf: "center",
+
+    marginLeft: 100,
+
   },
   sign: {
     textAlign: 'center',
@@ -93,6 +121,37 @@ const signupcss = StyleSheet.create({
   signUp: {
     color: '#FFFFFF',
     fontWeight: '800',
+  },
+  image: {
+    width: 40,
+    height: 38,
+    marginHorizontal: 155,
+    alignSelf: 'center'
+  },
+  txt1: {
+    textAlign: 'left',
+    fontSize: 30,
+    fontWeight: '700',
+    color: 'black',
+    fontFamily: 'serif'
+  },
+  combo: {
+    display: 'flex',
+    flexDirection: 'row',
+    // justifyContent: 'center',
+    marginVertical: 15,
+    marginHorizontal: 20
+
+  },
+  customButton: {
+    height: 50,
+    width: windowWidth - 250,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    // borderWidth: 2,
+    borderColor: '#FAC2A8',
+    borderRadius: 5,
   },
 })
 export default signupcss;
