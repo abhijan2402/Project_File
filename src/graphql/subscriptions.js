@@ -1,246 +1,239 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateFilesByGroupId = /* GraphQL */ `
-  subscription OnCreateFilesByGroupId($groupFilesId: ID!) {
-    onCreateFilesByGroupId(groupFilesId: $groupFilesId) {
+export const onCreateMessageByGroup = /* GraphQL */ `
+  subscription OnCreateMessageByGroup($groupID: ID!) {
+    onCreateMessageByGroup(groupID: $groupID) {
       id
-      filename
-      fileDescription
-      filePath
-      groupFilesId
-      userUserFileId
+      Message
       createdAt
+      groupID
       updatedAt
-      owner
     }
   }
 `;
 export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser($owner: String) {
-    onCreateUser(owner: $owner) {
+  subscription OnCreateUser {
+    onCreateUser {
       email
       name
-      password
-      phoneNumber
+      Phone
       Groups {
         id
         GroupName
         GroupDescription
-        GroupImageUrl
+        GroupImageUrlPath
+        users {
+          email
+          name
+          Phone
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
-        owner
-      }
-      userFile {
-        nextToken
       }
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser($owner: String) {
-    onUpdateUser(owner: $owner) {
+  subscription OnUpdateUser {
+    onUpdateUser {
       email
       name
-      password
-      phoneNumber
+      Phone
       Groups {
         id
         GroupName
         GroupDescription
-        GroupImageUrl
+        GroupImageUrlPath
+        users {
+          email
+          name
+          Phone
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
-        owner
-      }
-      userFile {
-        nextToken
       }
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser($owner: String) {
-    onDeleteUser(owner: $owner) {
+  subscription OnDeleteUser {
+    onDeleteUser {
       email
       name
-      password
-      phoneNumber
+      Phone
       Groups {
         id
         GroupName
         GroupDescription
-        GroupImageUrl
+        GroupImageUrlPath
+        users {
+          email
+          name
+          Phone
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
-        owner
-      }
-      userFile {
-        nextToken
       }
       createdAt
       updatedAt
-      owner
+    }
+  }
+`;
+export const onCreateUserGroupTable = /* GraphQL */ `
+  subscription OnCreateUserGroupTable {
+    onCreateUserGroupTable {
+      id
+      userID
+      groupID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUserGroupTable = /* GraphQL */ `
+  subscription OnUpdateUserGroupTable {
+    onUpdateUserGroupTable {
+      id
+      userID
+      groupID
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUserGroupTable = /* GraphQL */ `
+  subscription OnDeleteUserGroupTable {
+    onDeleteUserGroupTable {
+      id
+      userID
+      groupID
+      createdAt
+      updatedAt
     }
   }
 `;
 export const onCreateGroup = /* GraphQL */ `
-  subscription OnCreateGroup($owner: String) {
-    onCreateGroup(owner: $owner) {
+  subscription OnCreateGroup {
+    onCreateGroup {
       id
       GroupName
       GroupDescription
-      GroupImageUrl
+      GroupImageUrlPath
       users {
         email
         name
-        password
-        phoneNumber
+        Phone
+        Groups {
+          id
+          GroupName
+          GroupDescription
+          GroupImageUrlPath
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
-        owner
-      }
-      files {
-        nextToken
       }
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onUpdateGroup = /* GraphQL */ `
-  subscription OnUpdateGroup($owner: String) {
-    onUpdateGroup(owner: $owner) {
+  subscription OnUpdateGroup {
+    onUpdateGroup {
       id
       GroupName
       GroupDescription
-      GroupImageUrl
+      GroupImageUrlPath
       users {
         email
         name
-        password
-        phoneNumber
+        Phone
+        Groups {
+          id
+          GroupName
+          GroupDescription
+          GroupImageUrlPath
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
-        owner
-      }
-      files {
-        nextToken
       }
       createdAt
       updatedAt
-      owner
     }
   }
 `;
 export const onDeleteGroup = /* GraphQL */ `
-  subscription OnDeleteGroup($owner: String) {
-    onDeleteGroup(owner: $owner) {
+  subscription OnDeleteGroup {
+    onDeleteGroup {
       id
       GroupName
       GroupDescription
-      GroupImageUrl
+      GroupImageUrlPath
       users {
         email
         name
-        password
-        phoneNumber
+        Phone
+        Groups {
+          id
+          GroupName
+          GroupDescription
+          GroupImageUrlPath
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
-        owner
-      }
-      files {
-        nextToken
       }
       createdAt
       updatedAt
-      owner
     }
   }
 `;
-export const onCreateUserGroup = /* GraphQL */ `
-  subscription OnCreateUserGroup {
-    onCreateUserGroup {
+export const onCreateMessage = /* GraphQL */ `
+  subscription OnCreateMessage {
+    onCreateMessage {
       id
-      userID
+      Message
+      createdAt
       groupID
-      createdAt
       updatedAt
     }
   }
 `;
-export const onUpdateUserGroup = /* GraphQL */ `
-  subscription OnUpdateUserGroup {
-    onUpdateUserGroup {
+export const onUpdateMessage = /* GraphQL */ `
+  subscription OnUpdateMessage {
+    onUpdateMessage {
       id
-      userID
+      Message
+      createdAt
       groupID
-      createdAt
       updatedAt
     }
   }
 `;
-export const onDeleteUserGroup = /* GraphQL */ `
-  subscription OnDeleteUserGroup {
-    onDeleteUserGroup {
+export const onDeleteMessage = /* GraphQL */ `
+  subscription OnDeleteMessage {
+    onDeleteMessage {
       id
-      userID
+      Message
+      createdAt
       groupID
-      createdAt
       updatedAt
-    }
-  }
-`;
-export const onCreateFiles = /* GraphQL */ `
-  subscription OnCreateFiles($owner: String) {
-    onCreateFiles(owner: $owner) {
-      id
-      filename
-      fileDescription
-      filePath
-      groupFilesId
-      userUserFileId
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const onUpdateFiles = /* GraphQL */ `
-  subscription OnUpdateFiles($owner: String) {
-    onUpdateFiles(owner: $owner) {
-      id
-      filename
-      fileDescription
-      filePath
-      groupFilesId
-      userUserFileId
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const onDeleteFiles = /* GraphQL */ `
-  subscription OnDeleteFiles($owner: String) {
-    onDeleteFiles(owner: $owner) {
-      id
-      filename
-      fileDescription
-      filePath
-      groupFilesId
-      userUserFileId
-      createdAt
-      updatedAt
-      owner
     }
   }
 `;

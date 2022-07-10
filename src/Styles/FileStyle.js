@@ -4,7 +4,7 @@ const windowHeight = Dimensions.get('window').height;
 const FileStyle=StyleSheet.create({
   container:{
     flex:1,
-    justifyContent:"space-between"
+    justifyContent:"space-between",
   },
   messageContainer:{
     // backgroundColor:"#54D1FE",

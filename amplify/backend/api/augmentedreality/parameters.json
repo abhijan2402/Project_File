@@ -2,11 +2,5 @@
   "AppSyncApiName": "augmentedreality",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthCognitoUserPoolId": {
-    "Fn::GetAtt": [
-      "authaugmentedreality95a291e3",
-      "Outputs.UserPoolId"
-    ]
-  },
-  "AuthModeLastUpdated": "2022-06-25T06:46:01.790Z"
+  "AuthModeLastUpdated": "2022-07-10T11:36:50.122Z"
 }

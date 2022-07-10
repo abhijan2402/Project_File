@@ -1,49 +1,32 @@
 # This "input" configures a global authorization rule to enable public access to
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-
-
-type User @model @auth(rules:[{allow:owner}]) {
+type User @model {
   email:String! @primaryKey
   name: String! 
-  password:String!
-  phoneNumber:String!
-  Groups : [Group] 
-  userFile: [Files] @hasMany
+  Phone:String!
+  Groups : [Group]
 }
-
-type UserGroup @model @auth(rules:[{allow:public,operations: [read]}]){
+type UserGroupTable @model{
   id:ID!
   userID: String! @index(name: "byUserName", queryField: "groupByUserName")
   groupID: ID!
 }
-
-
-type Group @model @auth(rules:[
-  { allow: private, operations: [read]},
-  { allow: owner }
-]){
-  id: ID!
-  GroupName: String! @index(name: "byGroupName", queryField: "usersByGroupName")
-  GroupDescription: String!
-  GroupImageUrl:String!
-  users : [User]
-  files: [Files] @hasMany
+type Group @model{
+  id:ID!
+  GroupName:String!
+  GroupDescription:String!
+  GroupImageUrlPath:String!
+  users : [User] 
 }
-
-type Files @model @auth(rules:[
-  { allow: public, operations: [read]},
-  { allow: owner }
-]) {
-  id: ID!
-  filename: String!
-  fileDescription:String!
-  filePath:String!
-  groupFilesId: ID!
-  userUserFileId:ID!
+type Message @model{
+  id:ID!
+  Message:[String!]
+  createdAt:String!
+  groupID:ID!
 }
-
-type Subscription {
-  onCreateFilesByGroupId(groupFilesId: ID!): Files
-    @aws_subscribe(mutations: ["createFiles"])
+type Subscription{
+  onCreateMessageByGroup(groupID:ID!):Message
+  @aws_subscribe(mutations: ["createMessage"])
 }
