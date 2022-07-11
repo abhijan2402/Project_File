@@ -10,20 +10,29 @@ export const createUser = /* GraphQL */ `
       email
       name
       Phone
-      Groups {
-        id
-        GroupName
-        GroupDescription
-        GroupImageUrlPath
-        users {
-          email
-          name
-          Phone
+      groups {
+        items {
+          id
+          userID
+          groupID
           createdAt
           updatedAt
         }
-        createdAt
-        updatedAt
+        nextToken
+      }
+      userFile {
+        items {
+          id
+          filename
+          fileDescription
+          filePath
+          groupFilesId
+          userFilesId
+          createdAt
+          updatedAt
+          userUserFileId
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -39,20 +48,29 @@ export const updateUser = /* GraphQL */ `
       email
       name
       Phone
-      Groups {
-        id
-        GroupName
-        GroupDescription
-        GroupImageUrlPath
-        users {
-          email
-          name
-          Phone
+      groups {
+        items {
+          id
+          userID
+          groupID
           createdAt
           updatedAt
         }
-        createdAt
-        updatedAt
+        nextToken
+      }
+      userFile {
+        items {
+          id
+          filename
+          fileDescription
+          filePath
+          groupFilesId
+          userFilesId
+          createdAt
+          updatedAt
+          userUserFileId
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -68,63 +86,30 @@ export const deleteUser = /* GraphQL */ `
       email
       name
       Phone
-      Groups {
-        id
-        GroupName
-        GroupDescription
-        GroupImageUrlPath
-        users {
-          email
-          name
-          Phone
+      groups {
+        items {
+          id
+          userID
+          groupID
           createdAt
           updatedAt
         }
-        createdAt
-        updatedAt
+        nextToken
       }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createUserGroupTable = /* GraphQL */ `
-  mutation CreateUserGroupTable(
-    $input: CreateUserGroupTableInput!
-    $condition: ModelUserGroupTableConditionInput
-  ) {
-    createUserGroupTable(input: $input, condition: $condition) {
-      id
-      userID
-      groupID
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateUserGroupTable = /* GraphQL */ `
-  mutation UpdateUserGroupTable(
-    $input: UpdateUserGroupTableInput!
-    $condition: ModelUserGroupTableConditionInput
-  ) {
-    updateUserGroupTable(input: $input, condition: $condition) {
-      id
-      userID
-      groupID
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteUserGroupTable = /* GraphQL */ `
-  mutation DeleteUserGroupTable(
-    $input: DeleteUserGroupTableInput!
-    $condition: ModelUserGroupTableConditionInput
-  ) {
-    deleteUserGroupTable(input: $input, condition: $condition) {
-      id
-      userID
-      groupID
+      userFile {
+        items {
+          id
+          filename
+          fileDescription
+          filePath
+          groupFilesId
+          userFilesId
+          createdAt
+          updatedAt
+          userUserFileId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -141,19 +126,38 @@ export const createGroup = /* GraphQL */ `
       GroupDescription
       GroupImageUrlPath
       users {
-        email
-        name
-        Phone
-        Groups {
+        items {
           id
-          GroupName
-          GroupDescription
-          GroupImageUrlPath
+          userID
+          groupID
           createdAt
           updatedAt
         }
-        createdAt
-        updatedAt
+        nextToken
+      }
+      messages {
+        items {
+          id
+          message
+          createdAt
+          groupMessagesId
+          updatedAt
+        }
+        nextToken
+      }
+      files {
+        items {
+          id
+          filename
+          fileDescription
+          filePath
+          groupFilesId
+          userFilesId
+          createdAt
+          updatedAt
+          userUserFileId
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -171,19 +175,38 @@ export const updateGroup = /* GraphQL */ `
       GroupDescription
       GroupImageUrlPath
       users {
-        email
-        name
-        Phone
-        Groups {
+        items {
           id
-          GroupName
-          GroupDescription
-          GroupImageUrlPath
+          userID
+          groupID
           createdAt
           updatedAt
         }
-        createdAt
-        updatedAt
+        nextToken
+      }
+      messages {
+        items {
+          id
+          message
+          createdAt
+          groupMessagesId
+          updatedAt
+        }
+        nextToken
+      }
+      files {
+        items {
+          id
+          filename
+          fileDescription
+          filePath
+          groupFilesId
+          userFilesId
+          createdAt
+          updatedAt
+          userUserFileId
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -201,22 +224,95 @@ export const deleteGroup = /* GraphQL */ `
       GroupDescription
       GroupImageUrlPath
       users {
-        email
-        name
-        Phone
-        Groups {
+        items {
           id
-          GroupName
-          GroupDescription
-          GroupImageUrlPath
+          userID
+          groupID
           createdAt
           updatedAt
         }
-        createdAt
-        updatedAt
+        nextToken
+      }
+      messages {
+        items {
+          id
+          message
+          createdAt
+          groupMessagesId
+          updatedAt
+        }
+        nextToken
+      }
+      files {
+        items {
+          id
+          filename
+          fileDescription
+          filePath
+          groupFilesId
+          userFilesId
+          createdAt
+          updatedAt
+          userUserFileId
+        }
+        nextToken
       }
       createdAt
       updatedAt
+    }
+  }
+`;
+export const createFiles = /* GraphQL */ `
+  mutation CreateFiles(
+    $input: CreateFilesInput!
+    $condition: ModelFilesConditionInput
+  ) {
+    createFiles(input: $input, condition: $condition) {
+      id
+      filename
+      fileDescription
+      filePath
+      groupFilesId
+      userFilesId
+      createdAt
+      updatedAt
+      userUserFileId
+    }
+  }
+`;
+export const updateFiles = /* GraphQL */ `
+  mutation UpdateFiles(
+    $input: UpdateFilesInput!
+    $condition: ModelFilesConditionInput
+  ) {
+    updateFiles(input: $input, condition: $condition) {
+      id
+      filename
+      fileDescription
+      filePath
+      groupFilesId
+      userFilesId
+      createdAt
+      updatedAt
+      userUserFileId
+    }
+  }
+`;
+export const deleteFiles = /* GraphQL */ `
+  mutation DeleteFiles(
+    $input: DeleteFilesInput!
+    $condition: ModelFilesConditionInput
+  ) {
+    deleteFiles(input: $input, condition: $condition) {
+      id
+      filename
+      fileDescription
+      filePath
+      groupFilesId
+      userFilesId
+      createdAt
+      updatedAt
+      userUserFileId
     }
   }
 `;
@@ -227,9 +323,9 @@ export const createMessage = /* GraphQL */ `
   ) {
     createMessage(input: $input, condition: $condition) {
       id
-      Message
+      message
       createdAt
-      groupID
+      groupMessagesId
       updatedAt
     }
   }
@@ -241,9 +337,9 @@ export const updateMessage = /* GraphQL */ `
   ) {
     updateMessage(input: $input, condition: $condition) {
       id
-      Message
+      message
       createdAt
-      groupID
+      groupMessagesId
       updatedAt
     }
   }
@@ -255,9 +351,141 @@ export const deleteMessage = /* GraphQL */ `
   ) {
     deleteMessage(input: $input, condition: $condition) {
       id
-      Message
+      message
       createdAt
+      groupMessagesId
+      updatedAt
+    }
+  }
+`;
+export const createUserGroupsMapping = /* GraphQL */ `
+  mutation CreateUserGroupsMapping(
+    $input: CreateUserGroupsMappingInput!
+    $condition: ModelUserGroupsMappingConditionInput
+  ) {
+    createUserGroupsMapping(input: $input, condition: $condition) {
+      id
+      userID
       groupID
+      user {
+        email
+        name
+        Phone
+        groups {
+          nextToken
+        }
+        userFile {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      group {
+        id
+        GroupName
+        GroupDescription
+        GroupImageUrlPath
+        users {
+          nextToken
+        }
+        messages {
+          nextToken
+        }
+        files {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUserGroupsMapping = /* GraphQL */ `
+  mutation UpdateUserGroupsMapping(
+    $input: UpdateUserGroupsMappingInput!
+    $condition: ModelUserGroupsMappingConditionInput
+  ) {
+    updateUserGroupsMapping(input: $input, condition: $condition) {
+      id
+      userID
+      groupID
+      user {
+        email
+        name
+        Phone
+        groups {
+          nextToken
+        }
+        userFile {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      group {
+        id
+        GroupName
+        GroupDescription
+        GroupImageUrlPath
+        users {
+          nextToken
+        }
+        messages {
+          nextToken
+        }
+        files {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUserGroupsMapping = /* GraphQL */ `
+  mutation DeleteUserGroupsMapping(
+    $input: DeleteUserGroupsMappingInput!
+    $condition: ModelUserGroupsMappingConditionInput
+  ) {
+    deleteUserGroupsMapping(input: $input, condition: $condition) {
+      id
+      userID
+      groupID
+      user {
+        email
+        name
+        Phone
+        groups {
+          nextToken
+        }
+        userFile {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      group {
+        id
+        GroupName
+        GroupDescription
+        GroupImageUrlPath
+        users {
+          nextToken
+        }
+        messages {
+          nextToken
+        }
+        files {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
       updatedAt
     }
   }

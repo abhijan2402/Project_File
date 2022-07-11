@@ -7,20 +7,29 @@ export const getUser = /* GraphQL */ `
       email
       name
       Phone
-      Groups {
-        id
-        GroupName
-        GroupDescription
-        GroupImageUrlPath
-        users {
-          email
-          name
-          Phone
+      groups {
+        items {
+          id
+          userID
+          groupID
           createdAt
           updatedAt
         }
-        createdAt
-        updatedAt
+        nextToken
+      }
+      userFile {
+        items {
+          id
+          filename
+          fileDescription
+          filePath
+          groupFilesId
+          userFilesId
+          createdAt
+          updatedAt
+          userUserFileId
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -46,43 +55,12 @@ export const listUsers = /* GraphQL */ `
         email
         name
         Phone
-        Groups {
-          id
-          GroupName
-          GroupDescription
-          GroupImageUrlPath
-          createdAt
-          updatedAt
+        groups {
+          nextToken
         }
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getUserGroupTable = /* GraphQL */ `
-  query GetUserGroupTable($id: ID!) {
-    getUserGroupTable(id: $id) {
-      id
-      userID
-      groupID
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listUserGroupTables = /* GraphQL */ `
-  query ListUserGroupTables(
-    $filter: ModelUserGroupTableFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUserGroupTables(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        userID
-        groupID
+        userFile {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -98,19 +76,38 @@ export const getGroup = /* GraphQL */ `
       GroupDescription
       GroupImageUrlPath
       users {
-        email
-        name
-        Phone
-        Groups {
+        items {
           id
-          GroupName
-          GroupDescription
-          GroupImageUrlPath
+          userID
+          groupID
           createdAt
           updatedAt
         }
-        createdAt
-        updatedAt
+        nextToken
+      }
+      messages {
+        items {
+          id
+          message
+          createdAt
+          groupMessagesId
+          updatedAt
+        }
+        nextToken
+      }
+      files {
+        items {
+          id
+          filename
+          fileDescription
+          filePath
+          groupFilesId
+          userFilesId
+          createdAt
+          updatedAt
+          userUserFileId
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -130,14 +127,53 @@ export const listGroups = /* GraphQL */ `
         GroupDescription
         GroupImageUrlPath
         users {
-          email
-          name
-          Phone
-          createdAt
-          updatedAt
+          nextToken
+        }
+        messages {
+          nextToken
+        }
+        files {
+          nextToken
         }
         createdAt
         updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getFiles = /* GraphQL */ `
+  query GetFiles($id: ID!) {
+    getFiles(id: $id) {
+      id
+      filename
+      fileDescription
+      filePath
+      groupFilesId
+      userFilesId
+      createdAt
+      updatedAt
+      userUserFileId
+    }
+  }
+`;
+export const listFiles = /* GraphQL */ `
+  query ListFiles(
+    $filter: ModelFilesFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listFiles(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        filename
+        fileDescription
+        filePath
+        groupFilesId
+        userFilesId
+        createdAt
+        updatedAt
+        userUserFileId
       }
       nextToken
     }
@@ -147,9 +183,9 @@ export const getMessage = /* GraphQL */ `
   query GetMessage($id: ID!) {
     getMessage(id: $id) {
       id
-      Message
+      message
       createdAt
-      groupID
+      groupMessagesId
       updatedAt
     }
   }
@@ -163,26 +199,63 @@ export const listMessages = /* GraphQL */ `
     listMessages(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        Message
+        message
         createdAt
-        groupID
+        groupMessagesId
         updatedAt
       }
       nextToken
     }
   }
 `;
-export const groupByUserName = /* GraphQL */ `
-  query GroupByUserName(
-    $userID: String!
-    $sortDirection: ModelSortDirection
-    $filter: ModelUserGroupTableFilterInput
+export const getUserGroupsMapping = /* GraphQL */ `
+  query GetUserGroupsMapping($id: ID!) {
+    getUserGroupsMapping(id: $id) {
+      id
+      userID
+      groupID
+      user {
+        email
+        name
+        Phone
+        groups {
+          nextToken
+        }
+        userFile {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      group {
+        id
+        GroupName
+        GroupDescription
+        GroupImageUrlPath
+        users {
+          nextToken
+        }
+        messages {
+          nextToken
+        }
+        files {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUserGroupsMappings = /* GraphQL */ `
+  query ListUserGroupsMappings(
+    $filter: ModelUserGroupsMappingFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    groupByUserName(
-      userID: $userID
-      sortDirection: $sortDirection
+    listUserGroupsMappings(
       filter: $filter
       limit: $limit
       nextToken: $nextToken
@@ -191,7 +264,50 @@ export const groupByUserName = /* GraphQL */ `
         id
         userID
         groupID
+        user {
+          email
+          name
+          Phone
+          createdAt
+          updatedAt
+        }
+        group {
+          id
+          GroupName
+          GroupDescription
+          GroupImageUrlPath
+          createdAt
+          updatedAt
+        }
         createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const mesageByGroupName = /* GraphQL */ `
+  query MesageByGroupName(
+    $groupMessagesId: ID!
+    $createdAt: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelMessageFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    mesageByGroupName(
+      groupMessagesId: $groupMessagesId
+      createdAt: $createdAt
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        message
+        createdAt
+        groupMessagesId
         updatedAt
       }
       nextToken

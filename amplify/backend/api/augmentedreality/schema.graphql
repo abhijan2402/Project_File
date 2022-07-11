@@ -6,27 +6,37 @@ type User @model {
   email:String! @primaryKey
   name: String! 
   Phone:String!
-  Groups : [Group]
+  groups:[Group] @manyToMany(relationName: "userGroupsMapping")
+  userFile: [Files] @hasMany
 }
-type UserGroupTable @model{
+
+type Group @model {
   id:ID!
-  userID: String! @index(name: "byUserName", queryField: "groupByUserName")
-  groupID: ID!
-}
-type Group @model{
-  id:ID!
-  GroupName:String!
+  GroupName:String! 
   GroupDescription:String!
   GroupImageUrlPath:String!
-  users : [User] 
+  users:[User] @manyToMany(relationName: "userGroupsMapping")
+  messages: [Message] @hasMany
+  files:[Files] @hasMany
 }
-type Message @model{
+
+type Files @model{
   id:ID!
-  Message:[String!]
-  createdAt:String!
-  groupID:ID!
+  filename:String!
+  fileDescription:String!
+  filePath:String! 
+  groupFilesId:ID! 
+  userFilesId:ID!
 }
-type Subscription{
-  onCreateMessageByGroup(groupID:ID!):Message
-  @aws_subscribe(mutations: ["createMessage"])
+
+type Message @model {
+  id:ID!
+  message:String!
+  createdAt:String!
+  groupMessagesId: ID! @index(name: "byMessageName", sortKeyFields: ["createdAt"], ,queryField: "mesageByGroupName")
+}
+
+type Subscription {
+  onMessagebyGroupId(groupMessagesId: ID!): Message
+    @aws_subscribe(mutations: ["createMessage"])
 }

@@ -28,7 +28,8 @@ const FileStyle=StyleSheet.create({
       flexDirection: 'row',
       justifyContent:"space-between",
       borderBottomColor:"#898E8F",
-      borderBottomWidth:2
+      borderBottomWidth:2,
+      backgroundColor:"#8DC5FE"
   },
   titleView:{
     flexDirection: 'row',
@@ -36,7 +37,7 @@ const FileStyle=StyleSheet.create({
   },  
   title:{
     color:"black",
-    fontSize:15,
+    fontSize:18,
     fontFamily:"Alias",
     // marginLeft:10,
     fontWeight:"bold"
@@ -46,8 +47,8 @@ const FileStyle=StyleSheet.create({
     padding:4
   },
   image:{
-    height:60,
-    width:60,
+    height:40,
+    width:40,
     borderRadius:60/2,
     borderColor:'black',
     overflow:'hidden'
@@ -86,6 +87,7 @@ const FileStyle=StyleSheet.create({
     flexDirection: 'row',
     justifyContent:'space-around',
     alignItems:"center",
+    backgroundColor:"#8DC5FE"
   },
   sentIcon:{
     width:40,

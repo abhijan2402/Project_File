@@ -10,12 +10,12 @@ const HomeStack = createNativeStackNavigator();
 const Home = ({ navigation }) => {
   return (
     
-    <HomeStack.Navigator screenOptions={{ headerShown: false }} >
-       <HomeStack.Screen name="groupinfo" component={groupinfo}/>
+    <HomeStack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Groups" >
       <HomeStack.Screen name="Groups" component={Groups} />
       <HomeStack.Screen name="Groupchat" component={GroupChatUI} />
       <HomeStack.Screen name="uploadFile" component={UploadFile} />
       <HomeStack.Screen name="Invite" component={Invite} />
+      <HomeStack.Screen name="groupinfo" component={groupinfo}/>
     </HomeStack.Navigator>
   );
 };

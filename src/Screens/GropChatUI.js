@@ -33,7 +33,7 @@ const GroupChatUI=({route,navigation})=>{
       <Text style={[FileStyle.time,{alignSelf:item.user===user?'flex-end':'flex-start',}]}>
         {item.timeAt}
       </Text>
-      <LinearGradient colors={['#4FCBF8', '#F0FCFF', '#4FCBF8']}
+      <View 
         style={[
           FileStyle.messageContainer,
           {
@@ -41,14 +41,15 @@ const GroupChatUI=({route,navigation})=>{
             borderTopRightRadius:item.user===user?5:40,
             borderBottomRightRadius:item.user===user?5:40,
             borderTopLeftRadius:item.user===user?40:5,
-            borderBottomLeftRadius:item.user===user?40:5
+            borderBottomLeftRadius:item.user===user?40:5,
+            backgroundColor:"#2D9BFF"
           }
         ]}    
       >
-        <Text style={FileStyle.title}>
+        <Text style={[FileStyle.title,{color:"white"}]}>
           {item.message}
         </Text>
-      </LinearGradient >
+      </View >
       
     </>
   );
@@ -102,7 +103,7 @@ const GroupChatUI=({route,navigation})=>{
   }
   return (
     <View style={FileStyle.container}>
-      <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#85FFDB', '#C2FFED', '#D0F9ED']} style={FileStyle.groupTitle}>
+      <View  style={FileStyle.groupTitle}>
         {
           clicked?null:<View style={FileStyle.titleView}>
             <Image 
@@ -139,19 +140,20 @@ const GroupChatUI=({route,navigation})=>{
             />
         </TouchableOpacity>
         </View>
-      </LinearGradient>
+      </View>
       <FlatList
           inverted
           data={[...messageArray].reverse()}
           renderItem={renderItem}
           keyExtractor={item => item.id}
       />
-      <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#85FFDB', '#C2FFED', '#D0F9ED']} style={FileStyle.chatIPStyle}>
+      <View style={FileStyle.chatIPStyle}>
         <TextInput
             placeholder={"Message..."}
             placeholderTextColor={"black"}
             style={FileStyle.chatInput}
             onChangeText={(message)=>setMessage(message)}
+            multiline={true}
         />
        <TouchableOpacity onPress={()=>sendMessage()}>
         <Image
@@ -159,7 +161,7 @@ const GroupChatUI=({route,navigation})=>{
             source={require('../Assets/send.png')}
           />
        </TouchableOpacity>
-      </LinearGradient>    
+      </View>    
     </View>
   );
 };
