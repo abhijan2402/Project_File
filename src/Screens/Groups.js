@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React,{useState,useEffect} from 'react';
 import {
   Text,
   View,
@@ -11,70 +11,65 @@ import {
   Image,
   ImageBackground
 } from 'react-native';
-import { API, Auth, Storage } from 'aws-amplify';
+import { API, Auth , Storage } from 'aws-amplify';
 import 'react-native-gesture-handler';
 import * as queries from '../graphql/queries';
 import Style from '../Styles/Style'
 import LinearGradient from 'react-native-linear-gradient';
 import GroupList from '../Styles/GroupList';
-const data = [
-  { GroupName: "Group 1", grpDescription: "hello this is jdsiud" },
-  { GroupName: "Group 2", grpDescription: "oadsshdbskh" },
-  { GroupName: "Group 3", grpDescription: "didkewkh" },
-  { GroupName: "Group 4", grpDescription: "hello" },
-  { GroupName: "Group 5", grpDescription: "hello" },
-  { GroupName: "Group 6", grpDescription: "hello" },
-  { GroupName: "Group 7", grpDescription: "hello" },
-  { GroupName: "Group 8", grpDescription: "hello" },
-  { GroupName: "Group 9", grpDescription: "hello" },
-  { GroupName: "Group 10", grpDescription: "hello" },
-  { GroupName: "Group 11", grpDescription: "hello" },
-  { GroupName: "Group 12", grpDescription: "hello" },
-  { GroupName: "Group 13", grpDescription: "hello" },
+const data=[
+  {GroupName:"Group 1",grpDescription:"hello"},
+  {GroupName:"Group 2",grpDescription:"hello"},
+  {GroupName:"Group 3",grpDescription:"hello"},
+  {GroupName:"Group 4",grpDescription:"hello"},
+  {GroupName:"Group 5",grpDescription:"hello"},
+  {GroupName:"Group 6",grpDescription:"hello"},
+  {GroupName:"Group 7",grpDescription:"hello"},
+  {GroupName:"Group 8",grpDescription:"hello"},
+  {GroupName:"Group 9",grpDescription:"hello"},
+  {GroupName:"Group 10",grpDescription:"hello"},
+  {GroupName:"Group 11",grpDescription:"hello"},
+  {GroupName:"Group 12",grpDescription:"hello"},
+  {GroupName:"Group 13",grpDescription:"hello"},
 ]
-const Groups = ({ navigation }) => {
-  const [groupList, setGroupList] = useState([]);
+const Groups=({navigation})=>{
+  const [groupList,setGroupList]=useState([]);
   const renderItem = ({ item }) => (
     <View style={GroupList.card} >
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Groupchat", { groupName: item.GroupName, groupImage: item.GroupImageUrl })}
-        style={GroupList.groupContaier}
+      <TouchableOpacity 
+        onPress={()=>navigation.navigate("Groupchat",{groupName:item.GroupName,groupImage:item.GroupImageUrl})}
+        style={GroupList.groupContainer} 
       >
         <View style={GroupList.cardHeader}>
-          <View style={GroupList.crr}>
-
-            <Image
-              style={GroupList.image}
-              source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7imXJMeK9b42t8JBjKxYP2zJd8MVrbVNEAg&usqp=CAU" }}
-            />
+          <Image 
+            style={GroupList.image}
+            source={{uri:"https://i.pinimg.com/736x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg"}} 
+          />
+          <View style={GroupList.titleDesc}>
+            <Text style={GroupList.grpName}>{item.GroupName}</Text>
+            {/* <Text style={GroupList.footerTxt}>{item.grpDescription}</Text> */}
           </View>
-          <Text style={GroupList.grpName}>{item.GroupName}</Text>
         </View>
-        <LinearGradient colors={['#BAF3FF', '#F0FCFF', '#BAF3FF']} style={GroupList.cardFooter}>
-          <View >
-            <Text style={GroupList.footerTxt}>{item.grpDescription}</Text>
-          </View>
-        </LinearGradient >
       </TouchableOpacity>
     </View>
   );
-
-  useEffect(() => {
+  
+  useEffect(()=>{
     // fetchUserGroups();
-  }, [groupList])
-  const fetchUserGroups = async () => {
+  },[groupList])
+  const fetchUserGroups=async()=>{
     try {
-      const authedUser = await Auth.currentAuthenticatedUser();
-      const userGroups = await API.graphql({
-        query: queries.groupByUserName,
-        variables: { userID: authedUser.attributes.email }
+      const authedUser=await Auth.currentAuthenticatedUser();
+      const userGroups=await API.graphql({
+        query:queries.groupByUserName,
+        variables:{userID:authedUser.attributes.email}
       })
-      const groupArray = []
-      for (var i = 0; i < userGroups.data.groupByUserName.items.length; i++) {
-        const groupDetails = await API.graphql({
-          query: queries.getGroup,
-          variables: {
-            id: userGroups.data.groupByUserName.items[i].groupID
+      const groupArray=[]
+      for(var i=0;i<userGroups.data.groupByUserName.items.length;i++){
+        const groupDetails=await API.graphql({
+          query:queries.getGroup,
+          variables:{
+            id:userGroups.data.groupByUserName.items[i].groupID
           }
         })
         groupArray.push(groupDetails.data.getGroup)
@@ -85,19 +80,14 @@ const Groups = ({ navigation }) => {
     }
   }
   return (
-    <View>
-      {/* <ImageBackground
-       style={GroupList.container}
-       source={require('../Assets/background.png')} 
-       resizeMode="cover"
-     > */}
+    <View style={GroupList.container}>
       <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={item => item.GroupName}
-        numColumns={2}
-      />
-      {/* </ImageBackground> */}
+              data={data}
+              renderItem={renderItem}
+              keyExtractor={item => item.GroupName}
+              // numColumns={2}
+              showsVerticalScrollIndicator={false}
+        />
     </View>
   );
 };
