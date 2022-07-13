@@ -31,6 +31,17 @@ export const getUser = /* GraphQL */ `
         }
         nextToken
       }
+      userMessage {
+        items {
+          id
+          message
+          createdAt
+          groupMessagesId
+          updatedAt
+          userUserMessageId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -59,6 +70,9 @@ export const listUsers = /* GraphQL */ `
           nextToken
         }
         userFile {
+          nextToken
+        }
+        userMessage {
           nextToken
         }
         createdAt
@@ -92,6 +106,7 @@ export const getGroup = /* GraphQL */ `
           createdAt
           groupMessagesId
           updatedAt
+          userUserMessageId
         }
         nextToken
       }
@@ -187,6 +202,7 @@ export const getMessage = /* GraphQL */ `
       createdAt
       groupMessagesId
       updatedAt
+      userUserMessageId
     }
   }
 `;
@@ -203,6 +219,7 @@ export const listMessages = /* GraphQL */ `
         createdAt
         groupMessagesId
         updatedAt
+        userUserMessageId
       }
       nextToken
     }
@@ -222,6 +239,9 @@ export const getUserGroupsMapping = /* GraphQL */ `
           nextToken
         }
         userFile {
+          nextToken
+        }
+        userMessage {
           nextToken
         }
         createdAt
@@ -309,6 +329,7 @@ export const mesageByGroupName = /* GraphQL */ `
         createdAt
         groupMessagesId
         updatedAt
+        userUserMessageId
       }
       nextToken
     }

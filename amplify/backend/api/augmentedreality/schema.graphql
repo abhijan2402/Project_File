@@ -8,6 +8,7 @@ type User @model {
   Phone:String!
   groups:[Group] @manyToMany(relationName: "userGroupsMapping")
   userFile: [Files] @hasMany
+  userMessage:[Message] @hasMany
 }
 
 type Group @model {

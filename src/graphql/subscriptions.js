@@ -9,6 +9,7 @@ export const onMessagebyGroupId = /* GraphQL */ `
       createdAt
       groupMessagesId
       updatedAt
+      userUserMessageId
     }
   }
 `;
@@ -39,6 +40,17 @@ export const onCreateUser = /* GraphQL */ `
           createdAt
           updatedAt
           userUserFileId
+        }
+        nextToken
+      }
+      userMessage {
+        items {
+          id
+          message
+          createdAt
+          groupMessagesId
+          updatedAt
+          userUserMessageId
         }
         nextToken
       }
@@ -77,6 +89,17 @@ export const onUpdateUser = /* GraphQL */ `
         }
         nextToken
       }
+      userMessage {
+        items {
+          id
+          message
+          createdAt
+          groupMessagesId
+          updatedAt
+          userUserMessageId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -112,6 +135,17 @@ export const onDeleteUser = /* GraphQL */ `
         }
         nextToken
       }
+      userMessage {
+        items {
+          id
+          message
+          createdAt
+          groupMessagesId
+          updatedAt
+          userUserMessageId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -141,6 +175,7 @@ export const onCreateGroup = /* GraphQL */ `
           createdAt
           groupMessagesId
           updatedAt
+          userUserMessageId
         }
         nextToken
       }
@@ -187,6 +222,7 @@ export const onUpdateGroup = /* GraphQL */ `
           createdAt
           groupMessagesId
           updatedAt
+          userUserMessageId
         }
         nextToken
       }
@@ -233,6 +269,7 @@ export const onDeleteGroup = /* GraphQL */ `
           createdAt
           groupMessagesId
           updatedAt
+          userUserMessageId
         }
         nextToken
       }
@@ -308,6 +345,7 @@ export const onCreateMessage = /* GraphQL */ `
       createdAt
       groupMessagesId
       updatedAt
+      userUserMessageId
     }
   }
 `;
@@ -319,6 +357,7 @@ export const onUpdateMessage = /* GraphQL */ `
       createdAt
       groupMessagesId
       updatedAt
+      userUserMessageId
     }
   }
 `;
@@ -330,6 +369,7 @@ export const onDeleteMessage = /* GraphQL */ `
       createdAt
       groupMessagesId
       updatedAt
+      userUserMessageId
     }
   }
 `;
@@ -347,6 +387,9 @@ export const onCreateUserGroupsMapping = /* GraphQL */ `
           nextToken
         }
         userFile {
+          nextToken
+        }
+        userMessage {
           nextToken
         }
         createdAt
@@ -390,6 +433,9 @@ export const onUpdateUserGroupsMapping = /* GraphQL */ `
         userFile {
           nextToken
         }
+        userMessage {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -429,6 +475,9 @@ export const onDeleteUserGroupsMapping = /* GraphQL */ `
           nextToken
         }
         userFile {
+          nextToken
+        }
+        userMessage {
           nextToken
         }
         createdAt

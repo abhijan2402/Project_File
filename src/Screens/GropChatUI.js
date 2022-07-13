@@ -29,19 +29,19 @@ const GroupChatUI=({route,navigation})=>{
   const [messageArray,setMessageArray]=useState([])
   const renderItem = ({ item }) => (
     <>
-      {/* <Text style={[FileStyle.time,{alignSelf:item.user===user?'flex-end':'flex-start',}]}>
+      <Text style={[FileStyle.time,{alignSelf:item.userUserMessageId===user?'flex-end':'flex-start',}]}>
         {item.createdAt}
-      </Text> */}
+      </Text>
       <View 
         style={[
           FileStyle.messageContainer,
           {
-            alignSelf:item.user===user?'flex-end':'flex-start',
-            borderTopRightRadius:item.user===user?5:40,
-            borderBottomRightRadius:item.user===user?5:40,
-            borderTopLeftRadius:item.user===user?40:5,
-            borderBottomLeftRadius:item.user===user?40:5,
-            backgroundColor:item.user===user?"#59B4FF":"#CA7AFF"
+            alignSelf:item.userUserMessageId===user?'flex-end':'flex-start',
+            borderTopRightRadius:item.userUserMessageId===user?5:40,
+            borderBottomRightRadius:item.userUserMessageId===user?5:40,
+            borderTopLeftRadius:item.userUserMessageId===user?40:5,
+            borderBottomLeftRadius:item.userUserMessageId===user?40:5,
+            backgroundColor:item.userUserMessageId===user?"#59B4FF":"#CA7AFF"
           }
         ]}    
       >
@@ -54,8 +54,25 @@ const GroupChatUI=({route,navigation})=>{
   );
 
   useEffect(()=>{
-    console.log("effect")
-    authedUser()
+    // console.log("effect")
+//check for authed user
+    const authedUser=async()=>{
+      const userMail=await Auth.currentAuthenticatedUser();
+      setUser(userMail.attributes.email)
+    }
+//query all users
+    const groupMessaeges=async()=>{
+      const userGrpMessage=await API.graphql({
+        query:queries.mesageByGroupName,
+        variables:{
+          groupMessagesId:groupId,
+          sortDirection:"DESC"
+        }
+      });
+      setMessageArray(userGrpMessage.data.mesageByGroupName.items)
+    }
+    groupMessaeges();
+    authedUser();
     setGroupTitle(groupName)
     setGroupPic(groupImage)
     // subscribe();
@@ -64,36 +81,27 @@ const GroupChatUI=({route,navigation})=>{
       setGroupPic(null)
     }
   },[])
-//authedUser
-  const authedUser=async()=>{
-    const userMail=await Auth.currentAuthenticatedUser();
-    setUser(userMail.attributes.email)
-  }
+  
 //send message to backend
   const sendMessage=async()=>{
     try {
       const date=new Date();
-      const currentTime=date.getHours()+":"+date.getMinutes();
+      const currentTime=date.toLocaleTimeString();
       if(message==null)
         throw "write message"
-      let messageObject={
+      const messageObject={
         message:message,
-        user:user
+        createdAt:currentTime,
+        groupMessagesId:groupId,
+        userUserMessageId:user
       }
-      const messageData=await API.graphql({
+      setMessageArray([messageObject,...messageArray])
+      await API.graphql({
         query:mutations.createMessage,
         variables:{
-          input:{
-            message:messageObject,
-            createdAt:currentTime,
-            groupMessagesId:groupId
+            input:messageObject
           }
-        }
       });
-      console.log(messageData);
-      setMessageArray([...messageArray,messageObject])
-      setMessage(null)
-
     } catch (error) {
       console.warn(error);
     }
@@ -118,14 +126,7 @@ const GroupChatUI=({route,navigation})=>{
   return (
     <View style={FileStyle.container}>
       <View style={FileStyle.groupTitle}>
-        {search?
-          <TextInput
-            style={FileStyle.searchInput}
-            placeholder={"Search..."}
-            placeholderTextColor={"black"}
-            autoFocus={true}
-            autoCorrect={true}
-          />:
+        {
           clicked?null:<View style={FileStyle.titleView}>
             <Image 
               style={FileStyle.image}
@@ -158,33 +159,20 @@ const GroupChatUI=({route,navigation})=>{
                 />
             </TouchableOpacity>
           </>
-          :
-          <TouchableOpacity onPress={()=>setSearch(true)} >
-              <Image
-                style={[FileStyle.iconPic,{marginRight:10}]}
-                source={require('../Assets/searching.png')}
-              />
-          </TouchableOpacity>
+          :null
         }
-        {search?
-          <TouchableOpacity onPress={()=>setSearch(false)}>
-            <Image
-              style={FileStyle.iconPic}
-              source={require('../Assets/arrows.png')}
-            />
-          </TouchableOpacity>:
           <TouchableOpacity onPress={()=>setClicked(!clicked)}>
               <Image
                 style={FileStyle.iconPic}
                 source={clicked?require('../Assets/arrows.png'):require('../Assets/menu1.png')}
               />
           </TouchableOpacity>
-        }
+        
         </View>
       </View>
       <FlatList
           inverted
-          data={[...messageArray].reverse()}
+          data={[...messageArray]}
           renderItem={renderItem}
           keyExtractor={item => Math.random()*10000}
       />
