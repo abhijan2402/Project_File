@@ -33,7 +33,7 @@ const SignUp = ({ navigation }) => {
     try {
       if (email == null || password == null || phone_number == null || name == null)
         throw "Empty Fileds"
-        const responseEmail = validateEmail(email);
+      const responseEmail = validateEmail(email);
       const response = ValidatePassword(password);
       const responseMobile = ValidateMobile(phone_number)
       if (!responseEmail)

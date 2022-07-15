@@ -16,7 +16,7 @@ import * as queries from '../graphql/queries';
 import * as subscriptions from '../graphql/subscriptions';
 import * as mutations from '../graphql/mutations';
 import FileStyle from '../Styles/FileStyle';
-import dummyChatData from '../Data';
+import IconButton from '../Components/IconButton';
 const GroupChatUI=({route,navigation})=>{
   const {groupName,groupImage} = route.params;
   const [groupId,setGroupId]=useState("7c07a7dc-babf-44d1-922d-a448432a939d");
@@ -27,6 +27,11 @@ const GroupChatUI=({route,navigation})=>{
   const [search,setSearch]=useState(false);
   const [user,setUser]=useState(null);
   const [messageArray,setMessageArray]=useState([])
+  // const images=[
+  //   uri="../Assets/add-button.png",
+  //   uri="../Assets/settings.png"
+  // ]
+//chat messaeges
   const renderItem = ({ item }) => (
     <>
       <Text style={[FileStyle.time,{alignSelf:item.userUserMessageId===user?'flex-end':'flex-start',}]}>
@@ -37,15 +42,12 @@ const GroupChatUI=({route,navigation})=>{
           FileStyle.messageContainer,
           {
             alignSelf:item.userUserMessageId===user?'flex-end':'flex-start',
-            borderTopRightRadius:item.userUserMessageId===user?5:40,
-            borderBottomRightRadius:item.userUserMessageId===user?5:40,
-            borderTopLeftRadius:item.userUserMessageId===user?40:5,
-            borderBottomLeftRadius:item.userUserMessageId===user?40:5,
-            backgroundColor:item.userUserMessageId===user?"#59B4FF":"#CA7AFF"
           }
         ]}    
       >
-        <Text style={FileStyle.title}>
+        <Text style={[FileStyle.title,{
+          alignSelf:item.userUserMessageId===user?'flex-end':'flex-start',
+        }]}>
           {item.message}
         </Text>
       </View >
@@ -60,28 +62,29 @@ const GroupChatUI=({route,navigation})=>{
       const userMail=await Auth.currentAuthenticatedUser();
       setUser(userMail.attributes.email)
     }
-//query all users
-    const groupMessaeges=async()=>{
-      const userGrpMessage=await API.graphql({
-        query:queries.mesageByGroupName,
-        variables:{
-          groupMessagesId:groupId,
-          sortDirection:"DESC"
-        }
-      });
-      setMessageArray(userGrpMessage.data.mesageByGroupName.items)
-    }
-    groupMessaeges();
+    groupMessages();
     authedUser();
     setGroupTitle(groupName)
     setGroupPic(groupImage)
-    // subscribe();
     return()=>{
       setGroupTitle(null)
       setGroupPic(null)
     }
   },[])
-  
+  useEffect(()=>{
+    // subscribe();
+  },[])
+
+  const groupMessages=async()=>{
+    const userGrpMessage=await API.graphql({
+      query:queries.mesageByGroupName,
+      variables:{
+        groupMessagesId:groupId,
+        sortDirection:"DESC"
+      }
+    });
+    setMessageArray(userGrpMessage.data.mesageByGroupName.items)
+  }
 //send message to backend
   const sendMessage=async()=>{
     try {
@@ -114,8 +117,9 @@ const GroupChatUI=({route,navigation})=>{
         variables:{groupMessagesId:groupId}
       }).subscribe({
         next: data => {
-          console.log(data.value.data.onMessagebyGroupId.message)
-          setMessageArray([...messageArray,data.value.data.onMessagebyGroupId])
+          console.log(data.value.data.onMessagebyGroupId)
+          // setMessageArray([data.value.data.onMessagebyGroupId,...messageArray])
+          groupMessages()
         }
       })
     } catch (error) {
@@ -140,19 +144,16 @@ const GroupChatUI=({route,navigation})=>{
         <View style={[FileStyle.Icon,clicked?{width:'100%'}:null]}>
          {clicked?
           <>
-            <TouchableOpacity>
-              <Image
-                style={[FileStyle.iconPic,{marginRight:10}]}
-                source={require('../Assets/chat.png')}
-              />
-            </TouchableOpacity>
             <TouchableOpacity onPress={()=>navigation.navigate("uploadFile",{groupName:groupName,grpimage:groupImage})}>
                 <Image
                   style={[FileStyle.iconPic,{marginRight:10}]}
                   source={require('../Assets/add-button.png')}
                 />
             </TouchableOpacity>
-            <TouchableOpacity >
+            {/* <IconButton imageUrl={images[0].uri}
+              onpress={()=>navigation.navigate("uploadFile",{groupName:groupName,grpimage:groupImage})}
+            />  */}
+            <TouchableOpacity > 
                 <Image
                   style={[FileStyle.iconPic,{marginRight:10}]}
                   source={require('../Assets/settings.png')}

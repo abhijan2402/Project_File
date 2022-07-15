@@ -5,18 +5,22 @@ const FileStyle=StyleSheet.create({
   container:{
     flex:1,
     justifyContent:"space-between",
+    backgroundColor:"#F1F1F1"
   },
   messageContainer:{
-    // backgroundColor:"#54D1FE",
+    backgroundColor:"#59B4FF",
     marginHorizontal:10,
-    padding:8,
+    paddingHorizontal:10,
+    paddingVertical:5,
     marginTop:6,
     marginBottom:5,
     borderColor:'#73D5F9',
-    borderWidth:1
+    borderWidth:1,
+    borderRadius:5,
+    maxWidth:'70%'
   },
   time:{
-    fontSize:15,
+    fontSize:12,
     color:"black",
     marginHorizontal:10,
     fontWeight:'bold'
@@ -29,7 +33,7 @@ const FileStyle=StyleSheet.create({
       justifyContent:"space-between",
       borderBottomColor:"#898E8F",
       borderBottomWidth:2,
-      backgroundColor:"#8DC5FE"
+      backgroundColor:"#A3CAFF"
   },
   titleView:{
     flexDirection: 'row',
@@ -37,7 +41,7 @@ const FileStyle=StyleSheet.create({
   },  
   title:{
     color:"black",
-    fontSize:18,
+    fontSize:15,
     fontFamily:"Alias",
     // marginLeft:10,
     fontWeight:"bold"
@@ -87,7 +91,7 @@ const FileStyle=StyleSheet.create({
     flexDirection: 'row',
     justifyContent:'space-around',
     alignItems:"center",
-    backgroundColor:"#8DC5FE"
+    backgroundColor:"#A3CAFF"
   },
   sentIcon:{
     width:40,
