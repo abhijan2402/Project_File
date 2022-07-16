@@ -17,30 +17,32 @@ import * as queries from '../graphql/queries';
 import Style from '../Styles/Style'
 import LinearGradient from 'react-native-linear-gradient';
 import GroupList from '../Styles/GroupList';
-const data = [
-  { GroupName: "Group 1", grpDescription: "hello" },
-  { GroupName: "Group 2", grpDescription: "hello" },
-  { GroupName: "Group 3", grpDescription: "hello" },
-  { GroupName: "Group 4", grpDescription: "hello" },
-  { GroupName: "Group 5", grpDescription: "hello" },
-  { GroupName: "Group 6", grpDescription: "hello" },
-  { GroupName: "Group 7", grpDescription: "hello" },
-  { GroupName: "Group 8", grpDescription: "hello" },
-  { GroupName: "Group 9", grpDescription: "hello" },
-  { GroupName: "Group 10", grpDescription: "hello" },
-  { GroupName: "Group 11", grpDescription: "hello" },
-  { GroupName: "Group 12", grpDescription: "hello" },
-  { GroupName: "Group 13", grpDescription: "hello" },
-]
+//demo purpose
+// const data = [
+//   { GroupName: "Group 1", grpDescription: "hello" },
+//   { GroupName: "Group 2", grpDescription: "hello" },
+//   { GroupName: "Group 3", grpDescription: "hello" },
+//   { GroupName: "Group 4", grpDescription: "hello" },
+//   { GroupName: "Group 5", grpDescription: "hello" },
+//   { GroupName: "Group 6", grpDescription: "hello" },
+//   { GroupName: "Group 7", grpDescription: "hello" },
+//   { GroupName: "Group 8", grpDescription: "hello" },
+//   { GroupName: "Group 9", grpDescription: "hello" },
+//   { GroupName: "Group 10", grpDescription: "hello" },
+//   { GroupName: "Group 11", grpDescription: "hello" },
+//   { GroupName: "Group 12", grpDescription: "hello" },
+//   { GroupName: "Group 13", grpDescription: "hello" },
+// ]
 const Groups = ({ navigation }) => {
   const [groupList, setGroupList] = useState([]);
-  const [list, setList] = useState([])
+  const [list1, setList1] = useState([])
   const listNotif = async () => {
     try {
       const list = await API.graphql({ query: queries.listGroups });
-      // console.log("List is ", list.data.listGroups.items);
-      setList(list.data.listGroups.items.GroupDescription)
-      // console.log("hi this is the ", list)
+      const meta = list.data.listGroups.items
+      // console.log("List is ", meta);
+      setList1(list.data.listGroups.items)
+      // console.log("hi this is the ", list1)
 
     } catch (error) {
       console.log("error is ", error);
@@ -68,37 +70,15 @@ const Groups = ({ navigation }) => {
   );
 
   useEffect(() => {
-    // fetchUserGroups();
     listNotif();
   }, [groupList])
-  const fetchUserGroups = async () => {
-    try {
-      const authedUser = await Auth.currentAuthenticatedUser();
-      const userGroups = await API.graphql({
-        query: queries.groupByUserName,
-        variables: { userID: authedUser.attributes.email }
-      })
-      const groupArray = []
-      for (var i = 0; i < userGroups.data.groupByUserName.items.length; i++) {
-        const groupDetails = await API.graphql({
-          query: queries.getGroup,
-          variables: {
-            id: userGroups.data.groupByUserName.items[i].groupID
-          }
-        })
-        groupArray.push(groupDetails.data.getGroup)
-      }
-      setGroupList(groupArray)
-    } catch (error) {
-      console.log(error);
-    }
-  }
+
   return (
     <View style={GroupList.container}>
       <FlatList
-        data={data}
+        data={list1}
         renderItem={renderItem}
-        keyExtractor={item => item.GroupName}
+        keyExtractor={item => item.GroupDescription}
         // numColumns={2}
         showsVerticalScrollIndicator={false}
       />
