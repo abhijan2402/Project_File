@@ -6,6 +6,7 @@ import CreateGroup from '../Screens/CreateGroup';
 import CustomDrawer from './CustomDrawer';
 import Profile from '../Screens/Profile';
 import Invite from '../Screens/Invite';
+import Notification from '../Screens/Notification';
 const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => {
     return (
@@ -13,6 +14,7 @@ const DrawerNavigator = () => {
         <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />} screenOptions={{ headerShown: true }}>
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="New Group" component={CreateGroup} />
+            <Drawer.Screen name="Notification" component={Notification} />
             <Drawer.Screen name="Profile" component={Profile} />
             <Drawer.Screen name="Invite" component={Invite} />
         </Drawer.Navigator>
