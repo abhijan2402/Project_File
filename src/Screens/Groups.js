@@ -62,7 +62,7 @@ const Groups = ({ navigation }) => {
           />
           <View style={GroupList.titleDesc}>
             <Text style={GroupList.grpName}>{item.GroupName}</Text>
-            {/* <Text style={GroupList.footerTxt}>{item.grpDescription}</Text> */}
+            <Text style={GroupList.footerTxt}>{item.GroupDescription}</Text>
           </View>
         </View>
       </TouchableOpacity>
