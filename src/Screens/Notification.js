@@ -13,7 +13,7 @@ import {
 const windowHeight = Dimensions.get('window').height
 const windowWidth = Dimensions.get('window').width
 const Notification = () => {
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(true)
 
     if (visible == false) {
         return (
