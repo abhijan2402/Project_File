@@ -4,7 +4,7 @@ const windowHeight = Dimensions.get('window').height;
 const GroupList = StyleSheet.create({
     groupContainer: {
         backgroundColor: "white",
-        width: windowWidth - 20,
+        width: windowWidth - 4,
         height: windowWidth / 6,
         elevation: 5,
         shadowOffset: {
@@ -17,7 +17,7 @@ const GroupList = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 5,
         marginVertical: 3,
-        borderRadius: 15
+        borderRadius: 6
     },
     grpName: {
         color: "#2e2e2e",
@@ -38,6 +38,8 @@ const GroupList = StyleSheet.create({
     },
     container: {
         alignItems: "center",
+        marginVertical: 10,
+        // backgroundColor: 'white'
     },
     titleDesc: {
         marginHorizontal: 10
