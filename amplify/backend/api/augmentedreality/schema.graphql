@@ -11,12 +11,14 @@ type User @model {
   userMessage:[Message] @hasMany
 }
 
+
 type Group @model {
   id:ID!
   GroupName:String! 
   GroupDescription:String!
   GroupImageUrlPath:String!
   users:[User] @manyToMany(relationName: "userGroupsMapping")
+  lastSeenMessege:Message @hasOne
   messages: [Message] @hasMany
   files:[Files] @hasMany
 }

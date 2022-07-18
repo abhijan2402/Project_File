@@ -168,6 +168,14 @@ export const createGroup = /* GraphQL */ `
         }
         nextToken
       }
+      lastSeenMessege {
+        id
+        message
+        createdAt
+        groupMessagesId
+        updatedAt
+        userUserMessageId
+      }
       messages {
         items {
           id
@@ -195,6 +203,7 @@ export const createGroup = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      groupLastSeenMessegeId
     }
   }
 `;
@@ -218,6 +227,14 @@ export const updateGroup = /* GraphQL */ `
         }
         nextToken
       }
+      lastSeenMessege {
+        id
+        message
+        createdAt
+        groupMessagesId
+        updatedAt
+        userUserMessageId
+      }
       messages {
         items {
           id
@@ -245,6 +262,7 @@ export const updateGroup = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      groupLastSeenMessegeId
     }
   }
 `;
@@ -268,6 +286,14 @@ export const deleteGroup = /* GraphQL */ `
         }
         nextToken
       }
+      lastSeenMessege {
+        id
+        message
+        createdAt
+        groupMessagesId
+        updatedAt
+        userUserMessageId
+      }
       messages {
         items {
           id
@@ -295,6 +321,7 @@ export const deleteGroup = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      groupLastSeenMessegeId
     }
   }
 `;
@@ -430,6 +457,14 @@ export const createUserGroupsMapping = /* GraphQL */ `
         users {
           nextToken
         }
+        lastSeenMessege {
+          id
+          message
+          createdAt
+          groupMessagesId
+          updatedAt
+          userUserMessageId
+        }
         messages {
           nextToken
         }
@@ -438,6 +473,7 @@ export const createUserGroupsMapping = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        groupLastSeenMessegeId
       }
       createdAt
       updatedAt
@@ -477,6 +513,14 @@ export const updateUserGroupsMapping = /* GraphQL */ `
         users {
           nextToken
         }
+        lastSeenMessege {
+          id
+          message
+          createdAt
+          groupMessagesId
+          updatedAt
+          userUserMessageId
+        }
         messages {
           nextToken
         }
@@ -485,6 +529,7 @@ export const updateUserGroupsMapping = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        groupLastSeenMessegeId
       }
       createdAt
       updatedAt
@@ -524,6 +569,14 @@ export const deleteUserGroupsMapping = /* GraphQL */ `
         users {
           nextToken
         }
+        lastSeenMessege {
+          id
+          message
+          createdAt
+          groupMessagesId
+          updatedAt
+          userUserMessageId
+        }
         messages {
           nextToken
         }
@@ -532,6 +585,7 @@ export const deleteUserGroupsMapping = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        groupLastSeenMessegeId
       }
       createdAt
       updatedAt
