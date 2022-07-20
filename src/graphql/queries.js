@@ -99,6 +99,7 @@ export const getGroup = /* GraphQL */ `
         }
         nextToken
       }
+      lastSeenMessageID
       lastSeenMessege {
         id
         message
@@ -134,7 +135,6 @@ export const getGroup = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      groupLastSeenMessegeId
     }
   }
 `;
@@ -153,6 +153,7 @@ export const listGroups = /* GraphQL */ `
         users {
           nextToken
         }
+        lastSeenMessageID
         lastSeenMessege {
           id
           message
@@ -169,7 +170,6 @@ export const listGroups = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        groupLastSeenMessegeId
       }
       nextToken
     }
@@ -273,6 +273,7 @@ export const getUserGroupsMapping = /* GraphQL */ `
         users {
           nextToken
         }
+        lastSeenMessageID
         lastSeenMessege {
           id
           message
@@ -289,7 +290,6 @@ export const getUserGroupsMapping = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        groupLastSeenMessegeId
       }
       createdAt
       updatedAt
@@ -323,9 +323,9 @@ export const listUserGroupsMappings = /* GraphQL */ `
           GroupName
           GroupDescription
           GroupImageUrlPath
+          lastSeenMessageID
           createdAt
           updatedAt
-          groupLastSeenMessegeId
         }
         createdAt
         updatedAt

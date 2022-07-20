@@ -168,6 +168,7 @@ export const onCreateGroup = /* GraphQL */ `
         }
         nextToken
       }
+      lastSeenMessageID
       lastSeenMessege {
         id
         message
@@ -203,7 +204,6 @@ export const onCreateGroup = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      groupLastSeenMessegeId
     }
   }
 `;
@@ -224,6 +224,7 @@ export const onUpdateGroup = /* GraphQL */ `
         }
         nextToken
       }
+      lastSeenMessageID
       lastSeenMessege {
         id
         message
@@ -259,7 +260,6 @@ export const onUpdateGroup = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      groupLastSeenMessegeId
     }
   }
 `;
@@ -280,6 +280,7 @@ export const onDeleteGroup = /* GraphQL */ `
         }
         nextToken
       }
+      lastSeenMessageID
       lastSeenMessege {
         id
         message
@@ -315,7 +316,6 @@ export const onDeleteGroup = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      groupLastSeenMessegeId
     }
   }
 `;
@@ -430,6 +430,7 @@ export const onCreateUserGroupsMapping = /* GraphQL */ `
         users {
           nextToken
         }
+        lastSeenMessageID
         lastSeenMessege {
           id
           message
@@ -446,7 +447,6 @@ export const onCreateUserGroupsMapping = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        groupLastSeenMessegeId
       }
       createdAt
       updatedAt
@@ -483,6 +483,7 @@ export const onUpdateUserGroupsMapping = /* GraphQL */ `
         users {
           nextToken
         }
+        lastSeenMessageID
         lastSeenMessege {
           id
           message
@@ -499,7 +500,6 @@ export const onUpdateUserGroupsMapping = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        groupLastSeenMessegeId
       }
       createdAt
       updatedAt
@@ -536,6 +536,7 @@ export const onDeleteUserGroupsMapping = /* GraphQL */ `
         users {
           nextToken
         }
+        lastSeenMessageID
         lastSeenMessege {
           id
           message
@@ -552,7 +553,6 @@ export const onDeleteUserGroupsMapping = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        groupLastSeenMessegeId
       }
       createdAt
       updatedAt

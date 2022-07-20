@@ -41,10 +41,10 @@ const CreateGroup = () => {
             const groupDetails = {
                 GroupName: grpName,
                 GroupDescription: grpDesc,
-                GroupImageUrlPath: image
+                GroupImageUrlPath: image,
+                lastSeenMessageID:""
 
             }
-            const response = await GroupCreate(grpName, grpDesc, image[0].uri)
 
             if (response) {
                 const authedUser = await Auth.currentAuthenticatedUser();

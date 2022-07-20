@@ -42,7 +42,20 @@ const GroupList = StyleSheet.create({
         // backgroundColor: 'white'
     },
     titleDesc: {
-        marginHorizontal: 10
+        marginHorizontal: 10,
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between',
+        // backgroundColor:"red",
+        width:'70%'
+    },
+    timeText:{
+        color:"black",
+        fontWeight:'600'
+    },
+    messageTxt:{
+        color:"grey",
+        fontWeight:'800'
     }
 })
 export default GroupList;

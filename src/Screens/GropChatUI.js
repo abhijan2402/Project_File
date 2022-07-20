@@ -18,10 +18,10 @@ import * as mutations from '../graphql/mutations';
 import FileStyle from '../Styles/FileStyle';
 import IconButton from '../Components/IconButton';
 const GroupChatUI=({route,navigation})=>{
-  const {groupName,groupImage} = route.params;
-  const [groupId,setGroupId]=useState("7c07a7dc-babf-44d1-922d-a448432a939d");
+  const {groupID,groupName,groupImage} = route.params;
   const [groupTitle,setGroupTitle]=useState(null);
   const [groupPic,setGroupPic]=useState(null);
+  const [GroupRoomID,setRoomID]=useState(null);
   const [message,setMessage]=useState(null)
   const [clicked,setClicked]=useState(false);
   const [search,setSearch]=useState(false);
@@ -56,16 +56,18 @@ const GroupChatUI=({route,navigation})=>{
   );
 
   useEffect(()=>{
-    // console.log("effect")
+    // console.log(groupID)
 //check for authed user
     const authedUser=async()=>{
       const userMail=await Auth.currentAuthenticatedUser();
-      setUser(userMail.attributes.email)
+      // console.log(userMail.attributes.name)
+      setUser(userMail.attributes.name)
     }
     groupMessages();
     authedUser();
-    setGroupTitle(groupName)
-    setGroupPic(groupImage)
+    setGroupTitle(groupName);
+    setGroupPic(groupImage);
+    setRoomID(groupID)
     return()=>{
       setGroupTitle(null)
       setGroupPic(null)
@@ -79,12 +81,27 @@ const GroupChatUI=({route,navigation})=>{
     const userGrpMessage=await API.graphql({
       query:queries.mesageByGroupName,
       variables:{
-        groupMessagesId:groupId,
+        groupMessagesId:groupID,
         sortDirection:"DESC"
       }
     });
     setMessageArray(userGrpMessage.data.mesageByGroupName.items)
   }
+  const upDateGroupLastSeenMessage = async (messageID) => {
+    try {
+      await API.graphql({
+        query:mutations.updateGroup,
+        variables:{
+          input:{
+            id: GroupRoomID,
+            lastSeenMessageID:messageID
+          }
+        }
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }   
 //send message to backend
   const sendMessage=async()=>{
     try {
@@ -95,16 +112,18 @@ const GroupChatUI=({route,navigation})=>{
       const messageObject={
         message:message,
         createdAt:currentTime,
-        groupMessagesId:groupId,
+        groupMessagesId:GroupRoomID,
         userUserMessageId:user
       }
       setMessageArray([messageObject,...messageArray])
-      await API.graphql({
+      const messadeData=await API.graphql({
         query:mutations.createMessage,
         variables:{
             input:messageObject
           }
       });
+      // console.log(messadeData.data.createMessage.id);
+      await upDateGroupLastSeenMessage(messadeData.data.createMessage.id);
     } catch (error) {
       console.warn(error);
     }

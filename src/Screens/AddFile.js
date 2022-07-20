@@ -22,7 +22,8 @@ const UploadFile = ({ navigation, route }) => {
         try {
             const res = await DocumentPicker.pick({ type: [DocumentPicker.types.allFiles], });
             setFile(res);
-            // console.log(fileData)
+            console.log("type",typeof(res[0]))
+            typeof(res)
         } catch (err) {
             if (DocumentPicker.isCancel(err)) {
             } else {
@@ -32,6 +33,7 @@ const UploadFile = ({ navigation, route }) => {
     }
     const setFileData = async () => {
         const response = await onUpload(fileData, fileName, fileDesc, groupName);
+        // console.log()
         // if(response){
         //     navigation.navigate("GroupList",{groupName:groupName,groupImage:grpimage});
         // }

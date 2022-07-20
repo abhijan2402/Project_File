@@ -168,6 +168,7 @@ export const createGroup = /* GraphQL */ `
         }
         nextToken
       }
+      lastSeenMessageID
       lastSeenMessege {
         id
         message
@@ -203,7 +204,6 @@ export const createGroup = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      groupLastSeenMessegeId
     }
   }
 `;
@@ -227,6 +227,7 @@ export const updateGroup = /* GraphQL */ `
         }
         nextToken
       }
+      lastSeenMessageID
       lastSeenMessege {
         id
         message
@@ -262,7 +263,6 @@ export const updateGroup = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      groupLastSeenMessegeId
     }
   }
 `;
@@ -286,6 +286,7 @@ export const deleteGroup = /* GraphQL */ `
         }
         nextToken
       }
+      lastSeenMessageID
       lastSeenMessege {
         id
         message
@@ -321,7 +322,6 @@ export const deleteGroup = /* GraphQL */ `
       }
       createdAt
       updatedAt
-      groupLastSeenMessegeId
     }
   }
 `;
@@ -457,6 +457,7 @@ export const createUserGroupsMapping = /* GraphQL */ `
         users {
           nextToken
         }
+        lastSeenMessageID
         lastSeenMessege {
           id
           message
@@ -473,7 +474,6 @@ export const createUserGroupsMapping = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        groupLastSeenMessegeId
       }
       createdAt
       updatedAt
@@ -513,6 +513,7 @@ export const updateUserGroupsMapping = /* GraphQL */ `
         users {
           nextToken
         }
+        lastSeenMessageID
         lastSeenMessege {
           id
           message
@@ -529,7 +530,6 @@ export const updateUserGroupsMapping = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        groupLastSeenMessegeId
       }
       createdAt
       updatedAt
@@ -569,6 +569,7 @@ export const deleteUserGroupsMapping = /* GraphQL */ `
         users {
           nextToken
         }
+        lastSeenMessageID
         lastSeenMessege {
           id
           message
@@ -585,7 +586,6 @@ export const deleteUserGroupsMapping = /* GraphQL */ `
         }
         createdAt
         updatedAt
-        groupLastSeenMessegeId
       }
       createdAt
       updatedAt

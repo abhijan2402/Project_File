@@ -18,7 +18,8 @@ type Group @model {
   GroupDescription:String!
   GroupImageUrlPath:String!
   users:[User] @manyToMany(relationName: "userGroupsMapping")
-  lastSeenMessege:Message @hasOne
+  lastSeenMessageID:ID!
+  lastSeenMessege:Message @hasOne(fields: ["lastSeenMessageID"])
   messages: [Message] @hasMany
   files:[Files] @hasMany
 }
