@@ -400,9 +400,9 @@ export const onDeleteMessage = /* GraphQL */ `
     }
   }
 `;
-export const onCreateUserGroupsMapping = /* GraphQL */ `
-  subscription OnCreateUserGroupsMapping {
-    onCreateUserGroupsMapping {
+export const onCreateUserGroup = /* GraphQL */ `
+  subscription OnCreateUserGroup {
+    onCreateUserGroup {
       id
       userID
       groupID
@@ -453,9 +453,9 @@ export const onCreateUserGroupsMapping = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateUserGroupsMapping = /* GraphQL */ `
-  subscription OnUpdateUserGroupsMapping {
-    onUpdateUserGroupsMapping {
+export const onUpdateUserGroup = /* GraphQL */ `
+  subscription OnUpdateUserGroup {
+    onUpdateUserGroup {
       id
       userID
       groupID
@@ -506,9 +506,9 @@ export const onUpdateUserGroupsMapping = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteUserGroupsMapping = /* GraphQL */ `
-  subscription OnDeleteUserGroupsMapping {
-    onDeleteUserGroupsMapping {
+export const onDeleteUserGroup = /* GraphQL */ `
+  subscription OnDeleteUserGroup {
+    onDeleteUserGroup {
       id
       userID
       groupID

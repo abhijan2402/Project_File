@@ -281,7 +281,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "getUserGroupsMapping",
+          "name" : "getUserGroup",
           "description" : null,
           "args" : [ {
             "name" : "id",
@@ -299,20 +299,20 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserGroupsMapping",
+            "name" : "UserGroup",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "listUserGroupsMappings",
+          "name" : "listUserGroups",
           "description" : null,
           "args" : [ {
             "name" : "filter",
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserGroupsMappingFilterInput",
+              "name" : "ModelUserGroupFilterInput",
               "ofType" : null
             },
             "defaultValue" : null
@@ -337,7 +337,7 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "ModelUserGroupsMappingConnection",
+            "name" : "ModelUserGroupConnection",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -473,7 +473,7 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserGroupsMappingFilterInput",
+              "name" : "ModelUserGroupFilterInput",
               "ofType" : null
             },
             "defaultValue" : null
@@ -507,7 +507,7 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "ModelUserGroupsMappingConnection",
+            "name" : "ModelUserGroupConnection",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -652,7 +652,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "OBJECT",
-        "name" : "ModelUserGroupsMappingConnection",
+        "name" : "ModelUserGroupConnection",
         "description" : null,
         "fields" : [ {
           "name" : "items",
@@ -666,7 +666,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "OBJECT",
-                "name" : "UserGroupsMapping",
+                "name" : "UserGroup",
                 "ofType" : null
               }
             }
@@ -691,7 +691,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "OBJECT",
-        "name" : "UserGroupsMapping",
+        "name" : "UserGroup",
         "description" : null,
         "fields" : [ {
           "name" : "id",
@@ -884,7 +884,7 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserGroupsMappingFilterInput",
+              "name" : "ModelUserGroupFilterInput",
               "ofType" : null
             },
             "defaultValue" : null
@@ -918,7 +918,7 @@
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "ModelUserGroupsMappingConnection",
+            "name" : "ModelUserGroupConnection",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -928,13 +928,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "ID",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -1080,7 +1076,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "ModelUserGroupsMappingFilterInput",
+        "name" : "ModelUserGroupFilterInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -1118,7 +1114,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserGroupsMappingFilterInput",
+              "name" : "ModelUserGroupFilterInput",
               "ofType" : null
             }
           },
@@ -1131,7 +1127,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserGroupsMappingFilterInput",
+              "name" : "ModelUserGroupFilterInput",
               "ofType" : null
             }
           },
@@ -1141,7 +1137,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelUserGroupsMappingFilterInput",
+            "name" : "ModelUserGroupFilterInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -2814,7 +2810,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "createUserGroupsMapping",
+          "name" : "createUserGroup",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -2824,7 +2820,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "CreateUserGroupsMappingInput",
+                "name" : "CreateUserGroupInput",
                 "ofType" : null
               }
             },
@@ -2834,20 +2830,20 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserGroupsMappingConditionInput",
+              "name" : "ModelUserGroupConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserGroupsMapping",
+            "name" : "UserGroup",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "updateUserGroupsMapping",
+          "name" : "updateUserGroup",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -2857,7 +2853,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "UpdateUserGroupsMappingInput",
+                "name" : "UpdateUserGroupInput",
                 "ofType" : null
               }
             },
@@ -2867,20 +2863,20 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserGroupsMappingConditionInput",
+              "name" : "ModelUserGroupConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserGroupsMapping",
+            "name" : "UserGroup",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "deleteUserGroupsMapping",
+          "name" : "deleteUserGroup",
           "description" : null,
           "args" : [ {
             "name" : "input",
@@ -2890,7 +2886,7 @@
               "name" : null,
               "ofType" : {
                 "kind" : "INPUT_OBJECT",
-                "name" : "DeleteUserGroupsMappingInput",
+                "name" : "DeleteUserGroupInput",
                 "ofType" : null
               }
             },
@@ -2900,14 +2896,14 @@
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserGroupsMappingConditionInput",
+              "name" : "ModelUserGroupConditionInput",
               "ofType" : null
             },
             "defaultValue" : null
           } ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserGroupsMapping",
+            "name" : "UserGroup",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -3146,13 +3142,9 @@
           "name" : "lastSeenMessageID",
           "description" : null,
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "ID",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "ID",
+            "ofType" : null
           },
           "defaultValue" : null
         } ],
@@ -3831,7 +3823,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "CreateUserGroupsMappingInput",
+        "name" : "CreateUserGroupInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -3875,7 +3867,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "ModelUserGroupsMappingConditionInput",
+        "name" : "ModelUserGroupConditionInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -3904,7 +3896,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserGroupsMappingConditionInput",
+              "name" : "ModelUserGroupConditionInput",
               "ofType" : null
             }
           },
@@ -3917,7 +3909,7 @@
             "name" : null,
             "ofType" : {
               "kind" : "INPUT_OBJECT",
-              "name" : "ModelUserGroupsMappingConditionInput",
+              "name" : "ModelUserGroupConditionInput",
               "ofType" : null
             }
           },
@@ -3927,7 +3919,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelUserGroupsMappingConditionInput",
+            "name" : "ModelUserGroupConditionInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -3937,7 +3929,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "UpdateUserGroupsMappingInput",
+        "name" : "UpdateUserGroupInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -3977,7 +3969,7 @@
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
-        "name" : "DeleteUserGroupsMappingInput",
+        "name" : "DeleteUserGroupInput",
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
@@ -4158,34 +4150,34 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onCreateUserGroupsMapping",
+          "name" : "onCreateUserGroup",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserGroupsMapping",
+            "name" : "UserGroup",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onUpdateUserGroupsMapping",
+          "name" : "onUpdateUserGroup",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserGroupsMapping",
+            "name" : "UserGroup",
             "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "onDeleteUserGroupsMapping",
+          "name" : "onDeleteUserGroup",
           "description" : null,
           "args" : [ ],
           "type" : {
             "kind" : "OBJECT",
-            "name" : "UserGroupsMapping",
+            "name" : "UserGroup",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -4193,6 +4185,51 @@
         } ],
         "inputFields" : null,
         "interfaces" : [ ],
+        "enumValues" : null,
+        "possibleTypes" : null
+      }, {
+        "kind" : "INPUT_OBJECT",
+        "name" : "ModelBooleanInput",
+        "description" : null,
+        "fields" : null,
+        "inputFields" : [ {
+          "name" : "ne",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Boolean",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "eq",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Boolean",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "attributeExists",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Boolean",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "attributeType",
+          "description" : null,
+          "type" : {
+            "kind" : "ENUM",
+            "name" : "ModelAttributeTypes",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        } ],
+        "interfaces" : null,
         "enumValues" : null,
         "possibleTypes" : null
       }, {
@@ -4265,51 +4302,6 @@
               "name" : "Int",
               "ofType" : null
             }
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "attributeExists",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Boolean",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "attributeType",
-          "description" : null,
-          "type" : {
-            "kind" : "ENUM",
-            "name" : "ModelAttributeTypes",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        } ],
-        "interfaces" : null,
-        "enumValues" : null,
-        "possibleTypes" : null
-      }, {
-        "kind" : "INPUT_OBJECT",
-        "name" : "ModelBooleanInput",
-        "description" : null,
-        "fields" : null,
-        "inputFields" : [ {
-          "name" : "ne",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Boolean",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "eq",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "Boolean",
-            "ofType" : null
           },
           "defaultValue" : null
         }, {
@@ -5229,23 +5221,6 @@
         "onFragment" : false,
         "onField" : false
       }, {
-        "name" : "deprecated",
-        "description" : null,
-        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
-        "args" : [ {
-          "name" : "reason",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "String",
-            "ofType" : null
-          },
-          "defaultValue" : "\"No longer supported\""
-        } ],
-        "onOperation" : false,
-        "onFragment" : false,
-        "onField" : false
-      }, {
         "name" : "aws_publish",
         "description" : "Tells the service which subscriptions will be published to when this mutation is called. This directive is deprecated use @aws_susbscribe directive instead.",
         "locations" : [ "FIELD_DEFINITION" ],
@@ -5304,6 +5279,23 @@
             }
           },
           "defaultValue" : null
+        } ],
+        "onOperation" : false,
+        "onFragment" : false,
+        "onField" : false
+      }, {
+        "name" : "deprecated",
+        "description" : null,
+        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
+        "args" : [ {
+          "name" : "reason",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : "\"No longer supported\""
         } ],
         "onOperation" : false,
         "onFragment" : false,

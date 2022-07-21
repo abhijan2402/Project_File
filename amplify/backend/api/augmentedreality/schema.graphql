@@ -6,19 +6,18 @@ type User @model {
   email:String! @primaryKey
   name: String! 
   Phone:String!
-  groups:[Group] @manyToMany(relationName: "userGroupsMapping")
+  groups:[Group] @manyToMany(relationName: "userGroup")
   userFile: [Files] @hasMany
   userMessage:[Message] @hasMany
 }
-
 
 type Group @model {
   id:ID!
   GroupName:String! 
   GroupDescription:String!
   GroupImageUrlPath:String!
-  users:[User] @manyToMany(relationName: "userGroupsMapping")
-  lastSeenMessageID:ID!
+  users:[User] @manyToMany(relationName: "userGroup")
+  lastSeenMessageID:ID
   lastSeenMessege:Message @hasOne(fields: ["lastSeenMessageID"])
   messages: [Message] @hasMany
   files:[Files] @hasMany

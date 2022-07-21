@@ -22,7 +22,7 @@ const Groups = ({ navigation }) => {
     try {
       const list = await API.graphql({ query: queries.listGroups });
       const meta = list.data.listGroups.items
-      console.log("List is ", meta);
+      // console.log("List is ", meta);
       setList1(list.data.listGroups.items)
       // console.log("hi this is the ", list1)
 

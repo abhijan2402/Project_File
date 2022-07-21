@@ -17,6 +17,16 @@ import * as subscriptions from '../graphql/subscriptions';
 import * as mutations from '../graphql/mutations';
 import FileStyle from '../Styles/FileStyle';
 import IconButton from '../Components/IconButton';
+import GroupChatHeader from '../Components/GroupChatHeader';
+import ChatInput from '../Components/ChatInput';
+import upDateGroupLastSeenMessage from '../Server/upDateGroupLastSeenMessage';
+
+const image=require("../Assets/add-button.png");
+const settingimage=require('../Assets/settings.png');
+const arrowButton=require('../Assets/arrows.png');
+const menuButton=require('../Assets/menu1.png');
+const sendButton=require('../Assets/send.png');
+
 const GroupChatUI=({route,navigation})=>{
   const {groupID,groupName,groupImage} = route.params;
   const [groupTitle,setGroupTitle]=useState(null);
@@ -27,16 +37,12 @@ const GroupChatUI=({route,navigation})=>{
   const [search,setSearch]=useState(false);
   const [user,setUser]=useState(null);
   const [messageArray,setMessageArray]=useState([])
-  // const images=[
-  //   uri="../Assets/add-button.png",
-  //   uri="../Assets/settings.png"
-  // ]
 //chat messaeges
   const renderItem = ({ item }) => (
     <>
-      <Text style={[FileStyle.time,{alignSelf:item.userUserMessageId===user?'flex-end':'flex-start',}]}>
+      {/* <Text style={[FileStyle.time,{alignSelf:item.userUserMessageId===user?'flex-end':'flex-start',}]}>
         {item.createdAt}
-      </Text>
+      </Text> */}
       <View 
         style={[
           FileStyle.messageContainer,
@@ -86,27 +92,12 @@ const GroupChatUI=({route,navigation})=>{
       }
     });
     setMessageArray(userGrpMessage.data.mesageByGroupName.items)
-  }
-  const upDateGroupLastSeenMessage = async (messageID) => {
-    try {
-      await API.graphql({
-        query:mutations.updateGroup,
-        variables:{
-          input:{
-            id: GroupRoomID,
-            lastSeenMessageID:messageID
-          }
-        }
-      })
-    } catch (error) {
-      console.log(error);
-    }
-  }   
+  } 
 //send message to backend
   const sendMessage=async()=>{
     try {
       const date=new Date();
-      const currentTime=date.toLocaleTimeString();
+      const currentTime=date.getTime();
       if(message==null)
         throw "write message"
       const messageObject={
@@ -115,7 +106,7 @@ const GroupChatUI=({route,navigation})=>{
         groupMessagesId:GroupRoomID,
         userUserMessageId:user
       }
-      setMessageArray([messageObject,...messageArray])
+      setMessageArray([messageObject,...messageArray]);
       const messadeData=await API.graphql({
         query:mutations.createMessage,
         variables:{
@@ -123,22 +114,23 @@ const GroupChatUI=({route,navigation})=>{
           }
       });
       // console.log(messadeData.data.createMessage.id);
-      await upDateGroupLastSeenMessage(messadeData.data.createMessage.id);
+      await upDateGroupLastSeenMessage(GroupRoomID,messadeData.data.createMessage.id);
     } catch (error) {
       console.warn(error);
     }
   }
 //subscribe user for messages
   const subscribe=async()=>{
+    console.log('nidsa')
     try {
       await API.graphql({
         query:subscriptions.onMessagebyGroupId,
-        variables:{groupMessagesId:groupId}
+        variables:{groupMessagesId:groupID}
       }).subscribe({
         next: data => {
           console.log(data.value.data.onMessagebyGroupId)
           // setMessageArray([data.value.data.onMessagebyGroupId,...messageArray])
-          groupMessages()
+          // groupMessages()
         }
       })
     } catch (error) {
@@ -149,66 +141,27 @@ const GroupChatUI=({route,navigation})=>{
   return (
     <View style={FileStyle.container}>
       <View style={FileStyle.groupTitle}>
-        {
-          clicked?null:<View style={FileStyle.titleView}>
-            <Image 
-              style={FileStyle.image}
-              source={{uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7imXJMeK9b42t8JBjKxYP2zJd8MVrbVNEAg&usqp=CAU"}}
-            />
-            <Text style={FileStyle.title}>
-              {groupTitle}
-            </Text>
-          </View>
-        }
+        { clicked ? null : <GroupChatHeader groupTitle={groupTitle} /> }
         <View style={[FileStyle.Icon,clicked?{width:'100%'}:null]}>
          {clicked?
-          <>
-            <TouchableOpacity onPress={()=>navigation.navigate("uploadFile",{groupName:groupName,grpimage:groupImage})}>
-                <Image
-                  style={[FileStyle.iconPic,{marginRight:10}]}
-                  source={require('../Assets/add-button.png')}
-                />
-            </TouchableOpacity>
-            {/* <IconButton imageUrl={images[0].uri}
-              onpress={()=>navigation.navigate("uploadFile",{groupName:groupName,grpimage:groupImage})}
-            />  */}
-            <TouchableOpacity > 
-                <Image
-                  style={[FileStyle.iconPic,{marginRight:10}]}
-                  source={require('../Assets/settings.png')}
-                />
-            </TouchableOpacity>
-          </>
-          :null
-        }
-          <TouchableOpacity onPress={()=>setClicked(!clicked)}>
-              <Image
-                style={FileStyle.iconPic}
-                source={clicked?require('../Assets/arrows.png'):require('../Assets/menu1.png')}
-              />
-          </TouchableOpacity>
-        
+            <>
+              <IconButton imageUrl={image} onpress={()=>navigation.navigate("uploadFile",{groupName:groupName,grpimage:groupImage})}/> 
+              <IconButton imageUrl={settingimage} />
+            </>
+            :null
+          }
+          <IconButton imageUrl={clicked?arrowButton:menuButton} onpress={()=>setClicked(!clicked)}/> 
         </View>
       </View>
       <FlatList
           inverted
           data={[...messageArray]}
           renderItem={renderItem}
-          keyExtractor={item => Math.random()*10000}
+          keyExtractor={item => item.id}
       />
       <View  style={FileStyle.chatIPStyle}>
-        <TextInput
-            placeholder={"Message..."}
-            placeholderTextColor={"black"}
-            style={FileStyle.chatInput}
-            onChangeText={(message)=>setMessage(message)}
-        />
-       <TouchableOpacity onPress={()=>sendMessage()}>
-        <Image
-            style={FileStyle.sentIcon}
-            source={require('../Assets/send.png')}
-          />
-       </TouchableOpacity>
+        <ChatInput getGroupMessage={setMessage} />
+        <IconButton imageUrl={sendButton} onpress={()=>sendMessage()}/>
       </View>    
     </View>
   );

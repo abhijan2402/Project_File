@@ -243,9 +243,9 @@ export const listMessages = /* GraphQL */ `
     }
   }
 `;
-export const getUserGroupsMapping = /* GraphQL */ `
-  query GetUserGroupsMapping($id: ID!) {
-    getUserGroupsMapping(id: $id) {
+export const getUserGroup = /* GraphQL */ `
+  query GetUserGroup($id: ID!) {
+    getUserGroup(id: $id) {
       id
       userID
       groupID
@@ -296,17 +296,13 @@ export const getUserGroupsMapping = /* GraphQL */ `
     }
   }
 `;
-export const listUserGroupsMappings = /* GraphQL */ `
-  query ListUserGroupsMappings(
-    $filter: ModelUserGroupsMappingFilterInput
+export const listUserGroups = /* GraphQL */ `
+  query ListUserGroups(
+    $filter: ModelUserGroupFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listUserGroupsMappings(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
+    listUserGroups(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         userID

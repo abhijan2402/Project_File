@@ -1,5 +1,5 @@
-import React , { useState } from 'react';
-import { View , Image , TouchableOpacity } from 'react-native';
+import React from 'react';
+import { Image , TouchableOpacity } from 'react-native';
 import FileStyle from '../Styles/FileStyle';
 const IconButton = (props) => {
     const{ imageUrl , onpress }=props;

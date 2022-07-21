@@ -424,12 +424,12 @@ export const deleteMessage = /* GraphQL */ `
     }
   }
 `;
-export const createUserGroupsMapping = /* GraphQL */ `
-  mutation CreateUserGroupsMapping(
-    $input: CreateUserGroupsMappingInput!
-    $condition: ModelUserGroupsMappingConditionInput
+export const createUserGroup = /* GraphQL */ `
+  mutation CreateUserGroup(
+    $input: CreateUserGroupInput!
+    $condition: ModelUserGroupConditionInput
   ) {
-    createUserGroupsMapping(input: $input, condition: $condition) {
+    createUserGroup(input: $input, condition: $condition) {
       id
       userID
       groupID
@@ -480,12 +480,12 @@ export const createUserGroupsMapping = /* GraphQL */ `
     }
   }
 `;
-export const updateUserGroupsMapping = /* GraphQL */ `
-  mutation UpdateUserGroupsMapping(
-    $input: UpdateUserGroupsMappingInput!
-    $condition: ModelUserGroupsMappingConditionInput
+export const updateUserGroup = /* GraphQL */ `
+  mutation UpdateUserGroup(
+    $input: UpdateUserGroupInput!
+    $condition: ModelUserGroupConditionInput
   ) {
-    updateUserGroupsMapping(input: $input, condition: $condition) {
+    updateUserGroup(input: $input, condition: $condition) {
       id
       userID
       groupID
@@ -536,12 +536,12 @@ export const updateUserGroupsMapping = /* GraphQL */ `
     }
   }
 `;
-export const deleteUserGroupsMapping = /* GraphQL */ `
-  mutation DeleteUserGroupsMapping(
-    $input: DeleteUserGroupsMappingInput!
-    $condition: ModelUserGroupsMappingConditionInput
+export const deleteUserGroup = /* GraphQL */ `
+  mutation DeleteUserGroup(
+    $input: DeleteUserGroupInput!
+    $condition: ModelUserGroupConditionInput
   ) {
-    deleteUserGroupsMapping(input: $input, condition: $condition) {
+    deleteUserGroup(input: $input, condition: $condition) {
       id
       userID
       groupID
