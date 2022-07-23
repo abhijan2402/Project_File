@@ -18,6 +18,8 @@ const CreateGroup = () => {
     const [grpName, setGrpName] = useState(null);
     const [grpDesc, setGrpDesc] = useState(null);
     const [clicked, setClicked] = useState(false)
+    const [authedUser, setAuthedUser] = useState("");
+    const [id, setId] = useState("");
     function jene() {
         setImage()
     }
@@ -42,21 +44,41 @@ const CreateGroup = () => {
                 GroupName: grpName,
                 GroupDescription: grpDesc,
                 GroupImageUrlPath: image,
-                lastSeenMessageID:""
+                lastSeenMessageID: ""
 
             }
 
-            if (response) {
-                const authedUser = await Auth.currentAuthenticatedUser();
-                const groupData = await API.graphql({
-                    query: mutations.createGroup,
-                    variables: {
-                        input: groupDetails
-                    }
-                })
-                console.log(groupData)
-                setClicked(false)
+
+            const currentUser = await Auth.currentAuthenticatedUser();
+            setAuthedUser(currentUser.attributes.email);
+            console.log(currentUser.attributes.email);
+            const auth = currentUser.attributes.email;
+            console.log(auth)
+            const groupData = await API.graphql({
+                query: mutations.createGroup,
+                variables: {
+                    input: groupDetails
+                }
+            })
+            console.log(groupData)
+            const idd = groupData.data.createGroup.id
+            console.log(idd)
+            // setId(groupData.data.createGroup.id)
+            // console.log(id)
+            const demo = {
+                userID: auth,
+                groupID: idd
             }
+            const grpData = await API.graphql({
+                query: mutations.createUserGroup,
+                variables: {
+                    input: demo
+                }
+            })
+            console.log(grpData)
+
+            setClicked(false)
+
         } catch (error) {
             console.log(error);
         }
